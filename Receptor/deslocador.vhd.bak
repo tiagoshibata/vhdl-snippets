@@ -39,6 +39,5 @@ begin
 		PRONTO <= '0';
 		enable_display <= '0';
 	end if;
-end process;
 
 end deslocador_arch;
