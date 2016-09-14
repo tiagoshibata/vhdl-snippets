@@ -17,8 +17,8 @@ begin
 	begin
     	if reset = '1' then
 			transmitindo <= '0'; -- Reset assincrono
-    	elsif clock'event and clock = '1' then
-        	if (transmitindo = '1' and cont = "1011") then
+    	elsif rising_edge(clock) then
+        	if (transmitindo = '1' and cont = "1010") then
 	            pronto <= '1';
 	            if (borda = '1') then
 	                transmitindo <= '1';
@@ -27,7 +27,7 @@ begin
 	            end if;
 	        else
 	            pronto <= '0';
-	            if (transmitindo = '1' or borda = '1') then
+	            if (borda = '1') then
 	                transmitindo <= '1';
 	            end if;
 	        end if;

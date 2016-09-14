@@ -4,25 +4,20 @@ use IEEE.std_logic_unsigned.all;
 use IEEE.numeric_std.all;
 
 entity paridade is
-	port ( PRONTO, ck: in STD_LOGIC;
-	       dado: in STD_LOGIC_VECTOR(10 downto 0);
-	       PARIDADE_OK: out STD_LOGIC );
+	port (
+		dado: in STD_LOGIC_VECTOR(10 downto 0);
+	    PARIDADE_OK: out STD_LOGIC
+	);
 end;
 
 architecture paridade_arch of paridade is
 begin
-
-process (PRONTO, dado) -- Reset síncrono e carregamento
-variable par: STD_LOGIC := '0';
-begin
-	for i in 0 to 10 loop
-		par := par xor dado(i);
-	end loop;
-	if (par = '0' and PRONTO = '1') then
-		PARIDADE_OK <= '1';
-	else
-		PARIDADE_OK <= '0';
-	end if;
-end process;
-	
+	process (dado)
+		variable par: STD_LOGIC := '0';
+	begin
+		for i in 0 to 10 loop
+			par := par xor dado(i);
+		end loop;
+		PARIDADE_OK <= par;
+	end process;
 end paridade_arch;
