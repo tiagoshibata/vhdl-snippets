@@ -23,7 +23,7 @@ begin
 				Sreg <= '0';
 			elsif Sreg = '0' then
 				start_receiving <= '0';
-				if cont = "0010" then
+				if cont = "1011" then
 					output_ready <= '1';
 					Sreg <= '1';
 				end if;
