@@ -3,35 +3,59 @@ use IEEE.std_logic_1164.all;
 use IEEE.std_logic_unsigned.all;
 
 entity FD is
-	port ( dado_s, PRONTO, CLOCK: in STD_LOGIC;
-	       dado_d: out STD_LOGIC_VECTOR(10 downto 0);
-	       parada, PARIDADE_OK, a1, a2, b1, b2, c1, c2, d1, d2, e1, e2, f1, f2, g1, g2: out STD_LOGIC );
+    port (
+        serial, pronto, clk, starting_rx, output_ready: in STD_LOGIC;
+        paridade_ok: out STD_LOGIC;
+        rx_bit_count: out STD_LOGIC_VECTOR(3 downto 0);
+        display_1: out STD_LOGIC_VECTOR(6 downto 0);
+        display_2: out STD_LOGIC_VECTOR(6 downto 0)
+    );
 end;
 
 architecture FD_ARCH of FD is
-signal clock_2: STD_LOGIC := '0';
-signal enablehex: STD_LOGIC := '0';
-signal digaux1: STD_LOGIC_VECTOR(3 downto 0) := "0000";
-signal digaux2: STD_LOGIC_VECTOR(3 downto 0) := "0000";
-signal dadodebug: STD_LOGIC_VECTOR(10 downto 0) := "00000000000";
-component inicio         port ( pronto, clk: in STD_LOGIC;
-								CKs: out STD_LOGIC ); end component;
-component deslocador     port ( dado_serial, clk, enable: in STD_LOGIC;
-							    dado_debug: out STD_LOGIC_VECTOR(10 downto 0);
-							    dig1, dig2: out STD_LOGIC_VECTOR(3 downto 0);
-							    pronto, enable_display: out STD_LOGIC ); end component;
-component paridade		 port ( dado: in STD_LOGIC_VECTOR(10 downto 0);
-							    paridade_ok: out STD_LOGIC ); end component;
-component hex7seg1		 port (	x3, x2, x1, x0 : in std_logic;
-								enable : in std_logic;
-								a,b,c,d,e,f,g : out std_logic ); end component;
-component hex7seg2		 port (	x3, x2, x1, x0 : in std_logic;
-								enable : in std_logic;
-								a,b,c,d,e,f,g : out std_logic ); end component;
+    signal serial_data: STD_LOGIC_VECTOR(10 downto 0);
+    signal divided_clk: STD_LOGIC;
+
+    component timer port (
+        data_in: in STD_LOGIC_VECTOR(3 downto 0);
+        load, enable, clk: in STD_LOGIC;
+        pulse: out STD_LOGIC
+    ); end component;
+
+    component counter port(
+        reset: in std_logic;
+        count: in std_logic;
+        clk: in std_logic;
+        value: out std_logic_vector(3 downto 0)
+    ); end component;
+
+    component deslocador port (
+        serial, clk, enable, load: in STD_LOGIC;
+        data_in: in STD_LOGIC_VECTOR(10 downto 0);
+        data_out: out STD_LOGIC_VECTOR(10 downto 0)
+    ); end component;
+
+    component hex7seg port (
+        x: in STD_LOGIC_VECTOR(3 downto 0);
+        enable: in STD_LOGIC;
+        hex_output: out STD_LOGIC_VECTOR(6 downto 0)
+    ); end component;
 begin
-	ini:  inicio	     port map (PRONTO, CLOCK, clock_2);
-	desl: deslocador	 port map (dado_s, CLOCK, clock_2, dadodebug, digaux1, digaux2, parada, enablehex);
-	par:  paridade		 port map (dadodebug, PARIDADE_OK);
-	hex1: hex7seg1		 port map (digaux1(3), digaux1(2), digaux1(1), digaux1(0), enablehex, a1, b1, c1, d1, e1, f1, g1);
-	hex2: hex7seg2		 port map (digaux2(3), digaux2(2), digaux2(1), digaux2(0), enablehex, a2, b2, c2, d2, e2, f2, g2);
+    process (pronto)
+        variable parity_tmp: STD_LOGIC := '0';
+    begin
+        if falling_edge(pronto) then
+            parity_tmp := '0';
+            for i in 0 to 10 loop
+                parity_tmp := parity_tmp xor serial_data(i);
+            end loop;
+        end if;
+        paridade_ok <= parity_tmp;
+    end process;
+
+    clock_divider: timer port map ("0111", starting_rx, not pronto, clk, divided_clk);
+    rx_bit_counter: counter port map (pronto, divided_clk, clk, rx_bit_count);
+    serial_shifter: deslocador port map (serial, clk, divided_clk, starting_rx, (others => '0'), serial_data);
+    hex1: hex7seg port map (serial_data(8 downto 5), output_ready, display_1);
+    hex2: hex7seg port map (serial_data(4 downto 1), output_ready, display_2);
 end FD_ARCH;

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Receptor
-Wed Sep 14 19:25:42 2016
+Thu Sep 15 20:58:23 2016
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
 
 
@@ -10,7 +10,17 @@ Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. General Register Statistics
+  9. Inverted Register Statistics
+ 10. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 11. Port Connectivity Checks: "FD:fdt|deslocador:serial_shifter"
+ 12. Port Connectivity Checks: "FD:fdt|timer:clock_divider"
+ 13. Post-Synthesis Netlist Statistics for Top Partition
+ 14. Elapsed Time Per Partition
+ 15. Analysis & Synthesis Messages
 
 
 
@@ -37,20 +47,20 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Wed Sep 14 19:25:42 2016           ;
+; Analysis & Synthesis Status        ; Successful - Thu Sep 15 20:58:23 2016       ;
 ; Quartus Prime Version              ; 16.0.0 Build 211 04/27/2016 SJ Lite Edition ;
 ; Revision Name                      ; Receptor                                    ;
 ; Top-level Entity Name              ; Receptor                                    ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; N/A until Partition Merge                   ;
-;     Total combinational functions  ; N/A until Partition Merge                   ;
-;     Dedicated logic registers      ; N/A until Partition Merge                   ;
-; Total registers                    ; N/A until Partition Merge                   ;
-; Total pins                         ; N/A until Partition Merge                   ;
-; Total virtual pins                 ; N/A until Partition Merge                   ;
-; Total memory bits                  ; N/A until Partition Merge                   ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                   ;
-; Total PLLs                         ; N/A until Partition Merge                   ;
+; Total logic elements               ; 64                                          ;
+;     Total combinational functions  ; 60                                          ;
+;     Dedicated logic registers      ; 28                                          ;
+; Total registers                    ; 28                                          ;
+; Total pins                         ; 18                                          ;
+; Total virtual pins                 ; 0                                           ;
+; Total memory bits                  ; 0                                           ;
+; Embedded Multiplier 9-bit elements ; 0                                           ;
+; Total PLLs                         ; 0                                           ;
 +------------------------------------+---------------------------------------------+
 
 
@@ -151,36 +161,207 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
++-------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                  ;
++----------------------------------+-----------------+-----------------+----------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path           ; Library ;
++----------------------------------+-----------------+-----------------+----------------------------------------+---------+
+; counter.vhd                      ; yes             ; User VHDL File  ; /vhdl-snippets/Receptor/counter.vhd    ;         ;
+; timer.vhd                        ; yes             ; User VHDL File  ; /vhdl-snippets/Receptor/timer.vhd      ;         ;
+; hex7seg.vhd                      ; yes             ; User VHDL File  ; /vhdl-snippets/Receptor/hex7seg.vhd    ;         ;
+; deslocador.vhd                   ; yes             ; User VHDL File  ; /vhdl-snippets/Receptor/deslocador.vhd ;         ;
+; UC.vhd                           ; yes             ; User VHDL File  ; /vhdl-snippets/Receptor/UC.vhd         ;         ;
+; FD.vhd                           ; yes             ; User VHDL File  ; /vhdl-snippets/Receptor/FD.vhd         ;         ;
+; Receptor.vhd                     ; yes             ; User VHDL File  ; /vhdl-snippets/Receptor/Receptor.vhd   ;         ;
++----------------------------------+-----------------+-----------------+----------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 64        ;
+;                                             ;           ;
+; Total combinational functions               ; 60        ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 23        ;
+;     -- 3 input functions                    ; 5         ;
+;     -- <=2 input functions                  ; 32        ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 57        ;
+;     -- arithmetic mode                      ; 3         ;
+;                                             ;           ;
+; Total registers                             ; 28        ;
+;     -- Dedicated logic registers            ; 28        ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 18        ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 27        ;
+; Total fan-out                               ; 279       ;
+; Average fan-out                             ; 2.25      ;
++---------------------------------------------+-----------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                     ;
++-----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------+-------------+--------------+
+; Compilation Hierarchy Node        ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                        ; Entity Name ; Library Name ;
++-----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------+-------------+--------------+
+; |Receptor                         ; 60 (0)            ; 28 (0)       ; 0           ; 0            ; 0       ; 0         ; 18   ; 0            ; |Receptor                                  ; Receptor    ; work         ;
+;    |FD:fdt|                       ; 56 (4)            ; 25 (1)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Receptor|FD:fdt                           ; FD          ; work         ;
+;       |counter:rx_bit_counter|    ; 4 (4)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Receptor|FD:fdt|counter:rx_bit_counter    ; counter     ; work         ;
+;       |deslocador:serial_shifter| ; 12 (12)           ; 11 (11)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Receptor|FD:fdt|deslocador:serial_shifter ; deslocador  ; work         ;
+;       |hex7seg:hex1|              ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Receptor|FD:fdt|hex7seg:hex1              ; hex7seg     ; work         ;
+;       |hex7seg:hex2|              ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Receptor|FD:fdt|hex7seg:hex2              ; hex7seg     ; work         ;
+;       |timer:clock_divider|       ; 8 (8)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Receptor|FD:fdt|timer:clock_divider       ; timer       ; work         ;
+;    |UC:uct|                       ; 4 (4)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Receptor|UC:uct                           ; UC          ; work         ;
++-----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 28    ;
+; Number of registers using Synchronous Clear  ; 4     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 15    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; UC:uct|Sreg                            ; 11      ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |Receptor|FD:fdt|deslocador:serial_shifter|IQ[9] ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Receptor|FD:fdt|timer:clock_divider|count[2]    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "FD:fdt|deslocador:serial_shifter" ;
++---------+-------+----------+---------------------------------+
+; Port    ; Type  ; Severity ; Details                         ;
++---------+-------+----------+---------------------------------+
+; data_in ; Input ; Info     ; Stuck at GND                    ;
++---------+-------+----------+---------------------------------+
+
+
++--------------------------------------------------------+
+; Port Connectivity Checks: "FD:fdt|timer:clock_divider" ;
++---------------+-------+----------+---------------------+
+; Port          ; Type  ; Severity ; Details             ;
++---------------+-------+----------+---------------------+
+; data_in[2..0] ; Input ; Info     ; Stuck at VCC        ;
+; data_in[3]    ; Input ; Info     ; Stuck at GND        ;
++---------------+-------+----------+---------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 18                          ;
+; cycloneiii_ff         ; 28                          ;
+;     ENA               ; 15                          ;
+;     SCLR              ; 4                           ;
+;     plain             ; 9                           ;
+; cycloneiii_lcell_comb ; 61                          ;
+;     arith             ; 3                           ;
+;         2 data inputs ; 2                           ;
+;         3 data inputs ; 1                           ;
+;     normal            ; 58                          ;
+;         1 data inputs ; 2                           ;
+;         2 data inputs ; 29                          ;
+;         3 data inputs ; 4                           ;
+;         4 data inputs ; 23                          ;
+;                       ;                             ;
+; Max LUT depth         ; 2.00                        ;
+; Average LUT depth     ; 1.64                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
-    Info: Processing started: Wed Sep 14 19:25:26 2016
+    Info: Processing started: Thu Sep 15 20:58:07 2016
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Receptor -c Receptor
 Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file counter.vhd
+    Info (12022): Found design unit 1: counter-counter_impl File: /vhdl-snippets/Receptor/counter.vhd Line: 15
+    Info (12023): Found entity 1: counter File: /vhdl-snippets/Receptor/counter.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file timer.vhd
+    Info (12022): Found design unit 1: timer-timer_arch File: /vhdl-snippets/Receptor/timer.vhd Line: 14
+    Info (12023): Found entity 1: timer File: /vhdl-snippets/Receptor/timer.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file hex7seg.vhd
+    Info (12022): Found design unit 1: hex7seg-hex7seg File: /vhdl-snippets/Receptor/hex7seg.vhd Line: 13
+    Info (12023): Found entity 1: hex7seg File: /vhdl-snippets/Receptor/hex7seg.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file deslocador.vhd
     Info (12022): Found design unit 1: deslocador-deslocador_arch File: /vhdl-snippets/Receptor/deslocador.vhd Line: 14
     Info (12023): Found entity 1: deslocador File: /vhdl-snippets/Receptor/deslocador.vhd Line: 6
-Warning (12019): Can't analyze file -- file inicio.vhd is missing
-Info (12021): Found 2 design units, including 1 entities, in source file paridade.vhd
-    Info (12022): Found design unit 1: paridade-paridade_arch File: /vhdl-snippets/Receptor/paridade.vhd Line: 13
-    Info (12023): Found entity 1: paridade File: /vhdl-snippets/Receptor/paridade.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file UC.vhd
-    Info (12022): Found design unit 1: UC-UC_ARCH File: /vhdl-snippets/Receptor/UC.vhd Line: 9
+    Info (12022): Found design unit 1: UC-UC_ARCH File: /vhdl-snippets/Receptor/UC.vhd Line: 13
     Info (12023): Found entity 1: UC File: /vhdl-snippets/Receptor/UC.vhd Line: 4
-Warning (12019): Can't analyze file -- file hex7seg1.vhd is missing
-Warning (12019): Can't analyze file -- file hex7seg2.vhd is missing
 Info (12021): Found 2 design units, including 1 entities, in source file FD.vhd
-    Info (12022): Found design unit 1: FD-FD_ARCH File: /vhdl-snippets/Receptor/FD.vhd Line: 11
+    Info (12022): Found design unit 1: FD-FD_ARCH File: /vhdl-snippets/Receptor/FD.vhd Line: 15
     Info (12023): Found entity 1: FD File: /vhdl-snippets/Receptor/FD.vhd Line: 5
-Info (12021): Found 0 design units, including 0 entities, in source file Receptor.vhd
-Error (12007): Top-level design entity "Receptor" is undefined
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 1 error, 4 warnings
-    Error: Peak virtual memory: 1202 megabytes
-    Error: Processing ended: Wed Sep 14 19:25:42 2016
-    Error: Elapsed time: 00:00:16
-    Error: Total CPU time (on all processors): 00:00:39
+Info (12021): Found 2 design units, including 1 entities, in source file Receptor.vhd
+    Info (12022): Found design unit 1: Receptor-receptor_arch File: /vhdl-snippets/Receptor/Receptor.vhd Line: 11
+    Info (12023): Found entity 1: Receptor File: /vhdl-snippets/Receptor/Receptor.vhd Line: 5
+Info (12127): Elaborating entity "Receptor" for the top level hierarchy
+Info (12128): Elaborating entity "UC" for hierarchy "UC:uct" File: /vhdl-snippets/Receptor/Receptor.vhd Line: 30
+Info (12128): Elaborating entity "FD" for hierarchy "FD:fdt" File: /vhdl-snippets/Receptor/Receptor.vhd Line: 31
+Info (12128): Elaborating entity "timer" for hierarchy "FD:fdt|timer:clock_divider" File: /vhdl-snippets/Receptor/FD.vhd Line: 56
+Info (12128): Elaborating entity "counter" for hierarchy "FD:fdt|counter:rx_bit_counter" File: /vhdl-snippets/Receptor/FD.vhd Line: 57
+Info (12128): Elaborating entity "deslocador" for hierarchy "FD:fdt|deslocador:serial_shifter" File: /vhdl-snippets/Receptor/FD.vhd Line: 58
+Warning (10492): VHDL Process Statement warning at deslocador.vhd(26): signal "IQ" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: /vhdl-snippets/Receptor/deslocador.vhd Line: 26
+Info (12128): Elaborating entity "hex7seg" for hierarchy "FD:fdt|hex7seg:hex1" File: /vhdl-snippets/Receptor/FD.vhd Line: 59
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 82 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 16 output pins
+    Info (21061): Implemented 64 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
+    Info: Peak virtual memory: 1214 megabytes
+    Info: Processing ended: Thu Sep 15 20:58:23 2016
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:39
 
 

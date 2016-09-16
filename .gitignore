@@ -1,3 +1,7 @@
 *.bak
+*.done
+*.fit.*
+*.rpt
+*.summary
 db/
 incremental_db/
