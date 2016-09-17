@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Receptor
-Fri Sep 16 13:24:59 2016
+Fri Sep 16 21:40:14 2016
 Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
 
 
@@ -16,11 +16,12 @@ Quartus Prime Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
   8. General Register Statistics
   9. Inverted Register Statistics
  10. Multiplexer Restructuring Statistics (Restructuring Performed)
- 11. Port Connectivity Checks: "FD:fdt|deslocador:serial_shifter"
- 12. Port Connectivity Checks: "FD:fdt|timer:clock_divider"
- 13. Post-Synthesis Netlist Statistics for Top Partition
- 14. Elapsed Time Per Partition
- 15. Analysis & Synthesis Messages
+ 11. Port Connectivity Checks: "FD:fdt|hex7seg:hex1"
+ 12. Port Connectivity Checks: "FD:fdt|deslocador:serial_shifter"
+ 13. Port Connectivity Checks: "FD:fdt|timer:clock_divider"
+ 14. Post-Synthesis Netlist Statistics for Top Partition
+ 15. Elapsed Time Per Partition
+ 16. Analysis & Synthesis Messages
 
 
 
@@ -47,13 +48,13 @@ agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                     ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Fri Sep 16 13:24:59 2016       ;
+; Analysis & Synthesis Status        ; Successful - Fri Sep 16 21:40:14 2016       ;
 ; Quartus Prime Version              ; 16.0.0 Build 211 04/27/2016 SJ Lite Edition ;
 ; Revision Name                      ; Receptor                                    ;
 ; Top-level Entity Name              ; Receptor                                    ;
 ; Family                             ; Cyclone IV E                                ;
-; Total logic elements               ; 64                                          ;
-;     Total combinational functions  ; 60                                          ;
+; Total logic elements               ; 56                                          ;
+;     Total combinational functions  ; 52                                          ;
 ;     Dedicated logic registers      ; 28                                          ;
 ; Total registers                    ; 28                                          ;
 ; Total pins                         ; 22                                          ;
@@ -181,16 +182,16 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimated Total logic elements              ; 64        ;
+; Estimated Total logic elements              ; 56        ;
 ;                                             ;           ;
-; Total combinational functions               ; 60        ;
+; Total combinational functions               ; 52        ;
 ; Logic element usage by number of LUT inputs ;           ;
 ;     -- 4 input functions                    ; 23        ;
-;     -- 3 input functions                    ; 5         ;
-;     -- <=2 input functions                  ; 32        ;
+;     -- 3 input functions                    ; 3         ;
+;     -- <=2 input functions                  ; 26        ;
 ;                                             ;           ;
 ; Logic elements by mode                      ;           ;
-;     -- normal mode                          ; 57        ;
+;     -- normal mode                          ; 49        ;
 ;     -- arithmetic mode                      ; 3         ;
 ;                                             ;           ;
 ; Total registers                             ; 28        ;
@@ -203,7 +204,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
 ; Maximum fan-out                             ; 27        ;
-; Total fan-out                               ; 287       ;
+; Total fan-out                               ; 269       ;
 ; Average fan-out                             ; 2.17      ;
 +---------------------------------------------+-----------+
 
@@ -213,11 +214,11 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +-----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------+-------------+--------------+
 ; Compilation Hierarchy Node        ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                        ; Entity Name ; Library Name ;
 +-----------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------+-------------+--------------+
-; |Receptor                         ; 60 (0)            ; 28 (0)       ; 0           ; 0            ; 0       ; 0         ; 22   ; 0            ; |Receptor                                  ; Receptor    ; work         ;
-;    |FD:fdt|                       ; 56 (4)            ; 25 (1)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Receptor|FD:fdt                           ; FD          ; work         ;
+; |Receptor                         ; 52 (0)            ; 28 (0)       ; 0           ; 0            ; 0       ; 0         ; 22   ; 0            ; |Receptor                                  ; Receptor    ; work         ;
+;    |FD:fdt|                       ; 48 (3)            ; 25 (1)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Receptor|FD:fdt                           ; FD          ; work         ;
 ;       |counter:rx_bit_counter|    ; 4 (4)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Receptor|FD:fdt|counter:rx_bit_counter    ; counter     ; work         ;
 ;       |deslocador:serial_shifter| ; 12 (12)           ; 11 (11)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Receptor|FD:fdt|deslocador:serial_shifter ; deslocador  ; work         ;
-;       |hex7seg:hex1|              ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Receptor|FD:fdt|hex7seg:hex1              ; hex7seg     ; work         ;
+;       |hex7seg:hex1|              ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Receptor|FD:fdt|hex7seg:hex1              ; hex7seg     ; work         ;
 ;       |hex7seg:hex2|              ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Receptor|FD:fdt|hex7seg:hex2              ; hex7seg     ; work         ;
 ;       |timer:clock_divider|       ; 8 (8)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Receptor|FD:fdt|timer:clock_divider       ; timer       ; work         ;
 ;    |UC:uct|                       ; 4 (4)             ; 3 (3)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Receptor|UC:uct                           ; UC          ; work         ;
@@ -255,18 +256,28 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
-; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |Receptor|FD:fdt|deslocador:serial_shifter|IQ[9] ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Receptor|FD:fdt|timer:clock_divider|count[2]    ;
+; 3:1                ; 11 bits   ; 22 LEs        ; 11 LEs               ; 11 LEs                 ; Yes        ; |Receptor|FD:fdt|deslocador:serial_shifter|IQ[6] ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Receptor|FD:fdt|timer:clock_divider|count[3]    ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------+
 
 
-+--------------------------------------------------------------+
-; Port Connectivity Checks: "FD:fdt|deslocador:serial_shifter" ;
-+---------+-------+----------+---------------------------------+
-; Port    ; Type  ; Severity ; Details                         ;
-+---------+-------+----------+---------------------------------+
-; data_in ; Input ; Info     ; Stuck at GND                    ;
-+---------+-------+----------+---------------------------------+
++-------------------------------------------------+
+; Port Connectivity Checks: "FD:fdt|hex7seg:hex1" ;
++------+-------+----------+-----------------------+
+; Port ; Type  ; Severity ; Details               ;
++------+-------+----------+-----------------------+
+; x[3] ; Input ; Info     ; Stuck at GND          ;
++------+-------+----------+-----------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "FD:fdt|deslocador:serial_shifter"                                                              ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port            ; Type   ; Severity ; Details                                                                             ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
+; data_in         ; Input  ; Info     ; Stuck at GND                                                                        ;
+; data_out[10..8] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
 +--------------------------------------------------------+
@@ -289,18 +300,18 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ;     ENA               ; 15                          ;
 ;     SCLR              ; 4                           ;
 ;     plain             ; 9                           ;
-; cycloneiii_lcell_comb ; 61                          ;
+; cycloneiii_lcell_comb ; 59                          ;
 ;     arith             ; 3                           ;
 ;         2 data inputs ; 2                           ;
 ;         3 data inputs ; 1                           ;
-;     normal            ; 58                          ;
-;         1 data inputs ; 2                           ;
-;         2 data inputs ; 29                          ;
-;         3 data inputs ; 4                           ;
+;     normal            ; 56                          ;
+;         1 data inputs ; 8                           ;
+;         2 data inputs ; 23                          ;
+;         3 data inputs ; 2                           ;
 ;         4 data inputs ; 23                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 2.00                        ;
-; Average LUT depth     ; 1.64                        ;
+; Average LUT depth     ; 1.60                        ;
 +-----------------------+-----------------------------+
 
 
@@ -319,7 +330,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 16.0.0 Build 211 04/27/2016 SJ Lite Edition
-    Info: Processing started: Fri Sep 16 13:24:41 2016
+    Info: Processing started: Fri Sep 16 21:39:57 2016
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Receptor -c Receptor
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file counter.vhd
@@ -354,14 +365,14 @@ Info (12128): Elaborating entity "hex7seg" for hierarchy "FD:fdt|hex7seg:hex1" F
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 86 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 78 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 2 input pins
     Info (21059): Implemented 20 output pins
-    Info (21061): Implemented 64 logic cells
+    Info (21061): Implemented 56 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 1211 megabytes
-    Info: Processing ended: Fri Sep 16 13:24:59 2016
-    Info: Elapsed time: 00:00:18
-    Info: Total CPU time (on all processors): 00:00:40
+    Info: Peak virtual memory: 1214 megabytes
+    Info: Processing ended: Fri Sep 16 21:40:14 2016
+    Info: Elapsed time: 00:00:17
+    Info: Total CPU time (on all processors): 00:00:41
 
 

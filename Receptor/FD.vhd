@@ -44,9 +44,9 @@ begin
     process (pronto)
         variable parity_tmp: STD_LOGIC := '0';
     begin
-        if falling_edge(pronto) then
-            parity_tmp := '0';
-            for i in 0 to 10 loop
+        if rising_edge(pronto) then
+            parity_tmp := '1';
+            for i in 0 to 7 loop
                 parity_tmp := parity_tmp xor serial_data(i);
             end loop;
         end if;
@@ -56,6 +56,6 @@ begin
     clock_divider: timer port map ("0111", starting_rx, not pronto, clk, divided_clk);
     rx_bit_counter: counter port map (pronto, divided_clk, clk, rx_bit_count);
     serial_shifter: deslocador port map (serial, clk, divided_clk, starting_rx, (others => '0'), serial_data);
-    hex1: hex7seg port map (serial_data(8 downto 5), output_ready, display_1);
-    hex2: hex7seg port map (serial_data(4 downto 1), output_ready, display_2);
+    hex1: hex7seg port map ("0" & serial_data(6 downto 4), output_ready, display_1);
+    hex2: hex7seg port map (serial_data(3 downto 0), output_ready, display_2);
 end FD_ARCH;
