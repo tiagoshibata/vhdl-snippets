@@ -14,7 +14,7 @@ end;
 architecture deslocador_arch of deslocador is
     signal IQ : std_logic_vector (10 downto 0);
 begin
-    process (clk, IQ)
+    process (clk)
     begin
         if rising_edge(clk) then
                 if load = '1' then

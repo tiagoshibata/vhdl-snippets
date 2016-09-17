@@ -1,0 +1,24 @@
+Quartus II Archive log --	C:/altera/91sp2/quartus/Receptor/Receptor.qarlog
+
+Archive:	C:/altera/91sp2/quartus/Receptor/Receptor.qar
+Date:		Sat Sep 17 17:41:53 2016
+Quartus II		9.1 Build 350 03/24/2010 SP 2 SJ Web Edition
+
+	=========== Files Selected: ===========
+C:/altera/91sp2/quartus/Receptor/FD.vhd
+C:/altera/91sp2/quartus/Receptor/Receptor.dpf
+C:/altera/91sp2/quartus/Receptor/Receptor.qpf
+C:/altera/91sp2/quartus/Receptor/Receptor.qsf
+C:/altera/91sp2/quartus/Receptor/Receptor.vhd
+C:/altera/91sp2/quartus/Receptor/Receptor_assignment_defaults.qdf
+C:/altera/91sp2/quartus/Receptor/UC.vhd
+C:/altera/91sp2/quartus/Receptor/counter.vhd
+C:/altera/91sp2/quartus/Receptor/deslocador.vhd
+C:/altera/91sp2/quartus/Receptor/hex7seg.vhd
+C:/altera/91sp2/quartus/Receptor/parity_error.vwf
+C:/altera/91sp2/quartus/Receptor/parity_ok.vwf
+C:/altera/91sp2/quartus/Receptor/timer.vhd
+	======= Total: 13 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
