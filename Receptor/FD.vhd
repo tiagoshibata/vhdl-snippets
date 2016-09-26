@@ -8,12 +8,18 @@ entity FD is
         paridade_ok: out STD_LOGIC;
         rx_bit_count: out STD_LOGIC_VECTOR(3 downto 0);
         display_1: out STD_LOGIC_VECTOR(6 downto 0);
-        display_2: out STD_LOGIC_VECTOR(6 downto 0)
+        display_2: out STD_LOGIC_VECTOR(6 downto 0);
+        display_3: out STD_LOGIC_VECTOR(6 downto 0);
+        display_4: out STD_LOGIC_VECTOR(6 downto 0);
+        display_5: out STD_LOGIC_VECTOR(6 downto 0);
+        display_6: out STD_LOGIC_VECTOR(6 downto 0)
     );
 end;
 
 architecture FD_ARCH of FD is
     signal serial_data: STD_LOGIC_VECTOR(10 downto 0);
+    signal old_data_1: STD_LOGIC_VECTOR(6 downto 0);
+    signal old_data_2: STD_LOGIC_VECTOR(6 downto 0);
     signal divided_clk: STD_LOGIC;
 
     component timer port (
@@ -40,6 +46,12 @@ architecture FD_ARCH of FD is
         enable: in STD_LOGIC;
         hex_output: out STD_LOGIC_VECTOR(6 downto 0)
     ); end component;
+
+    component reg_7bits port (
+        clk, load: in STD_LOGIC;
+        data_in: in STD_LOGIC_VECTOR(6 downto 0);
+        data_out: out STD_LOGIC_VECTOR(6 downto 0)
+    ); end component;
 begin
     process (pronto)
         variable parity_tmp: STD_LOGIC := '0';
@@ -56,6 +68,12 @@ begin
     clock_divider: timer port map ("0111", starting_rx, not pronto, clk, divided_clk);
     rx_bit_counter: counter port map (pronto, divided_clk, clk, rx_bit_count);
     serial_shifter: deslocador port map (serial, clk, divided_clk, starting_rx, (others => '0'), serial_data);
+    reg_7bits_1: reg_7bits port map (clk, starting_rx, serial_data(6 downto 0), old_data_1);
+    reg_7bits_2: reg_7bits port map (clk, starting_rx, old_data_1, old_data_2);
     hex1: hex7seg port map ("0" & serial_data(6 downto 4), output_ready, display_1);
     hex2: hex7seg port map (serial_data(3 downto 0), output_ready, display_2);
+    hex3: hex7seg port map ("0" & old_data_1(6 downto 4), output_ready, display_3);
+    hex4: hex7seg port map (old_data_1(3 downto 0), output_ready, display_4);
+    hex5: hex7seg port map ("0" & old_data_2(6 downto 4), output_ready, display_5);
+    hex6: hex7seg port map (old_data_2(3 downto 0), output_ready, display_6);
 end FD_ARCH;
