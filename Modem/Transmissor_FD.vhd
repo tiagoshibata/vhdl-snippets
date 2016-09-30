@@ -3,13 +3,14 @@ use IEEE.std_logic_1164.all;
 use IEEE.std_logic_unsigned.all;
 
 entity Transmissor_FD is port (
-    clk, reset, send: in STD_LOGIC;
+    clk, send: in STD_LOGIC;
     data: in STD_LOGIC_VECTOR(7 downto 0);
-    serial: out STD_LOGIC
+    serial, ready: out STD_LOGIC
 ); end;
 
 architecture Transmissor_FD_arch of Transmissor_FD is
     signal div_clock: STD_LOGIC;
+    signal bit_count: STD_LOGIC_VECTOR(3 downto 0);
 
     component timer port (
         clk, enable, load: in STD_LOGIC;
@@ -23,7 +24,15 @@ architecture Transmissor_FD_arch of Transmissor_FD is
         data_in: in STD_LOGIC_VECTOR(9 downto 0);
         data_out: out STD_LOGIC_VECTOR(9 downto 0)
 	); end component;
+
+    component counter port(
+        clk, reset, count: in std_logic;
+        value: out std_logic_vector(3 downto 0)
+    ); end component;
 begin
+    ready <= bit_count = "1010";
+
     clock_divider: timer port map (clk, '1', '0', (others => '-'), div_clock);
     Ishifter: shifter port map (clk, div_clock, '1', send, serial, "1" + data + "0", open);
+    Icounter: counter port map (clk, send, div_clock, bit_count);
 end Transmissor_FD_arch;
