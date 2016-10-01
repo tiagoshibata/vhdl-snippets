@@ -4,7 +4,7 @@ use IEEE.std_logic_1164.all;
 entity Receptor_UC is port (
 	cont: in STD_LOGIC_VECTOR(3 downto 0);
 	serial, clk: in STD_LOGIC;
-	ready_to_receive, start_receiving: out STD_LOGIC := '0'
+	ready_to_receive, start_receiving: out STD_LOGIC
 ); end;
 
 architecture Receptor_UC_arch of Receptor_UC is
