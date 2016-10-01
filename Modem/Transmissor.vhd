@@ -10,10 +10,10 @@ entity Transmissor is port (
 
 architecture Transmissor_arch of Transmissor is
     component Transmissor_FD port (
-        clk, reset, send: in STD_LOGIC;
+        clk, send: in STD_LOGIC;
         data: in STD_LOGIC_VECTOR(7 downto 0);
         serial, ready: out STD_LOGIC
     ); end component;
 begin
-    IFD: Transmissor_FD port map (clk, reset, send, data, serial, ready);
+    IFD: Transmissor_FD port map (clk, send, data, serial, ready);
 end Transmissor_arch;

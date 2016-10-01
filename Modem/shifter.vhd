@@ -22,7 +22,7 @@ begin
                 if load = '1' then
                     IQ <= data_in;
                 elsif enable = '1' then
-                    IQ <= serial & IQ(9 downto 1);
+                    IQ <= serial_in & IQ(9 downto 1);
                 end if;
         end if;
         data_out <= IQ;

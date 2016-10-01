@@ -18,8 +18,6 @@ entity Modem_FD is port (
 ); end;
 
 architecture Modem_FD_arch of Modem_FD is
-    signal enviado: STD_LOGIC;
-
     component Receptor port (
         clk, serial: in STD_LOGIC;
         ready_led: out STD_LOGIC;
@@ -28,12 +26,12 @@ architecture Modem_FD_arch of Modem_FD is
     ); end component;
 
     component Transmissor port (
-        clk, reset, send: in STD_LOGIC;
+        clk, send: in STD_LOGIC;
         data: in STD_LOGIC_VECTOR(7 downto 0);
         serial, ready: out STD_LOGIC
     ); end component;
 begin
     nDTR <= not liga;
     IReceptor: Receptor port map (clk, RD or nCD, recebido, dado_recebido, dbg_rx_bit_count);
-    ITransmissor: Transmissor port map (clk, reset, enviar, dado, TD, enviado);
+    ITransmissor: Transmissor port map (clk, enviar, dado, TD, enviado);
 end Modem_FD_arch;

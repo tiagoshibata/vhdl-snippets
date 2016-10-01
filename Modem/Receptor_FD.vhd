@@ -33,5 +33,5 @@ begin
     data <= serial_data(7 downto 0);
     clock_divider: timer port map (clk, not pronto, starting_rx, "0111", divided_clk);
     rx_bit_counter: counter port map (clk, pronto, divided_clk, rx_bit_count);
-    serial_shifter: deslocador port map (clk, divided_clk, serial, starting_rx, open, (others => '0'), serial_data);
+    serial_shifter: shifter port map (clk, divided_clk, serial, starting_rx, open, (others => '0'), serial_data);
 end Receptor_FD_arch;

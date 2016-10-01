@@ -30,9 +30,18 @@ architecture Transmissor_FD_arch of Transmissor_FD is
         value: out std_logic_vector(3 downto 0)
     ); end component;
 begin
-    ready <= bit_count = "1010";
+    process (clk)
+    begin
+        if rising_edge(clk) then
+            if bit_count = "1010" then
+                ready <= '1';
+            else
+                ready <= '0';
+            end if;
+        end if;
+    end process;
 
     clock_divider: timer port map (clk, '1', '0', (others => '-'), div_clock);
-    Ishifter: shifter port map (clk, div_clock, '1', send, serial, "1" + data + "0", open);
+    Ishifter: shifter port map (clk, div_clock, '1', send, serial, "1" & data & "0", open);
     Icounter: counter port map (clk, send, div_clock, bit_count);
 end Transmissor_FD_arch;

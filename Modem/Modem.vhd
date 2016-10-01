@@ -4,7 +4,7 @@ use IEEE.std_logic_unsigned.all;
 
 entity Modem is port (
     -- external interface
-    clk, reset, liga, enviar: in STD_LOGIC;
+    clk, liga, enviar: in STD_LOGIC;
     dado: in  STD_LOGIC_VECTOR(7 downto 0);
     recebido: out STD_LOGIC;
     dado_recebido: out STD_LOGIC_VECTOR(7 downto 0);
