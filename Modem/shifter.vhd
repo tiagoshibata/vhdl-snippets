@@ -13,7 +13,7 @@ entity shifter is
 end;
 
 architecture shifter_arch of shifter is
-    signal IQ : std_logic_vector (9 downto 0);
+    signal IQ: std_logic_vector (9 downto 0) := (others => '1');
 begin
     serial_out <= IQ(0);
     process (clk, IQ)

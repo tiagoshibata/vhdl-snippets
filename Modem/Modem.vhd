@@ -18,11 +18,11 @@ entity Modem is port (
 ); end;
 
 architecture Modem_arch of Modem is
-    signal enviado: STD_LOGIC;
+    signal enviado, do_send_next: STD_LOGIC;
 
     component Modem_UC port (
         clk, send, ready, nCTS: in STD_LOGIC;
-        nRTS: out STD_LOGIC
+        nRTS, do_send_next: out STD_LOGIC
 	); end component;
 
     component Modem_FD port (
@@ -40,6 +40,6 @@ architecture Modem_arch of Modem is
         dbg_rx_bit_count: out STD_LOGIC_VECTOR(3 downto 0)
     ); end component;
 begin
-    IModem_UC: Modem_UC port map (clk, enviar, enviado, nCTS, nRTS);
-    IModem_FD: Modem_FD port map (clk, liga, enviar, dado, recebido, enviado, dado_recebido, nDTR, TD, nCD, RD, dbg_rx_bit_count);
+    IModem_UC: Modem_UC port map (clk, enviar, enviado, nCTS, nRTS, do_send_next);
+    IModem_FD: Modem_FD port map (clk, liga, do_send_next, dado, recebido, enviado, dado_recebido, nDTR, TD, nCD, RD, dbg_rx_bit_count);
 end Modem_arch;

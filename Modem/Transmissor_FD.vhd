@@ -41,7 +41,7 @@ begin
         end if;
     end process;
 
-    clock_divider: timer port map (clk, '1', '0', (others => '-'), div_clock);
+    clock_divider: timer port map (clk, '1', send, "0110", div_clock);
     Ishifter: shifter port map (clk, div_clock, '1', send, serial, "1" & data & "0", open);
     Icounter: counter port map (clk, send, div_clock, bit_count);
 end Transmissor_FD_arch;
