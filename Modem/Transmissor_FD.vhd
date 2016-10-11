@@ -33,7 +33,7 @@ begin
     process (clk)
     begin
         if rising_edge(clk) then
-            if bit_count = "1010" then
+            if bit_count = "1011" then
                 ready <= '1';
             else
                 ready <= '0';

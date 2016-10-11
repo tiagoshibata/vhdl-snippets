@@ -30,7 +30,7 @@ architecture Receptor_FD_arch of Receptor_FD is
         data_out: out STD_LOGIC_VECTOR(9 downto 0)
     ); end component;
 begin
-    data <= serial_data(7 downto 0);
+    data <= serial_data(8 downto 1);
     clock_divider: timer port map (clk, not pronto, starting_rx, "0111", divided_clk);
     rx_bit_counter: counter port map (clk, pronto, divided_clk, rx_bit_count);
     serial_shifter: shifter port map (clk, divided_clk, serial, starting_rx, open, (others => '0'), serial_data);

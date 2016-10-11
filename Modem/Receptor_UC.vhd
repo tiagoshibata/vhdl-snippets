@@ -3,7 +3,7 @@ use IEEE.std_logic_1164.all;
 
 entity Receptor_UC is port (
 	cont: in STD_LOGIC_VECTOR(3 downto 0);
-	serial, clk: in STD_LOGIC;
+	serial, clk, reset: in STD_LOGIC;
 	ready_to_receive, start_receiving: out STD_LOGIC
 ); end;
 
@@ -15,12 +15,15 @@ begin
 	process (clk) -- Logica de proximo estado
 	begin
 		if rising_edge(clk) then
-			if Sreg = '1' and serial = '0' then
+			if reset = '1' then
+				start_receiving <= '0';
+				Sreg <= '1';
+			elsif Sreg = '1' and serial = '0' then
 				start_receiving <= '1';
 				Sreg <= '0';
 			elsif Sreg = '0' then
 				start_receiving <= '0';
-				if cont = "1010" then
+				if cont = "1001" then
 					Sreg <= '1';
 				end if;
 			end if;

@@ -14,7 +14,9 @@ entity Modem is port (
     nCTS, nCD, RD: in STD_LOGIC;
 
     -- debug
-    dbg_rx_bit_count: out STD_LOGIC_VECTOR(3 downto 0)
+    dbg_rx_bit_count: out STD_LOGIC_VECTOR(3 downto 0);
+    hex1: out STD_LOGIC_VECTOR(6 downto 0);
+    hex2: out STD_LOGIC_VECTOR(6 downto 0)
 ); end;
 
 architecture Modem_arch of Modem is
@@ -37,9 +39,12 @@ architecture Modem_arch of Modem is
         nCD, RD: in STD_LOGIC;
 
         -- debug
-        dbg_rx_bit_count: out STD_LOGIC_VECTOR(3 downto 0)
+		dbg_rx_bit_count: out STD_LOGIC_VECTOR(3 downto 0);
+		hex1: out STD_LOGIC_VECTOR(6 downto 0);
+		hex2: out STD_LOGIC_VECTOR(6 downto 0)
     ); end component;
 begin
     IModem_UC: Modem_UC port map (clk, enviar, enviado, nCTS, nRTS, do_send_next);
-    IModem_FD: Modem_FD port map (clk, liga, do_send_next, dado, recebido, enviado, dado_recebido, nDTR, TD, nCD, RD, dbg_rx_bit_count);
+    IModem_FD: Modem_FD port map (clk, liga, do_send_next, dado, recebido, enviado,
+		dado_recebido, nDTR, TD, nCD, RD, dbg_rx_bit_count, hex1, hex2);
 end Modem_arch;

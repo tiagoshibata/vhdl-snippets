@@ -17,6 +17,7 @@ begin
 		if rising_edge(clk) then
 			if load = '1' then
 				count <= data_in;
+				pulse <= '0';
 			elsif enable = '1' then
 				if count = "0" then
 					count <= "0111";
