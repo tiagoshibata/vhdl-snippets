@@ -20,12 +20,13 @@ entity Modem_FD is port (
 ); end;
 
 architecture Modem_FD_arch of Modem_FD is
-	signal Sdado_recebido: STD_LOGIC_VECTOR(7 downto 0);
-	signal Srecebido: STD_LOGIC;
+    signal Sdado_recebido, Sdado_receptor: STD_LOGIC_VECTOR(7 downto 0);
+    signal Srecebido: STD_LOGIC;
+    signal Sended_receiving: STD_LOGIC;
 
     component Receptor port (
         clk, serial, reset: in STD_LOGIC;
-        ready_led: out STD_LOGIC;
+        ready_led, ended_receiving: out STD_LOGIC;
         data: out STD_LOGIC_VECTOR(7 downto 0);
         dbg_rx_bit_count: out STD_LOGIC_VECTOR(3 downto 0)
     ); end component;
@@ -36,18 +37,25 @@ architecture Modem_FD_arch of Modem_FD is
         serial, ready: out STD_LOGIC
     ); end component;
 
+    component Register8 port (
+        clk, load: in STD_LOGIC;
+        data_in: in STD_LOGIC_VECTOR(7 downto 0);
+        data_out: out STD_LOGIC_VECTOR(7 downto 0)
+    ); end component;
+
     component hex7seg port (
-		x : in std_logic_vector(3 downto 0);
-		enable : in std_logic;
-		hex_output : out std_logic_vector(6 downto 0)
-	); end component;
+        x : in std_logic_vector(3 downto 0);
+        enable : in std_logic;
+        hex_output : out std_logic_vector(6 downto 0)
+    ); end component;
 begin
     nDTR <= not liga;
     dado_recebido <= Sdado_recebido;
     recebido <= Srecebido;
 
-    IReceptor: Receptor port map (clk, RD , nCD, Srecebido, Sdado_recebido, dbg_rx_bit_count);
+    IReceptor: Receptor port map (clk, RD , nCD, Srecebido, Sended_receiving, Sdado_receptor, dbg_rx_bit_count);
     ITransmissor: Transmissor port map (clk, enviar, dado, TD, enviado);
+    OutputBuffer: Register8 port map (clk, Sended_receiving,Sdado_receptor , Sdado_recebido);
     Display0: hex7seg port map (Sdado_recebido(3 downto 0), Srecebido, hex1);
     Display1: hex7seg port map (Sdado_recebido(7 downto 4), Srecebido, hex2);
 end Modem_FD_arch;
