@@ -6,7 +6,7 @@ entity Modem is port (
     -- external interface
     clk, recebe_dado, transmite_dado: in STD_LOGIC;
     dado_trans: in  STD_LOGIC_VECTOR(7 downto 0);
-    recebido, transm_andamento, tem_dado_rec: out STD_LOGIC;
+    recebido, transm_iniciada, transm_andamento, tem_dado_rec: out STD_LOGIC;
     dado_rec: out STD_LOGIC_VECTOR(7 downto 0);
 
     -- modem interface
@@ -24,7 +24,7 @@ architecture Modem_arch of Modem is
 
     component Modem_UC port (
         clk, send, ready, nCTS: in STD_LOGIC;
-        nRTS, do_send_next: out STD_LOGIC
+        nRTS, do_send_next, tr_andamento: out STD_LOGIC
 	); end component;
 
     component Modem_FD port (
@@ -44,8 +44,8 @@ architecture Modem_arch of Modem is
 		hex2: out STD_LOGIC_VECTOR(6 downto 0)
     ); end component;
 begin
-	transm_andamento <= do_send_next;
+	transm_iniciada <= do_send_next;
     IModem_UC: Modem_UC port map (clk, transmite_dado, enviado, nCTS, nRTS, do_send_next);
-    IModem_FD: Modem_FD port map (clk, recebe_dado, '1', do_send_next, dado_trans, recebido, enviado, tem_dado_rec
+    IModem_FD: Modem_FD port map (clk, recebe_dado, '1', do_send_next, dado_trans, recebido, enviado, tem_dado_rec,
 		dado_rec, nDTR, TD, nCD, RD, dbg_rx_bit_count, hex1, hex2);
 end Modem_arch;

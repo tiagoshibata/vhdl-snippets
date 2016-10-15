@@ -3,7 +3,7 @@ use IEEE.std_logic_1164.all;
 
 entity Modem_UC is port (
     clk, send, ready, nCTS: in STD_LOGIC;
-    nRTS, do_send_next: out STD_LOGIC
+    nRTS, do_send_next, tr_andamento: out STD_LOGIC
 ); end;
 
 architecture Modem_UC_arch of Modem_UC is
@@ -11,9 +11,11 @@ architecture Modem_UC_arch of Modem_UC is
     signal state: modem_states := IDLE;
     signal SnRTS: STD_LOGIC := '1';
     signal Sdo_send_next: STD_LOGIC := '0';
+    signal Str_andamento: STD_LOGIC := '0';
 begin
     nRTS <= SnRTS;
     do_send_next <= Sdo_send_next;
+    tr_andamento <= Str_andamento;
 
     process (clk)
     begin
@@ -21,12 +23,14 @@ begin
             case state is
                 when IDLE =>
                 SnRTS <= '1';
+                Str_andamento <= '0';
                 if send = '1' then
                     state <= WAITING_CTS;
                 end if;
 
                 when WAITING_CTS =>
                 SnRTS <= '0';
+                Str_andamento <= '0';
                 if nCTS = '0' then
                     Sdo_send_next <= '1';
                     state <= SENDING;
@@ -34,6 +38,7 @@ begin
 
                 when SENDING =>
                 Sdo_send_next <= '0';
+                Str_andamento <= '1';
                 if ready = '1' then
                     state <= IDLE;
                 end if;
