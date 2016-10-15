@@ -20,7 +20,7 @@ begin
 				pulse <= '0';
 			elsif enable = '1' then
 				if count = "0" then
-					count <= "0000101000101100";
+					count <= "0111";
 					pulse <= '1';
 				else
 					count <= count - "1";

@@ -1,5 +1,5 @@
 EDA Netlist Writer report for Modem
-Sat Oct 15 11:48:03 2016
+Sat Oct 15 12:16:18 2016
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -36,7 +36,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Sat Oct 15 11:48:03 2016 ;
+; EDA Netlist Writer Status ; Successful - Sat Oct 15 12:16:18 2016 ;
 ; Revision Name             ; Modem                                 ;
 ; Top-level Entity Name     ; Modem                                 ;
 ; Family                    ; Cyclone II                            ;
@@ -82,12 +82,12 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II EDA Netlist Writer
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Sat Oct 15 11:48:03 2016
+    Info: Processing started: Sat Oct 15 12:16:18 2016
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off Modem -c Modem
 Info: Generated files "Modem.vo" and "Modem_v.sdo" in directory "C:/Users/GTA/Documents/Modem/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II EDA Netlist Writer was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 203 megabytes
-    Info: Processing ended: Sat Oct 15 11:48:03 2016
+    Info: Processing ended: Sat Oct 15 12:16:18 2016
     Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:00
 

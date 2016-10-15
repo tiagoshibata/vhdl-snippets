@@ -77,4 +77,5 @@ set_global_assignment -name VHDL_FILE AnaliseBuffer.vhd
 set_global_assignment -name VECTOR_WAVEFORM_FILE Recepcao_novo.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE transmissao_novo.vwf
 set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE Recepcao_novo.vwf
+set_global_assignment -name VHDL_FILE Ticker.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

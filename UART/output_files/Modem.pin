@@ -83,11 +83,11 @@ GND*                         : A10       :        :                   :         
 VCCIO3                       : A11       : power  :                   : 3.3V    : 3         :                
 GND                          : A12       : gnd    :                   :         :           :                
 GND+                         : A13       :        :                   :         : 4         :                
-transmite_dado               : A14       : input  : 3.3-V LVTTL       :         : 4         : N              
+transm_andamento             : A14       : output : 3.3-V LVTTL       :         : 4         : N              
 GND                          : A15       : gnd    :                   :         :           :                
 VCCIO4                       : A16       : power  :                   : 3.3V    : 4         :                
-dbg_rx_bit_count[3]          : A17       : output : 3.3-V LVTTL       :         : 4         : N              
-hex2[0]                      : A18       : output : 3.3-V LVTTL       :         : 4         : N              
+dbg_rx_bit_count[0]          : A17       : output : 3.3-V LVTTL       :         : 4         : N              
+hex2[3]                      : A18       : output : 3.3-V LVTTL       :         : 4         : N              
 GND*                         : A19       :        :                   :         : 4         :                
 GND*                         : A20       :        :                   :         : 4         :                
 GND*                         : A21       :        :                   :         : 4         :                
@@ -110,7 +110,7 @@ GND*                         : AA12      :        :                   :         
 GND*                         : AA13      :        :                   :         : 7         :                
 GND*                         : AA14      :        :                   :         : 7         :                
 GND*                         : AA15      :        :                   :         : 7         :                
-hex1[5]                      : AA16      : output : 3.3-V LVTTL       :         : 7         : N              
+GND*                         : AA16      :        :                   :         : 7         :                
 GND*                         : AA17      :        :                   :         : 7         :                
 GND*                         : AA18      :        :                   :         : 7         :                
 VCCA_PLL4                    : AA19      : power  :                   : 1.2V    :           :                
@@ -163,7 +163,7 @@ GND+                         : AC13      :        :                   :         
 GND*                         : AC14      :        :                   :         : 7         :                
 GND*                         : AC15      :        :                   :         : 7         :                
 GND*                         : AC16      :        :                   :         : 7         :                
-hex2[4]                      : AC17      : output : 3.3-V LVTTL       :         : 7         : N              
+GND*                         : AC17      :        :                   :         : 7         :                
 GND*                         : AC18      :        :                   :         : 7         :                
 GND*                         : AC19      :        :                   :         : 7         :                
 GND*                         : AC20      :        :                   :         : 7         :                
@@ -189,7 +189,7 @@ GND+                         : AD13      :        :                   :         
 GND                          : AD14      : gnd    :                   :         :           :                
 GND*                         : AD15      :        :                   :         : 7         :                
 GND*                         : AD16      :        :                   :         : 7         :                
-dado_rec[7]                  : AD17      : output : 3.3-V LVTTL       :         : 7         : N              
+dado_rec[6]                  : AD17      : output : 3.3-V LVTTL       :         : 7         : N              
 GND                          : AD18      : gnd    :                   :         :           :                
 GND*                         : AD19      :        :                   :         : 7         :                
 VCCIO7                       : AD20      : power  :                   : 3.3V    : 7         :                
@@ -215,7 +215,7 @@ GND*                         : AE13      :        :                   :         
 GND+                         : AE14      :        :                   :         : 7         :                
 GND*                         : AE15      :        :                   :         : 7         :                
 GND*                         : AE16      :        :                   :         : 7         :                
-dbg_rx_bit_count[0]          : AE17      : output : 3.3-V LVTTL       :         : 7         : N              
+GND*                         : AE17      :        :                   :         : 7         :                
 GND*                         : AE18      :        :                   :         : 7         :                
 GND*                         : AE19      :        :                   :         : 7         :                
 GND*                         : AE20      :        :                   :         : 7         :                
@@ -251,7 +251,7 @@ VCCIO7                       : AF24      : power  :                   : 3.3V    
 GND                          : AF25      : gnd    :                   :         :           :                
 GND                          : B1        : gnd    :                   :         :           :                
 GND*                         : B2        :        :                   :         : 2         :                
-GND*                         : B3        :        :                   :         : 2         :                
+dado_rec[3]                  : B3        : output : 3.3-V LVTTL       :         : 2         : N              
 GND*                         : B4        :        :                   :         : 3         :                
 GND*                         : B5        :        :                   :         : 3         :                
 GND*                         : B6        :        :                   :         : 3         :                
@@ -259,13 +259,13 @@ GND*                         : B7        :        :                   :         
 GND*                         : B8        :        :                   :         : 3         :                
 GND*                         : B9        :        :                   :         : 3         :                
 GND*                         : B10       :        :                   :         : 3         :                
-transm_iniciada              : B11       : output : 3.3-V LVTTL       :         : 3         : N              
-transm_andamento             : B12       : output : 3.3-V LVTTL       :         : 3         : N              
+dado_trans[3]                : B11       : input  : 3.3-V LVTTL       :         : 3         : N              
+dado_trans[6]                : B12       : input  : 3.3-V LVTTL       :         : 3         : N              
 GND+                         : B13       :        :                   :         : 4         :                
 nCTS                         : B14       : input  : 3.3-V LVTTL       :         : 4         : N              
-dado_trans[2]                : B15       : input  : 3.3-V LVTTL       :         : 4         : N              
-dado_trans[6]                : B16       : input  : 3.3-V LVTTL       :         : 4         : N              
-hex2[6]                      : B17       : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : B15       :        :                   :         : 4         :                
+GND*                         : B16       :        :                   :         : 4         :                
+dbg_rx_bit_count[3]          : B17       : output : 3.3-V LVTTL       :         : 4         : N              
 hex2[1]                      : B18       : output : 3.3-V LVTTL       :         : 4         : N              
 GND*                         : B19       :        :                   :         : 4         :                
 GND*                         : B20       :        :                   :         : 4         :                
@@ -285,13 +285,13 @@ GND*                         : C7        :        :                   :         
 GND*                         : C8        :        :                   :         : 3         :                
 GND*                         : C9        :        :                   :         : 3         :                
 GND*                         : C10       :        :                   :         : 3         :                
-GND*                         : C11       :        :                   :         : 3         :                
-GND*                         : C12       :        :                   :         : 3         :                
+dado_trans[2]                : C11       : input  : 3.3-V LVTTL       :         : 3         : N              
+dado_trans[4]                : C12       : input  : 3.3-V LVTTL       :         : 3         : N              
 nCD                          : C13       : input  : 3.3-V LVTTL       :         : 3         : N              
 GND                          : C14       : gnd    :                   :         :           :                
-dado_trans[3]                : C15       : input  : 3.3-V LVTTL       :         : 4         : N              
-dado_trans[7]                : C16       : input  : 3.3-V LVTTL       :         : 4         : N              
-dado_rec[0]                  : C17       : output : 3.3-V LVTTL       :         : 4         : N              
+GND*                         : C15       :        :                   :         : 4         :                
+GND*                         : C16       :        :                   :         : 4         :                
+hex1[3]                      : C17       : output : 3.3-V LVTTL       :         : 4         : N              
 GND                          : C18       : gnd    :                   :         :           :                
 GND*                         : C19       :        :                   :         : 4         :                
 VCCIO4                       : C20       : power  :                   : 3.3V    : 4         :                
@@ -315,15 +315,15 @@ GND*                         : D11       :        :                   :         
 GND*                         : D12       :        :                   :         : 3         :                
 RD                           : D13       : input  : 3.3-V LVTTL       :         : 3         : N              
 nRTS                         : D14       : output : 3.3-V LVTTL       :         : 4         : N              
-dado_rec[5]                  : D15       : output : 3.3-V LVTTL       :         : 4         : N              
-GND*                         : D16       :        :                   :         : 4         :                
-hex1[2]                      : D17       : output : 3.3-V LVTTL       :         : 4         : N              
-GND*                         : D18       :        :                   :         : 4         :                
+tem_dado_rec                 : D15       : output : 3.3-V LVTTL       :         : 4         : N              
+dado_rec[4]                  : D16       : output : 3.3-V LVTTL       :         : 4         : N              
+hex1[5]                      : D17       : output : 3.3-V LVTTL       :         : 4         : N              
+hex1[0]                      : D18       : output : 3.3-V LVTTL       :         : 4         : N              
 GND*                         : D19       :        :                   :         : 4         :                
 GND*                         : D20       :        :                   :         : 4         :                
 GND*                         : D21       :        :                   :         : 4         :                
 VCCIO4                       : D22       : power  :                   : 3.3V    : 4         :                
-GND*                         : D23       :        :                   :         : 5         :                
+dado_rec[2]                  : D23       : output : 3.3-V LVTTL       :         : 5         : N              
 GND                          : D24       : gnd    :                   :         :           :                
 GND*                         : D25       :        :                   :         : 5         :                
 GND*                         : D26       :        :                   :         : 5         :                
@@ -341,10 +341,10 @@ GND                          : E11       : gnd    :                   :         
 GND*                         : E12       :        :                   :         : 3         :                
 VCCIO3                       : E13       : power  :                   : 3.3V    : 3         :                
 VCCIO4                       : E14       : power  :                   : 3.3V    : 4         :                
-recebido                     : E15       : output : 3.3-V LVTTL       :         : 4         : N              
+dado_rec[5]                  : E15       : output : 3.3-V LVTTL       :         : 4         : N              
 GND                          : E16       : gnd    :                   :         :           :                
 VCCIO4                       : E17       : power  :                   : 3.3V    : 4         :                
-GND*                         : E18       :        :                   :         : 4         :                
+hex1[6]                      : E18       : output : 3.3-V LVTTL       :         : 4         : N              
 GND                          : E19       : gnd    :                   :         :           :                
 GND*                         : E20       :        :                   :         : 4         :                
 GND_PLL2                     : E21       : gnd    :                   :         :           :                
@@ -364,16 +364,16 @@ GNDA_PLL3                    : F8        : gnd    :                   :         
 GND*                         : F9        :        :                   :         : 3         :                
 GND*                         : F10       :        :                   :         : 3         :                
 GND*                         : F11       :        :                   :         : 3         :                
-GND*                         : F12       :        :                   :         : 3         :                
-TD                           : F13       : output : 3.3-V LVTTL       :         : 4         : N              
-dado_trans[0]                : F14       : input  : 3.3-V LVTTL       :         : 4         : N              
-dbg_rx_bit_count[1]          : F15       : output : 3.3-V LVTTL       :         : 4         : N              
-hex1[4]                      : F16       : output : 3.3-V LVTTL       :         : 4         : N              
-hex2[2]                      : F17       : output : 3.3-V LVTTL       :         : 4         : N              
-GND*                         : F18       :        :                   :         : 4         :                
+dado_trans[0]                : F12       : input  : 3.3-V LVTTL       :         : 3         : N              
+transm_iniciada              : F13       : output : 3.3-V LVTTL       :         : 4         : N              
+transmite_dado               : F14       : input  : 3.3-V LVTTL       :         : 4         : N              
+dado_rec[7]                  : F15       : output : 3.3-V LVTTL       :         : 4         : N              
+hex2[6]                      : F16       : output : 3.3-V LVTTL       :         : 4         : N              
+hex1[2]                      : F17       : output : 3.3-V LVTTL       :         : 4         : N              
+hex2[4]                      : F18       : output : 3.3-V LVTTL       :         : 4         : N              
 GNDA_PLL2                    : F19       : gnd    :                   :         :           :                
-dado_trans[5]                : F20       : input  : 3.3-V LVTTL       :         : 5         : N              
-GND*                         : F21       :        :                   :         : 5         :                
+dado_rec[1]                  : F20       : output : 3.3-V LVTTL       :         : 5         : N              
+hex2[0]                      : F21       : output : 3.3-V LVTTL       :         : 5         : N              
 VCCIO5                       : F22       : power  :                   : 3.3V    : 5         :                
 GND*                         : F23       :        :                   :         : 5         :                
 GND*                         : F24       :        :                   :         : 5         :                
@@ -384,19 +384,19 @@ GND*                         : G2        :        :                   :         
 GND*                         : G3        :        :                   :         : 2         :                
 GND*                         : G4        :        :                   :         : 2         :                
 GND*                         : G5        :        :                   :         : 2         :                
-GND*                         : G6        :        :                   :         : 2         :                
+dado_trans[1]                : G6        : input  : 3.3-V LVTTL       :         : 2         : N              
 GND_PLL3                     : G7        : gnd    :                   :         :           :                
 VCCA_PLL3                    : G8        : power  :                   : 1.2V    :           :                
 GND*                         : G9        :        :                   :         : 3         :                
 GND*                         : G10       :        :                   :         : 3         :                
 GND*                         : G11       :        :                   :         : 3         :                
-GND*                         : G12       :        :                   :         : 3         :                
-dado_trans[1]                : G13       : input  : 3.3-V LVTTL       :         : 4         : N              
-dado_trans[4]                : G14       : input  : 3.3-V LVTTL       :         : 4         : N              
-dbg_rx_bit_count[2]          : G15       : output : 3.3-V LVTTL       :         : 4         : N              
-hex2[5]                      : G16       : output : 3.3-V LVTTL       :         : 4         : N              
-hex2[3]                      : G17       : output : 3.3-V LVTTL       :         : 4         : N              
-GND*                         : G18       :        :                   :         : 4         :                
+dado_trans[7]                : G12       : input  : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : G13       :        :                   :         : 4         :                
+GND*                         : G14       :        :                   :         : 4         :                
+recebe_dado                  : G15       : input  : 3.3-V LVTTL       :         : 4         : N              
+hex2[2]                      : G16       : output : 3.3-V LVTTL       :         : 4         : N              
+hex1[4]                      : G17       : output : 3.3-V LVTTL       :         : 4         : N              
+hex1[1]                      : G18       : output : 3.3-V LVTTL       :         : 4         : N              
 VCCA_PLL2                    : G19       : power  :                   : 1.2V    :           :                
 GND_PLL2                     : G20       : gnd    :                   :         :           :                
 GND*                         : G21       :        :                   :         : 5         :                
@@ -408,7 +408,7 @@ GND*                         : G26       :        :                   :         
 GND*                         : H1        :        :                   :         : 2         :                
 GND*                         : H2        :        :                   :         : 2         :                
 GND*                         : H3        :        :                   :         : 2         :                
-hex1[3]                      : H4        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : H4        :        :                   :         : 2         :                
 GND                          : H5        : gnd    :                   :         :           :                
 GND*                         : H6        :        :                   :         : 2         :                
 VCCD_PLL3                    : H7        : power  :                   : 1.2V    :           :                
@@ -416,38 +416,38 @@ GND*                         : H8        :        :                   :         
 VCCIO3                       : H9        : power  :                   : 3.3V    : 3         :                
 GND*                         : H10       :        :                   :         : 3         :                
 GND*                         : H11       :        :                   :         : 3         :                
-dado_rec[3]                  : H12       : output : 3.3-V LVTTL       :         : 3         : N              
+GND*                         : H12       :        :                   :         : 3         :                
 GND                          : H13       : gnd    :                   :         :           :                
 GND                          : H14       : gnd    :                   :         :           :                
-tem_dado_rec                 : H15       : output : 3.3-V LVTTL       :         : 4         : N              
-dado_rec[4]                  : H16       : output : 3.3-V LVTTL       :         : 4         : N              
-GND*                         : H17       :        :                   :         : 4         :                
+recebido                     : H15       : output : 3.3-V LVTTL       :         : 4         : N              
+dbg_rx_bit_count[2]          : H16       : output : 3.3-V LVTTL       :         : 4         : N              
+dado_rec[0]                  : H17       : output : 3.3-V LVTTL       :         : 4         : N              
 VCCIO4                       : H18       : power  :                   : 3.3V    : 4         :                
 GND*                         : H19       :        :                   :         : 5         :                
 VCCD_PLL2                    : H20       : power  :                   : 1.2V    :           :                
 GND*                         : H21       :        :                   :         : 5         :                
 GND                          : H22       : gnd    :                   :         :           :                
-hex1[6]                      : H23       : output : 3.3-V LVTTL       :         : 5         : N              
+GND*                         : H23       :        :                   :         : 5         :                
 GND*                         : H24       :        :                   :         : 5         :                
 GND*                         : H25       :        :                   :         : 5         :                
 GND*                         : H26       :        :                   :         : 5         :                
 GND*                         : J1        :        :                   :         : 2         :                
 GND*                         : J2        :        :                   :         : 2         :                
-hex1[0]                      : J3        : output : 3.3-V LVTTL       :         : 2         : N              
+GND*                         : J3        :        :                   :         : 2         :                
 GND*                         : J4        :        :                   :         : 2         :                
 GND*                         : J5        :        :                   :         : 2         :                
 GND*                         : J6        :        :                   :         : 2         :                
 GND*                         : J7        :        :                   :         : 2         :                
 GND*                         : J8        :        :                   :         : 2         :                
 GND*                         : J9        :        :                   :         : 3         :                
-GND*                         : J10       :        :                   :         : 3         :                
-GND*                         : J11       :        :                   :         : 3         :                
+TD                           : J10       : output : 3.3-V LVTTL       :         : 3         : N              
+dado_trans[5]                : J11       : input  : 3.3-V LVTTL       :         : 3         : N              
 VCCIO3                       : J12       : power  :                   : 3.3V    : 3         :                
 GND*                         : J13       :        :                   :         : 3         :                
 GND*                         : J14       :        :                   :         : 3         :                
 VCCIO4                       : J15       : power  :                   : 3.3V    : 4         :                
 GND*                         : J16       :        :                   :         : 4         :                
-hex1[1]                      : J17       : output : 3.3-V LVTTL       :         : 4         : N              
+hex2[5]                      : J17       : output : 3.3-V LVTTL       :         : 4         : N              
 GND*                         : J18       :        :                   :         : 4         :                
 VCCIO5                       : J19       : power  :                   : 3.3V    : 5         :                
 GND*                         : J20       :        :                   :         : 5         :                
@@ -477,7 +477,7 @@ GND*                         : K17       :        :                   :         
 GND*                         : K18       :        :                   :         : 5         :                
 GND*                         : K19       :        :                   :         : 5         :                
 GND                          : K20       : gnd    :                   :         :           :                
-dado_rec[1]                  : K21       : output : 3.3-V LVTTL       :         : 5         : N              
+GND*                         : K21       :        :                   :         : 5         :                
 GND*                         : K22       :        :                   :         : 5         :                
 GND*                         : K23       :        :                   :         : 5         :                
 GND*                         : K24       :        :                   :         : 5         :                
@@ -502,11 +502,11 @@ VCCINT                       : L16       : power  :                   : 1.2V    
 VCCINT                       : L17       : power  :                   : 1.2V    :           :                
 VCCINT                       : L18       : power  :                   : 1.2V    :           :                
 GND*                         : L19       :        :                   :         : 5         :                
-GND*                         : L20       :        :                   :         : 5         :                
+nDTR                         : L20       : output : 3.3-V LVTTL       :         : 5         : N              
 GND*                         : L21       :        :                   :         : 5         :                
 GND                          : L22       : gnd    :                   :         :           :                
-recebe_dado                  : L23       : input  : 3.3-V LVTTL       :         : 5         : N              
-dado_rec[2]                  : L24       : output : 3.3-V LVTTL       :         : 5         : N              
+GND*                         : L23       :        :                   :         : 5         :                
+GND*                         : L24       :        :                   :         : 5         :                
 GND*                         : L25       :        :                   :         : 5         :                
 VCCIO5                       : L26       : power  :                   : 3.3V    : 5         :                
 GND                          : M1        : gnd    :                   :         :           :                
@@ -702,11 +702,11 @@ GND*                         : W8        :        :                   :         
 VCCIO8                       : W9        : power  :                   : 3.3V    : 8         :                
 GND*                         : W10       :        :                   :         : 8         :                
 GND*                         : W11       :        :                   :         : 8         :                
-nDTR                         : W12       : output : 3.3-V LVTTL       :         : 8         : N              
+GND*                         : W12       :        :                   :         : 8         :                
 GND                          : W13       : gnd    :                   :         :           :                
 GND                          : W14       : gnd    :                   :         :           :                
 GND*                         : W15       :        :                   :         : 7         :                
-GND*                         : W16       :        :                   :         : 7         :                
+dbg_rx_bit_count[1]          : W16       : output : 3.3-V LVTTL       :         : 7         : N              
 GND*                         : W17       :        :                   :         : 7         :                
 VCCIO7                       : W18       : power  :                   : 3.3V    : 7         :                
 GND*                         : W19       :        :                   :         : 7         :                
@@ -732,7 +732,7 @@ GND*                         : Y12       :        :                   :         
 GND*                         : Y13       :        :                   :         : 7         :                
 GND*                         : Y14       :        :                   :         : 7         :                
 GND*                         : Y15       :        :                   :         : 7         :                
-dado_rec[6]                  : Y16       : output : 3.3-V LVTTL       :         : 7         : N              
+GND*                         : Y16       :        :                   :         : 7         :                
 GND                          : Y17       : gnd    :                   :         :           :                
 GND*                         : Y18       :        :                   :         : 7         :                
 GNDA_PLL4                    : Y19       : gnd    :                   :         :           :                

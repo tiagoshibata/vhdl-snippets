@@ -29,5 +29,5 @@ begin
     dbg_rx_bit_count <= rx_bit_count;
 
     IUC: Receptor_UC port map (rx_bit_count, serial, clk, reset, ready_to_receive, start_receiving, ended_receiving);
-    IFD: Receptor_FD port map (tick, clk, start_receiving, serial, ready_to_receive, rx_bit_count, data);
+    IFD: Receptor_FD port map (clk, start_receiving, serial, ready_to_receive, rx_bit_count, data);
 end Receptor_arch;

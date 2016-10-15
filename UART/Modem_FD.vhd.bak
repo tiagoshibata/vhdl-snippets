@@ -23,16 +23,17 @@ architecture Modem_FD_arch of Modem_FD is
     signal Sdado_recebido, Sdado_receptor, Sbuffer: STD_LOGIC_VECTOR(7 downto 0);
     signal Srecebido: STD_LOGIC;
     signal Sended_receiving: STD_LOGIC;
+    signal trx, ttx: STD_LOGIC;
 
     component Receptor port (
-        clk, serial, reset: in STD_LOGIC;
+        tick, clk, serial, reset: in STD_LOGIC;
         ready_led, ended_receiving: out STD_LOGIC;
         data: out STD_LOGIC_VECTOR(7 downto 0);
         dbg_rx_bit_count: out STD_LOGIC_VECTOR(3 downto 0)
     ); end component;
 
     component Transmissor port (
-        clk, send: in STD_LOGIC;
+        tick, clk, send: in STD_LOGIC;
         data: in STD_LOGIC_VECTOR(7 downto 0);
         serial, ready: out STD_LOGIC
     ); end component;
@@ -44,7 +45,7 @@ architecture Modem_FD_arch of Modem_FD is
     ); end component;
     
     component AnaliseBuffer port (
-		clk, primeiro, analisa: in STD_LOGIC;
+		clk, analisa: in STD_LOGIC;
 		dado1, dado2: in STD_LOGIC_VECTOR(7 downto 0);
 		iguais: out STD_LOGIC
 	); end component;
@@ -54,15 +55,21 @@ architecture Modem_FD_arch of Modem_FD is
         enable : in std_logic;
         hex_output : out std_logic_vector(6 downto 0)
     ); end component;
+    
+    component ticker port (
+		clk, load_rx: in std_logic;
+		tick_rx, tick_tx: out std_logic
+	); end component;
 begin
     nDTR <= not liga;
     dado_recebido <= Sdado_recebido;
     recebido <= Srecebido;
 
-    IReceptor: Receptor port map (clk, RD , nCD, Srecebido, Sended_receiving, Sdado_receptor, dbg_rx_bit_count);
-    ITransmissor: Transmissor port map (clk, enviar, dado, TD, enviado);
+    IReceptor: Receptor port map (trx, clk, RD , nCD, Srecebido, Sended_receiving, Sdado_receptor, dbg_rx_bit_count);
+    ITransmissor: Transmissor port map (ttx, clk, enviar, dado, TD, enviado);
     OutputBuffer: Register8 port map (clk, Sended_receiving, Sdado_receptor , Sbuffer);
     Saida: Register8 port map (clk, recebe_dado, Sbuffer , Sdado_recebido);
+    ticks: ticker port map (clk, TODO, trx, ttx);
     DadoRec: AnaliseBuffer port map (clk, Sended_receiving, Sbuffer, Sdado_recebido, tem_dado_rec);
     Display0: hex7seg port map (Sdado_recebido(3 downto 0), Srecebido, hex1);
     Display1: hex7seg port map (Sdado_recebido(7 downto 4), Srecebido, hex2);

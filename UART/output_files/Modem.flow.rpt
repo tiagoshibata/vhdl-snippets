@@ -1,5 +1,5 @@
 Flow report for Modem
-Sat Oct 15 11:48:03 2016
+Sat Oct 15 12:16:18 2016
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Flow Summary                                                                      ;
 +------------------------------------+----------------------------------------------+
-; Flow Status                        ; Successful - Sat Oct 15 11:48:03 2016        ;
+; Flow Status                        ; Successful - Sat Oct 15 12:16:18 2016        ;
 ; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name                      ; Modem                                        ;
 ; Top-level Entity Name              ; Modem                                        ;
@@ -46,10 +46,10 @@ applicable agreement for further details.
 ; Device                             ; EP2C35F672C6                                 ;
 ; Timing Models                      ; Final                                        ;
 ; Met timing requirements            ; Yes                                          ;
-; Total logic elements               ; 109 / 33,216 ( < 1 % )                       ;
-;     Total combinational functions  ; 101 / 33,216 ( < 1 % )                       ;
-;     Dedicated logic registers      ; 72 / 33,216 ( < 1 % )                        ;
-; Total registers                    ; 72                                           ;
+; Total logic elements               ; 150 / 33,216 ( < 1 % )                       ;
+;     Total combinational functions  ; 142 / 33,216 ( < 1 % )                       ;
+;     Dedicated logic registers      ; 96 / 33,216 ( < 1 % )                        ;
+; Total registers                    ; 96                                           ;
 ; Total pins                         ; 47 / 475 ( 10 % )                            ;
 ; Total virtual pins                 ; 0                                            ;
 ; Total memory bits                  ; 0 / 483,840 ( 0 % )                          ;
@@ -63,7 +63,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 10/15/2016 11:47:53 ;
+; Start date & time ; 10/15/2016 12:16:08 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; Modem               ;
 +-------------------+---------------------+
@@ -74,7 +74,7 @@ applicable agreement for further details.
 +-------------------------------------+---------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                           ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+---------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 237841971635161.147654287300576 ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 237841971635161.147654456811992 ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl                     ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog)       ; <None>        ; --          ; --             ;
 ; EDA_TIME_SCALE                      ; 1 ps                            ; --            ; --          ; eda_simulation ;
@@ -94,10 +94,10 @@ applicable agreement for further details.
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Analysis & Synthesis    ; 00:00:01     ; 1.0                     ; 258 MB              ; 00:00:02                           ;
 ; Fitter                  ; 00:00:04     ; 1.0                     ; 298 MB              ; 00:00:04                           ;
-; Assembler               ; 00:00:01     ; 1.0                     ; 272 MB              ; 00:00:01                           ;
+; Assembler               ; 00:00:02     ; 1.0                     ; 272 MB              ; 00:00:01                           ;
 ; Classic Timing Analyzer ; 00:00:00     ; 1.0                     ; 177 MB              ; 00:00:00                           ;
 ; EDA Netlist Writer      ; 00:00:00     ; 1.0                     ; 190 MB              ; 00:00:00                           ;
-; Total                   ; 00:00:06     ; --                      ; --                  ; 00:00:07                           ;
+; Total                   ; 00:00:07     ; --                      ; --                  ; 00:00:07                           ;
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
