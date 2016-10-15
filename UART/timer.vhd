@@ -5,12 +5,12 @@ use IEEE.numeric_std.all;
 
 entity timer is port (
     clk, enable, load: in STD_LOGIC;
-	data_in: in STD_LOGIC_VECTOR(15 downto 0);
+	data_in: in STD_LOGIC_VECTOR(3 downto 0);
     pulse: out STD_LOGIC
 ); end;
 
 architecture timer_arch of timer is
-	signal count: STD_LOGIC_VECTOR(15 downto 0);
+	signal count: STD_LOGIC_VECTOR(3 downto 0);
 begin
 	process (clk)
 	begin
@@ -20,7 +20,7 @@ begin
 				pulse <= '0';
 			elsif enable = '1' then
 				if count = "0" then
-					count <= "0000101000101100";
+					count <= data_in;
 					pulse <= '1';
 				else
 					count <= count - "1";
