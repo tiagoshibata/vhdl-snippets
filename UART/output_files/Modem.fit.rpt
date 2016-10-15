@@ -1,5 +1,5 @@
 Fitter report for Modem
-Sat Oct 15 11:05:21 2016
+Sat Oct 15 11:47:59 2016
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -61,17 +61,17 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Fitter Summary                                                                    ;
 +------------------------------------+----------------------------------------------+
-; Fitter Status                      ; Successful - Sat Oct 15 11:05:21 2016        ;
+; Fitter Status                      ; Successful - Sat Oct 15 11:47:59 2016        ;
 ; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name                      ; Modem                                        ;
 ; Top-level Entity Name              ; Modem                                        ;
 ; Family                             ; Cyclone II                                   ;
 ; Device                             ; EP2C35F672C6                                 ;
 ; Timing Models                      ; Final                                        ;
-; Total logic elements               ; 107 / 33,216 ( < 1 % )                       ;
-;     Total combinational functions  ; 99 / 33,216 ( < 1 % )                        ;
-;     Dedicated logic registers      ; 71 / 33,216 ( < 1 % )                        ;
-; Total registers                    ; 71                                           ;
+; Total logic elements               ; 109 / 33,216 ( < 1 % )                       ;
+;     Total combinational functions  ; 101 / 33,216 ( < 1 % )                       ;
+;     Dedicated logic registers      ; 72 / 33,216 ( < 1 % )                        ;
+; Total registers                    ; 72                                           ;
 ; Total pins                         ; 47 / 475 ( 10 % )                            ;
 ; Total virtual pins                 ; 0                                            ;
 ; Total memory bits                  ; 0 / 483,840 ( 0 % )                          ;
@@ -150,8 +150,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; Type                    ; Value              ;
 +-------------------------+--------------------+
 ; Placement               ;                    ;
-;     -- Requested        ; 0 / 222 ( 0.00 % ) ;
-;     -- Achieved         ; 0 / 222 ( 0.00 % ) ;
+;     -- Requested        ; 0 / 224 ( 0.00 % ) ;
+;     -- Achieved         ; 0 / 224 ( 0.00 % ) ;
 ;                         ;                    ;
 ; Routing (by Connection) ;                    ;
 ;     -- Requested        ; 0 / 0 ( 0.00 % )   ;
@@ -173,7 +173,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------+---------+-------------------+-------------------------+-------------------+
 ; Partition Name ; # Nodes ; # Preserved Nodes ; Preservation Level Used ; Netlist Type Used ;
 +----------------+---------+-------------------+-------------------------+-------------------+
-; Top            ; 222     ; 0                 ; N/A                     ; Source File       ;
+; Top            ; 224     ; 0                 ; N/A                     ; Source File       ;
 +----------------+---------+-------------------+-------------------------+-------------------+
 
 
@@ -188,23 +188,23 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 +---------------------------------------------+------------------------------------------------------------+
 ; Resource                                    ; Usage                                                      ;
 +---------------------------------------------+------------------------------------------------------------+
-; Total logic elements                        ; 107 / 33,216 ( < 1 % )                                     ;
-;     -- Combinational with no register       ; 36                                                         ;
+; Total logic elements                        ; 109 / 33,216 ( < 1 % )                                     ;
+;     -- Combinational with no register       ; 37                                                         ;
 ;     -- Register only                        ; 8                                                          ;
-;     -- Combinational with a register        ; 63                                                         ;
+;     -- Combinational with a register        ; 64                                                         ;
 ;                                             ;                                                            ;
 ; Logic element usage by number of LUT inputs ;                                                            ;
-;     -- 4 input functions                    ; 36                                                         ;
+;     -- 4 input functions                    ; 37                                                         ;
 ;     -- 3 input functions                    ; 13                                                         ;
-;     -- <=2 input functions                  ; 50                                                         ;
+;     -- <=2 input functions                  ; 51                                                         ;
 ;     -- Register only                        ; 8                                                          ;
 ;                                             ;                                                            ;
 ; Logic elements by mode                      ;                                                            ;
-;     -- normal mode                          ; 93                                                         ;
+;     -- normal mode                          ; 95                                                         ;
 ;     -- arithmetic mode                      ; 6                                                          ;
 ;                                             ;                                                            ;
-; Total registers*                            ; 71 / 34,593 ( < 1 % )                                      ;
-;     -- Dedicated logic registers            ; 71 / 33,216 ( < 1 % )                                      ;
+; Total registers*                            ; 72 / 34,593 ( < 1 % )                                      ;
+;     -- Dedicated logic registers            ; 72 / 33,216 ( < 1 % )                                      ;
 ;     -- I/O registers                        ; 0 / 1,377 ( 0 % )                                          ;
 ;                                             ;                                                            ;
 ; Total LABs:  partially or completely used   ; 11 / 2,076 ( < 1 % )                                       ;
@@ -223,12 +223,12 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 ; ASMI blocks                                 ; 0 / 1 ( 0 % )                                              ;
 ; CRC blocks                                  ; 0 / 1 ( 0 % )                                              ;
 ; Average interconnect usage (total/H/V)      ; 0% / 0% / 0%                                               ;
-; Peak interconnect usage (total/H/V)         ; 0% / 0% / 0%                                               ;
+; Peak interconnect usage (total/H/V)         ; 0% / 0% / 1%                                               ;
 ; Maximum fan-out node                        ; clk~clkctrl                                                ;
-; Maximum fan-out                             ; 71                                                         ;
+; Maximum fan-out                             ; 72                                                         ;
 ; Highest non-global fan-out signal           ; Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_UC:IUC|Sreg ;
 ; Highest non-global fan-out                  ; 25                                                         ;
-; Total fan-out                               ; 502                                                        ;
+; Total fan-out                               ; 508                                                        ;
 ; Average fan-out                             ; 2.20                                                       ;
 +---------------------------------------------+------------------------------------------------------------+
 *  Register count does not include registers inside RAM blocks or DSP blocks.
@@ -242,18 +242,18 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 +----------------+-------+----------+--------------+--------------+-------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+-------------+----------------------+
 ; RD             ; D13   ; 3        ; 31           ; 36           ; 3           ; 4                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
 ; clk            ; P2    ; 1        ; 0            ; 18           ; 2           ; 1                     ; 0                  ; yes    ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
-; dado_trans[0]  ; A18   ; 4        ; 46           ; 36           ; 3           ; 1                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
-; dado_trans[1]  ; F20   ; 5        ; 65           ; 34           ; 0           ; 1                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
-; dado_trans[2]  ; F15   ; 4        ; 44           ; 36           ; 2           ; 1                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
-; dado_trans[3]  ; B18   ; 4        ; 46           ; 36           ; 2           ; 1                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
-; dado_trans[4]  ; D17   ; 4        ; 46           ; 36           ; 0           ; 1                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
-; dado_trans[5]  ; G16   ; 4        ; 44           ; 36           ; 0           ; 1                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
-; dado_trans[6]  ; C17   ; 4        ; 46           ; 36           ; 1           ; 1                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
-; dado_trans[7]  ; Y16   ; 7        ; 46           ; 0            ; 2           ; 1                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
+; dado_trans[0]  ; F14   ; 4        ; 35           ; 36           ; 3           ; 1                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
+; dado_trans[1]  ; G13   ; 4        ; 35           ; 36           ; 0           ; 1                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
+; dado_trans[2]  ; B15   ; 4        ; 37           ; 36           ; 2           ; 1                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
+; dado_trans[3]  ; C15   ; 4        ; 37           ; 36           ; 3           ; 1                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
+; dado_trans[4]  ; G14   ; 4        ; 35           ; 36           ; 2           ; 1                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
+; dado_trans[5]  ; F20   ; 5        ; 65           ; 34           ; 0           ; 1                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
+; dado_trans[6]  ; B16   ; 4        ; 37           ; 36           ; 1           ; 1                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
+; dado_trans[7]  ; C16   ; 4        ; 37           ; 36           ; 0           ; 1                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
 ; nCD            ; C13   ; 3        ; 31           ; 36           ; 2           ; 3                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
-; nCTS           ; G15   ; 4        ; 44           ; 36           ; 3           ; 3                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
-; recebe_dado    ; B11   ; 3        ; 29           ; 36           ; 2           ; 8                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
-; transmite_dado ; F16   ; 4        ; 44           ; 36           ; 1           ; 2                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
+; nCTS           ; B14   ; 4        ; 33           ; 36           ; 2           ; 3                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
+; recebe_dado    ; L23   ; 5        ; 65           ; 23           ; 0           ; 8                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
+; transmite_dado ; A14   ; 4        ; 33           ; 36           ; 1           ; 2                     ; 0                  ; no     ; no             ; no            ; no              ; no       ; Off          ; 3.3-V LVTTL  ; Off         ; Fitter               ;
 +----------------+-------+----------+--------------+--------------+-------------+-----------------------+--------------------+--------+----------------+---------------+-----------------+----------+--------------+--------------+-------------+----------------------+
 
 
@@ -262,39 +262,39 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 +---------------------+-------+----------+--------------+--------------+-------------+-----------------+------------------------+---------------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-------------+----------------------+------+----------------------+---------------------+
 ; Name                ; Pin # ; I/O Bank ; X coordinate ; Y coordinate ; Cell number ; Output Register ; Output Enable Register ; Power Up High ; PCI I/O Enabled ; Open Drain ; TRI Primitive ; Bus Hold ; Weak Pull Up ; I/O Standard ; Current Strength ; Termination ; Location assigned by ; Load ; Output Enable Source ; Output Enable Group ;
 +---------------------+-------+----------+--------------+--------------+-------------+-----------------+------------------------+---------------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-------------+----------------------+------+----------------------+---------------------+
-; TD                  ; AC17  ; 7        ; 44           ; 0            ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; dado_rec[0]         ; D12   ; 3        ; 24           ; 36           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; dado_rec[1]         ; C11   ; 3        ; 29           ; 36           ; 3           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; dado_rec[2]         ; C12   ; 3        ; 29           ; 36           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; dado_rec[3]         ; B3    ; 2        ; 0            ; 34           ; 3           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; dado_rec[4]         ; B9    ; 3        ; 20           ; 36           ; 3           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; dado_rec[5]         ; F12   ; 3        ; 27           ; 36           ; 3           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; dado_rec[6]         ; B10   ; 3        ; 22           ; 36           ; 3           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; dado_rec[7]         ; AE11  ; 8        ; 27           ; 0            ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; dbg_rx_bit_count[0] ; AA12  ; 8        ; 29           ; 0            ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; dbg_rx_bit_count[1] ; D14   ; 4        ; 33           ; 36           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; dbg_rx_bit_count[2] ; A14   ; 4        ; 33           ; 36           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; dbg_rx_bit_count[3] ; G13   ; 4        ; 35           ; 36           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; hex1[0]             ; E5    ; 2        ; 0            ; 34           ; 4           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; hex1[1]             ; J13   ; 3        ; 24           ; 36           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; hex1[2]             ; J11   ; 3        ; 27           ; 36           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; hex1[3]             ; D10   ; 3        ; 20           ; 36           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; hex1[4]             ; J14   ; 3        ; 24           ; 36           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; hex1[5]             ; A10   ; 3        ; 22           ; 36           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; hex1[6]             ; J10   ; 3        ; 27           ; 36           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; hex2[0]             ; C10   ; 3        ; 20           ; 36           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; hex2[1]             ; E12   ; 3        ; 24           ; 36           ; 3           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; hex2[2]             ; A9    ; 3        ; 20           ; 36           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; hex2[3]             ; G12   ; 3        ; 27           ; 36           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; hex2[4]             ; B2    ; 2        ; 0            ; 34           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; hex2[5]             ; G11   ; 3        ; 22           ; 36           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; hex2[6]             ; D11   ; 3        ; 22           ; 36           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; nDTR                ; H12   ; 3        ; 18           ; 36           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; nRTS                ; A17   ; 4        ; 42           ; 36           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; recebido            ; B14   ; 4        ; 33           ; 36           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; tem_dado_rec        ; B12   ; 3        ; 29           ; 36           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; transm_andamento    ; B17   ; 4        ; 42           ; 36           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
-; transm_iniciada     ; H16   ; 4        ; 42           ; 36           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; TD                  ; F13   ; 4        ; 35           ; 36           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; dado_rec[0]         ; C17   ; 4        ; 46           ; 36           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; dado_rec[1]         ; K21   ; 5        ; 65           ; 25           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; dado_rec[2]         ; L24   ; 5        ; 65           ; 23           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; dado_rec[3]         ; H12   ; 3        ; 18           ; 36           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; dado_rec[4]         ; H16   ; 4        ; 42           ; 36           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; dado_rec[5]         ; D15   ; 4        ; 40           ; 36           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; dado_rec[6]         ; Y16   ; 7        ; 46           ; 0            ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; dado_rec[7]         ; AD17  ; 7        ; 44           ; 0            ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; dbg_rx_bit_count[0] ; AE17  ; 7        ; 44           ; 0            ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; dbg_rx_bit_count[1] ; F15   ; 4        ; 44           ; 36           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; dbg_rx_bit_count[2] ; G15   ; 4        ; 44           ; 36           ; 3           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; dbg_rx_bit_count[3] ; A17   ; 4        ; 42           ; 36           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; hex1[0]             ; J3    ; 2        ; 0            ; 27           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; hex1[1]             ; J17   ; 4        ; 48           ; 36           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; hex1[2]             ; D17   ; 4        ; 46           ; 36           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; hex1[3]             ; H4    ; 2        ; 0            ; 27           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; hex1[4]             ; F16   ; 4        ; 44           ; 36           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; hex1[5]             ; AA16  ; 7        ; 46           ; 0            ; 3           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; hex1[6]             ; H23   ; 5        ; 65           ; 27           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; hex2[0]             ; A18   ; 4        ; 46           ; 36           ; 3           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; hex2[1]             ; B18   ; 4        ; 46           ; 36           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; hex2[2]             ; F17   ; 4        ; 48           ; 36           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; hex2[3]             ; G17   ; 4        ; 48           ; 36           ; 3           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; hex2[4]             ; AC17  ; 7        ; 44           ; 0            ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; hex2[5]             ; G16   ; 4        ; 44           ; 36           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; hex2[6]             ; B17   ; 4        ; 42           ; 36           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; nDTR                ; W12   ; 8        ; 18           ; 0            ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; nRTS                ; D14   ; 4        ; 33           ; 36           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; recebido            ; E15   ; 4        ; 40           ; 36           ; 1           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; tem_dado_rec        ; H15   ; 4        ; 42           ; 36           ; 3           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; transm_andamento    ; B12   ; 3        ; 29           ; 36           ; 0           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
+; transm_iniciada     ; B11   ; 3        ; 29           ; 36           ; 2           ; no              ; no                     ; no            ; no              ; no         ; no            ; no       ; Off          ; 3.3-V LVTTL  ; 24mA             ; Off         ; Fitter               ; 0 pF ; -                    ; -                   ;
 +---------------------+-------+----------+--------------+--------------+-------------+-----------------+------------------------+---------------+-----------------+------------+---------------+----------+--------------+--------------+------------------+-------------+----------------------+------+----------------------+---------------------+
 
 
@@ -304,13 +304,13 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 ; I/O Bank ; Usage            ; VCCIO Voltage ; VREF Voltage ;
 +----------+------------------+---------------+--------------+
 ; 1        ; 1 / 64 ( 2 % )   ; 3.3V          ; --           ;
-; 2        ; 5 / 59 ( 8 % )   ; 3.3V          ; --           ;
-; 3        ; 23 / 56 ( 41 % ) ; 3.3V          ; --           ;
-; 4        ; 15 / 58 ( 26 % ) ; 3.3V          ; --           ;
-; 5        ; 1 / 65 ( 2 % )   ; 3.3V          ; --           ;
+; 2        ; 4 / 59 ( 7 % )   ; 3.3V          ; --           ;
+; 3        ; 5 / 56 ( 9 % )   ; 3.3V          ; --           ;
+; 4        ; 28 / 58 ( 48 % ) ; 3.3V          ; --           ;
+; 5        ; 5 / 65 ( 8 % )   ; 3.3V          ; --           ;
 ; 6        ; 1 / 59 ( 2 % )   ; 3.3V          ; --           ;
-; 7        ; 2 / 58 ( 3 % )   ; 3.3V          ; --           ;
-; 8        ; 2 / 56 ( 4 % )   ; 3.3V          ; --           ;
+; 7        ; 5 / 58 ( 9 % )   ; 3.3V          ; --           ;
+; 8        ; 1 / 56 ( 2 % )   ; 3.3V          ; --           ;
 +----------+------------------+---------------+--------------+
 
 
@@ -326,16 +326,16 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 ; A6       ; 479        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; A7       ; 465        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; A8       ; 457        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; A9       ; 451        ; 3        ; hex2[2]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; A10      ; 447        ; 3        ; hex1[5]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; A9       ; 451        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; A10      ; 447        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; A11      ;            ; 3        ; VCCIO3                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; A12      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; A13      ; 430        ; 4        ; GND+                                     ;        ;              ;         ; Column I/O ;                 ; --       ; --           ;
-; A14      ; 427        ; 4        ; dbg_rx_bit_count[2]                      ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; A14      ; 427        ; 4        ; transmite_dado                           ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; A15      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; A16      ;            ; 4        ; VCCIO4                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
-; A17      ; 412        ; 4        ; nRTS                                     ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; A18      ; 406        ; 4        ; dado_trans[0]                            ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; A17      ; 412        ; 4        ; dbg_rx_bit_count[3]                      ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; A18      ; 406        ; 4        ; hex2[0]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; A19      ; 394        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; A20      ; 390        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; A21      ; 382        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
@@ -354,11 +354,11 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 ; AA9      ; 152        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AA10     ; 153        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AA11     ; 155        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; AA12     ; 179        ; 8        ; dbg_rx_bit_count[0]                      ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; AA12     ; 179        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AA13     ; 192        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AA14     ; 194        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AA15     ; 197        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; AA16     ; 209        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; AA16     ; 209        ; 7        ; hex1[5]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; AA17     ; 219        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AA18     ; 220        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AA19     ;            ;          ; VCCA_PLL4                                ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
@@ -411,7 +411,7 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 ; AC14     ; 191        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AC15     ; 199        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AC16     ; 202        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; AC17     ; 207        ; 7        ; TD                                       ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; AC17     ; 207        ; 7        ; hex2[4]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; AC18     ; 216        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AC19     ; 222        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AC20     ; 226        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
@@ -437,7 +437,7 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 ; AD14     ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; AD15     ; 190        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AD16     ; 201        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; AD17     ; 208        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; AD17     ; 208        ; 7        ; dado_rec[7]                              ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; AD18     ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; AD19     ; 221        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AD20     ;            ; 7        ; VCCIO7                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
@@ -457,13 +457,13 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 ; AE8      ; 159        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AE9      ; 165        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AE10     ; 169        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; AE11     ; 174        ; 8        ; dado_rec[7]                              ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; AE11     ; 174        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AE12     ; 182        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AE13     ; 183        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AE14     ; 188        ; 7        ; GND+                                     ;        ;              ;         ; Column I/O ;                 ; --       ; --           ;
 ; AE15     ; 189        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AE16     ; 200        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; AE17     ; 206        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; AE17     ; 206        ; 7        ; dbg_rx_bit_count[0]                      ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; AE18     ; 212        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AE19     ; 214        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; AE20     ; 224        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
@@ -498,23 +498,23 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 ; AF24     ;            ; 7        ; VCCIO7                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; AF25     ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; B1       ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
-; B2       ; 2          ; 2        ; hex2[4]                                  ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
-; B3       ; 3          ; 2        ; dado_rec[3]                              ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
+; B2       ; 2          ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; B3       ; 3          ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; B4       ; 483        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; B5       ; 481        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; B6       ; 480        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; B7       ; 466        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; B8       ; 458        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; B9       ; 452        ; 3        ; dado_rec[4]                              ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; B10      ; 448        ; 3        ; dado_rec[6]                              ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; B11      ; 435        ; 3        ; recebe_dado                              ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; B12      ; 433        ; 3        ; tem_dado_rec                             ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; B9       ; 452        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; B10      ; 448        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; B11      ; 435        ; 3        ; transm_iniciada                          ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; B12      ; 433        ; 3        ; transm_andamento                         ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; B13      ; 429        ; 4        ; GND+                                     ;        ;              ;         ; Column I/O ;                 ; --       ; --           ;
-; B14      ; 428        ; 4        ; recebido                                 ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; B15      ; 420        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; B16      ; 419        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; B17      ; 411        ; 4        ; transm_andamento                         ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; B18      ; 405        ; 4        ; dado_trans[3]                            ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; B14      ; 428        ; 4        ; nCTS                                     ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; B15      ; 420        ; 4        ; dado_trans[2]                            ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; B16      ; 419        ; 4        ; dado_trans[6]                            ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; B17      ; 411        ; 4        ; hex2[6]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; B18      ; 405        ; 4        ; hex2[1]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; B19      ; 393        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; B20      ; 389        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; B21      ; 381        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
@@ -532,14 +532,14 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 ; C7       ; 468        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; C8       ; 463        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; C9       ; 459        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; C10      ; 450        ; 3        ; hex2[0]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; C11      ; 436        ; 3        ; dado_rec[1]                              ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; C12      ; 434        ; 3        ; dado_rec[2]                              ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; C10      ; 450        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; C11      ; 436        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; C12      ; 434        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; C13      ; 431        ; 3        ; nCD                                      ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; C14      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
-; C15      ; 421        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; C16      ; 418        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; C17      ; 404        ; 4        ; dado_trans[6]                            ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; C15      ; 421        ; 4        ; dado_trans[3]                            ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; C16      ; 418        ; 4        ; dado_trans[7]                            ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; C17      ; 404        ; 4        ; dado_rec[0]                              ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; C18      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; C19      ; 391        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; C20      ;            ; 4        ; VCCIO4                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
@@ -558,14 +558,14 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 ; D7       ; 469        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; D8       ; 464        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; D9       ; 460        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; D10      ; 449        ; 3        ; hex1[3]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; D11      ; 445        ; 3        ; hex2[6]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; D12      ; 443        ; 3        ; dado_rec[0]                              ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; D10      ; 449        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; D11      ; 445        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; D12      ; 443        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; D13      ; 432        ; 3        ; RD                                       ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; D14      ; 426        ; 4        ; dbg_rx_bit_count[1]                      ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; D15      ; 417        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; D14      ; 426        ; 4        ; nRTS                                     ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; D15      ; 417        ; 4        ; dado_rec[5]                              ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; D16      ; 415        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; D17      ; 403        ; 4        ; dado_trans[4]                            ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; D17      ; 403        ; 4        ; hex1[2]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; D18      ; 396        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; D19      ; 392        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; D20      ; 387        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
@@ -579,17 +579,17 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 ; E2       ; 19         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; E3       ; 0          ; 2        ; ~ASDO~ / RESERVED_INPUT_WITH_WEAK_PULLUP ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; On           ;
 ; E4       ;            ;          ; GND_PLL3                                 ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
-; E5       ; 4          ; 2        ; hex1[0]                                  ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
+; E5       ; 4          ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; E6       ;            ; 3        ; VCCIO3                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; E7       ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; E8       ; 474        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; E9       ;            ; 3        ; VCCIO3                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; E10      ; 453        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; E11      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
-; E12      ; 444        ; 3        ; hex2[1]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; E12      ; 444        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; E13      ;            ; 3        ; VCCIO3                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; E14      ;            ; 4        ; VCCIO4                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
-; E15      ; 416        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; E15      ; 416        ; 4        ; recebido                                 ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; E16      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; E17      ;            ; 4        ; VCCIO4                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; E18      ; 395        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
@@ -612,15 +612,15 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 ; F9       ; 470        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; F10      ; 462        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; F11      ; 454        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; F12      ; 440        ; 3        ; dado_rec[5]                              ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; F13      ; 423        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; F14      ; 425        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; F15      ; 409        ; 4        ; dado_trans[2]                            ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; F16      ; 408        ; 4        ; transmite_dado                           ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; F17      ; 401        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; F12      ; 440        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; F13      ; 423        ; 4        ; TD                                       ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; F14      ; 425        ; 4        ; dado_trans[0]                            ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; F15      ; 409        ; 4        ; dbg_rx_bit_count[1]                      ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; F16      ; 408        ; 4        ; hex1[4]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; F17      ; 401        ; 4        ; hex2[2]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; F18      ; 398        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; F19      ;            ;          ; GNDA_PLL2                                ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
-; F20      ; 372        ; 5        ; dado_trans[1]                            ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
+; F20      ; 372        ; 5        ; dado_trans[5]                            ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; F21      ; 371        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; F22      ;            ; 5        ; VCCIO5                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; F23      ; 353        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
@@ -637,13 +637,13 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 ; G8       ;            ;          ; VCCA_PLL3                                ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
 ; G9       ; 471        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; G10      ; 461        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; G11      ; 446        ; 3        ; hex2[5]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; G12      ; 439        ; 3        ; hex2[3]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; G13      ; 422        ; 4        ; dbg_rx_bit_count[3]                      ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; G14      ; 424        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; G15      ; 410        ; 4        ; nCTS                                     ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; G16      ; 407        ; 4        ; dado_trans[5]                            ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; G17      ; 402        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; G11      ; 446        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; G12      ; 439        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; G13      ; 422        ; 4        ; dado_trans[1]                            ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; G14      ; 424        ; 4        ; dado_trans[4]                            ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; G15      ; 410        ; 4        ; dbg_rx_bit_count[2]                      ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; G16      ; 407        ; 4        ; hex2[5]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; G17      ; 402        ; 4        ; hex2[3]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; G18      ; 397        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; G19      ;            ;          ; VCCA_PLL2                                ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
 ; G20      ;            ;          ; GND_PLL2                                 ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
@@ -656,7 +656,7 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 ; H1       ; 37         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; H2       ; 36         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; H3       ; 32         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; H4       ; 33         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; H4       ; 33         ; 2        ; hex1[3]                                  ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; H5       ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; H6       ; 18         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; H7       ;            ;          ; VCCD_PLL3                                ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
@@ -664,38 +664,38 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 ; H9       ;            ; 3        ; VCCIO3                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; H10      ; 472        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; H11      ; 456        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; H12      ; 455        ; 3        ; nDTR                                     ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; H12      ; 455        ; 3        ; dado_rec[3]                              ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; H13      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; H14      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
-; H15      ; 414        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; H16      ; 413        ; 4        ; transm_iniciada                          ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; H15      ; 414        ; 4        ; tem_dado_rec                             ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; H16      ; 413        ; 4        ; dado_rec[4]                              ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; H17      ; 400        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; H18      ;            ; 4        ; VCCIO4                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; H19      ; 335        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; H20      ;            ;          ; VCCD_PLL2                                ; power  ;              ; 1.2V    ; --         ;                 ; --       ; --           ;
 ; H21      ; 366        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; H22      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
-; H23      ; 341        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; H23      ; 341        ; 5        ; hex1[6]                                  ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; H24      ; 340        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; H25      ; 337        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; H26      ; 336        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; J1       ; 39         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; J2       ; 38         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; J3       ; 34         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; J3       ; 34         ; 2        ; hex1[0]                                  ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; J4       ; 35         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; J5       ; 15         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; J6       ; 25         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; J7       ; 17         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; J8       ; 16         ; 2        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; J9       ; 475        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; J10      ; 438        ; 3        ; hex1[6]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; J11      ; 437        ; 3        ; hex1[2]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; J10      ; 438        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; J11      ; 437        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; J12      ;            ; 3        ; VCCIO3                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
-; J13      ; 442        ; 3        ; hex1[1]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
-; J14      ; 441        ; 3        ; hex1[4]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; J13      ; 442        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; J14      ; 441        ; 3        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; J15      ;            ; 4        ; VCCIO4                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; J16      ; 385        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; J17      ; 399        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; J17      ; 399        ; 4        ; hex1[1]                                  ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; J18      ; 383        ; 4        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; J19      ;            ; 5        ; VCCIO5                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; J20      ; 351        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
@@ -725,7 +725,7 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 ; K18      ; 334        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; K19      ; 333        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; K20      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
-; K21      ; 332        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; K21      ; 332        ; 5        ; dado_rec[1]                              ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; K22      ; 344        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; K23      ; 331        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; K24      ; 330        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
@@ -753,8 +753,8 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 ; L20      ; 328        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; L21      ; 329        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; L22      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
-; L23      ; 325        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
-; L24      ; 324        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
+; L23      ; 325        ; 5        ; recebe_dado                              ; input  ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
+; L24      ; 324        ; 5        ; dado_rec[2]                              ; output ; 3.3-V LVTTL  ;         ; Row I/O    ; N               ; no       ; Off          ;
 ; L25      ; 323        ; 5        ; GND*                                     ;        ;              ;         ; Row I/O    ;                 ; no       ; Off          ;
 ; L26      ;            ; 5        ; VCCIO5                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; M1       ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
@@ -950,7 +950,7 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 ; W9       ;            ; 8        ; VCCIO8                                   ; power  ;              ; 3.3V    ; --         ;                 ; --       ; --           ;
 ; W10      ; 145        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; W11      ; 161        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; W12      ; 162        ; 8        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
+; W12      ; 162        ; 8        ; nDTR                                     ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; W13      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; W14      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; W15      ; 203        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
@@ -980,7 +980,7 @@ The pin-out file can be found in C:/Users/GTA/Documents/Modem/output_files/Modem
 ; Y13      ; 193        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; Y14      ; 195        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; Y15      ; 196        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
-; Y16      ; 210        ; 7        ; dado_trans[7]                            ; input  ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
+; Y16      ; 210        ; 7        ; dado_rec[6]                              ; output ; 3.3-V LVTTL  ;         ; Column I/O ; N               ; no       ; Off          ;
 ; Y17      ;            ;          ; GND                                      ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
 ; Y18      ; 229        ; 7        ; GND*                                     ;        ;              ;         ; Column I/O ;                 ; no       ; Off          ;
 ; Y19      ;            ;          ; GNDA_PLL4                                ; gnd    ;              ;         ; --         ;                 ; --       ; --           ;
@@ -1037,10 +1037,10 @@ Note: User assignments will override these defaults. The user specified values a
 +--------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+-------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node           ; Logic Cells ; Dedicated Logic Registers ; I/O Registers ; Memory Bits ; M4Ks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Full Hierarchy Name                                                                       ; Library Name ;
 +--------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+-------------------------------------------------------------------------------------------+--------------+
-; |Modem                               ; 107 (0)     ; 71 (0)                    ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 47   ; 0            ; 36 (0)       ; 8 (0)             ; 63 (0)           ; |Modem                                                                                    ; work         ;
-;    |Modem_FD:IModem_FD|              ; 98 (0)      ; 65 (0)                    ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 33 (0)       ; 7 (0)             ; 58 (0)           ; |Modem|Modem_FD:IModem_FD                                                                 ; work         ;
-;       |AnaliseBuffer:DadoRec|        ; 5 (5)       ; 1 (1)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 5 (5)            ; |Modem|Modem_FD:IModem_FD|AnaliseBuffer:DadoRec                                           ; work         ;
-;       |Receptor:IReceptor|           ; 31 (0)      ; 25 (0)                    ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 6 (0)        ; 3 (0)             ; 22 (0)           ; |Modem|Modem_FD:IModem_FD|Receptor:IReceptor                                              ;              ;
+; |Modem                               ; 109 (0)     ; 72 (0)                    ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 47   ; 0            ; 37 (0)       ; 8 (0)             ; 64 (0)           ; |Modem                                                                                    ; work         ;
+;    |Modem_FD:IModem_FD|              ; 100 (0)     ; 66 (0)                    ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 34 (0)       ; 7 (0)             ; 59 (0)           ; |Modem|Modem_FD:IModem_FD                                                                 ; work         ;
+;       |AnaliseBuffer:DadoRec|        ; 7 (7)       ; 2 (2)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 4 (4)        ; 0 (0)             ; 3 (3)            ; |Modem|Modem_FD:IModem_FD|AnaliseBuffer:DadoRec                                           ; work         ;
+;       |Receptor:IReceptor|           ; 31 (0)      ; 25 (0)                    ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 6 (0)        ; 3 (0)             ; 22 (0)           ; |Modem|Modem_FD:IModem_FD|Receptor:IReceptor                                              ; work         ;
 ;          |Receptor_FD:IFD|           ; 26 (0)      ; 22 (0)                    ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 4 (0)        ; 3 (0)             ; 19 (0)           ; |Modem|Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_FD:IFD                              ; work         ;
 ;             |counter:rx_bit_counter| ; 8 (8)       ; 8 (8)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 3 (3)             ; 5 (5)            ; |Modem|Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_FD:IFD|counter:rx_bit_counter       ; work         ;
 ;             |shifter:serial_shifter| ; 10 (10)     ; 9 (9)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 9 (9)            ; |Modem|Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_FD:IFD|shifter:serial_shifter       ; work         ;
@@ -1053,8 +1053,8 @@ Note: User assignments will override these defaults. The user specified values a
 ;             |counter:Icounter|       ; 8 (8)       ; 8 (8)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 4 (4)             ; 4 (4)            ; |Modem|Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|counter:Icounter    ; work         ;
 ;             |shifter:Ishifter|       ; 10 (10)     ; 9 (9)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 9 (9)            ; |Modem|Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|shifter:Ishifter    ; work         ;
 ;             |timer:clock_divider|    ; 7 (7)       ; 5 (5)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 2 (2)        ; 0 (0)             ; 5 (5)            ; |Modem|Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|timer:clock_divider ; work         ;
-;       |hex7seg:Display0|             ; 14 (14)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 12 (12)      ; 0 (0)             ; 2 (2)            ; |Modem|Modem_FD:IModem_FD|hex7seg:Display0                                                ; work         ;
-;       |hex7seg:Display1|             ; 14 (14)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 12 (12)      ; 0 (0)             ; 2 (2)            ; |Modem|Modem_FD:IModem_FD|hex7seg:Display1                                                ; work         ;
+;       |hex7seg:Display0|             ; 14 (14)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 11 (11)      ; 0 (0)             ; 3 (3)            ; |Modem|Modem_FD:IModem_FD|hex7seg:Display0                                                ; work         ;
+;       |hex7seg:Display1|             ; 14 (14)     ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 10 (10)      ; 0 (0)             ; 4 (4)            ; |Modem|Modem_FD:IModem_FD|hex7seg:Display1                                                ;              ;
 ;    |Modem_UC:IModem_UC|              ; 9 (9)       ; 6 (6)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 3 (3)        ; 1 (1)             ; 5 (5)            ; |Modem|Modem_UC:IModem_UC                                                                 ;              ;
 +--------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+-------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -1102,14 +1102,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; RD                  ; Input    ; (0) 287 ps    ; (0) 287 ps    ; --                    ; --  ;
 ; clk                 ; Input    ; (0) 299 ps    ; (0) 299 ps    ; --                    ; --  ;
 ; nCTS                ; Input    ; (6) 4114 ps   ; (6) 4114 ps   ; --                    ; --  ;
-; recebe_dado         ; Input    ; (6) 4114 ps   ; (6) 4114 ps   ; --                    ; --  ;
+; recebe_dado         ; Input    ; (6) 4075 ps   ; (6) 4075 ps   ; --                    ; --  ;
 ; transmite_dado      ; Input    ; (6) 4114 ps   ; (6) 4114 ps   ; --                    ; --  ;
 ; dado_trans[0]       ; Input    ; (6) 4114 ps   ; (6) 4114 ps   ; --                    ; --  ;
-; dado_trans[1]       ; Input    ; (6) 4075 ps   ; (6) 4075 ps   ; --                    ; --  ;
+; dado_trans[1]       ; Input    ; (6) 4114 ps   ; (6) 4114 ps   ; --                    ; --  ;
 ; dado_trans[2]       ; Input    ; (6) 4114 ps   ; (6) 4114 ps   ; --                    ; --  ;
 ; dado_trans[3]       ; Input    ; (6) 4114 ps   ; (6) 4114 ps   ; --                    ; --  ;
 ; dado_trans[4]       ; Input    ; (6) 4114 ps   ; (6) 4114 ps   ; --                    ; --  ;
-; dado_trans[5]       ; Input    ; (6) 4114 ps   ; (6) 4114 ps   ; --                    ; --  ;
+; dado_trans[5]       ; Input    ; (6) 4075 ps   ; (6) 4075 ps   ; --                    ; --  ;
 ; dado_trans[6]       ; Input    ; (6) 4114 ps   ; (6) 4114 ps   ; --                    ; --  ;
 ; dado_trans[7]       ; Input    ; (6) 4114 ps   ; (6) 4114 ps   ; --                    ; --  ;
 +---------------------+----------+---------------+---------------+-----------------------+-----+
@@ -1124,9 +1124,9 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; RD                                                                                          ;                   ;         ;
 ; clk                                                                                         ;                   ;         ;
 ; nCTS                                                                                        ;                   ;         ;
-;      - Modem_UC:IModem_UC|Selector4~0                                                       ; 0                 ; 6       ;
-;      - Modem_UC:IModem_UC|Selector3~2                                                       ; 0                 ; 6       ;
-;      - Modem_UC:IModem_UC|Selector2~2                                                       ; 0                 ; 6       ;
+;      - Modem_UC:IModem_UC|Selector4~0                                                       ; 1                 ; 6       ;
+;      - Modem_UC:IModem_UC|Selector3~2                                                       ; 1                 ; 6       ;
+;      - Modem_UC:IModem_UC|Selector2~2                                                       ; 1                 ; 6       ;
 ; recebe_dado                                                                                 ;                   ;         ;
 ;      - Modem_FD:IModem_FD|Register8:Saida|IQ[0]                                             ; 0                 ; 6       ;
 ;      - Modem_FD:IModem_FD|Register8:Saida|IQ[1]                                             ; 0                 ; 6       ;
@@ -1140,7 +1140,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ;      - Modem_UC:IModem_UC|Selector3~3                                                       ; 0                 ; 6       ;
 ;      - Modem_UC:IModem_UC|state.IDLE~2                                                      ; 0                 ; 6       ;
 ; dado_trans[0]                                                                               ;                   ;         ;
-;      - Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|shifter:Ishifter|IQ~2 ; 1                 ; 6       ;
+;      - Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|shifter:Ishifter|IQ~2 ; 0                 ; 6       ;
 ; dado_trans[1]                                                                               ;                   ;         ;
 ;      - Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|shifter:Ishifter|IQ~3 ; 0                 ; 6       ;
 ; dado_trans[2]                                                                               ;                   ;         ;
@@ -1148,13 +1148,13 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; dado_trans[3]                                                                               ;                   ;         ;
 ;      - Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|shifter:Ishifter|IQ~5 ; 0                 ; 6       ;
 ; dado_trans[4]                                                                               ;                   ;         ;
-;      - Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|shifter:Ishifter|IQ~6 ; 1                 ; 6       ;
+;      - Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|shifter:Ishifter|IQ~6 ; 0                 ; 6       ;
 ; dado_trans[5]                                                                               ;                   ;         ;
 ;      - Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|shifter:Ishifter|IQ~7 ; 0                 ; 6       ;
 ; dado_trans[6]                                                                               ;                   ;         ;
-;      - Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|shifter:Ishifter|IQ~8 ; 1                 ; 6       ;
+;      - Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|shifter:Ishifter|IQ~8 ; 0                 ; 6       ;
 ; dado_trans[7]                                                                               ;                   ;         ;
-;      - Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|shifter:Ishifter|IQ~9 ; 1                 ; 6       ;
+;      - Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|shifter:Ishifter|IQ~9 ; 0                 ; 6       ;
 +---------------------------------------------------------------------------------------------+-------------------+---------+
 
 
@@ -1163,14 +1163,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------------------------------------------------------------------------+--------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
 ; Name                                                                                 ; Location           ; Fan-Out ; Usage        ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
 +--------------------------------------------------------------------------------------+--------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
-; Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_FD:IFD|shifter:serial_shifter|IQ[9]~1 ; LCCOMB_X30_Y34_N20 ; 9       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_FD:IFD|timer:clock_divider|count[0]~1 ; LCCOMB_X31_Y34_N6  ; 4       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_UC:IUC|Sreg                           ; LCFF_X30_Y34_N17   ; 25      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
-; Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_UC:IUC|ended_receiving                ; LCFF_X30_Y34_N19   ; 10      ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|shifter:Ishifter|IQ~1 ; LCCOMB_X45_Y35_N28 ; 9       ; Clock enable ; no     ; --                   ; --               ; --                        ;
-; Modem_UC:IModem_UC|Sdo_send_next                                                     ; LCFF_X44_Y35_N17   ; 21      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
-; clk                                                                                  ; PIN_P2             ; 71      ; Clock        ; yes    ; Global Clock         ; GCLK3            ; --                        ;
-; recebe_dado                                                                          ; PIN_B11            ; 8       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_FD:IFD|shifter:serial_shifter|IQ[7]~1 ; LCCOMB_X44_Y23_N4  ; 9       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_FD:IFD|timer:clock_divider|count[3]~1 ; LCCOMB_X43_Y23_N6  ; 4       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_UC:IUC|Sreg                           ; LCFF_X44_Y23_N25   ; 25      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
+; Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_UC:IUC|ended_receiving                ; LCFF_X44_Y23_N21   ; 11      ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|shifter:Ishifter|IQ~1 ; LCCOMB_X36_Y35_N28 ; 9       ; Clock enable ; no     ; --                   ; --               ; --                        ;
+; Modem_UC:IModem_UC|Sdo_send_next                                                     ; LCFF_X34_Y35_N25   ; 21      ; Sync. clear  ; no     ; --                   ; --               ; --                        ;
+; clk                                                                                  ; PIN_P2             ; 72      ; Clock        ; yes    ; Global Clock         ; GCLK3            ; --                        ;
+; recebe_dado                                                                          ; PIN_L23            ; 8       ; Clock enable ; no     ; --                   ; --               ; --                        ;
 +--------------------------------------------------------------------------------------+--------------------+---------+--------------+--------+----------------------+------------------+---------------------------+
 
 
@@ -1179,7 +1179,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +------+----------+---------+----------------------+------------------+---------------------------+
 ; Name ; Location ; Fan-Out ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
 +------+----------+---------+----------------------+------------------+---------------------------+
-; clk  ; PIN_P2   ; 71      ; Global Clock         ; GCLK3            ; --                        ;
+; clk  ; PIN_P2   ; 72      ; Global Clock         ; GCLK3            ; --                        ;
 +------+----------+---------+----------------------+------------------+---------------------------+
 
 
@@ -1191,8 +1191,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_UC:IUC|Sreg                                  ; 25      ;
 ; Modem_UC:IModem_UC|Sdo_send_next                                                            ; 21      ;
 ; Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_UC:IUC|start_receiving                       ; 17      ;
-; Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_UC:IUC|ended_receiving                       ; 10      ;
-; Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_FD:IFD|shifter:serial_shifter|IQ[9]~1        ; 9       ;
+; Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_UC:IUC|ended_receiving                       ; 11      ;
+; Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_FD:IFD|shifter:serial_shifter|IQ[7]~1        ; 9       ;
 ; Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|shifter:Ishifter|IQ~1        ; 9       ;
 ; Modem_FD:IModem_FD|Register8:Saida|IQ[7]                                                    ; 9       ;
 ; Modem_FD:IModem_FD|Register8:Saida|IQ[6]                                                    ; 9       ;
@@ -1204,7 +1204,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; Modem_FD:IModem_FD|Register8:Saida|IQ[0]                                                    ; 9       ;
 ; recebe_dado                                                                                 ; 8       ;
 ; RD                                                                                          ; 4       ;
-; Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_FD:IFD|timer:clock_divider|count[0]~1        ; 4       ;
+; Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_FD:IFD|timer:clock_divider|count[3]~1        ; 4       ;
 ; Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_FD:IFD|timer:clock_divider|count[0]          ; 4       ;
 ; Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|timer:clock_divider|count[0] ; 4       ;
 ; Modem_UC:IModem_UC|state.SENDING                                                            ; 4       ;
@@ -1246,48 +1246,48 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------+------------------------+
 ; Interconnect Resource Type ; Usage                  ;
 +----------------------------+------------------------+
-; Block interconnects        ; 117 / 94,460 ( < 1 % ) ;
-; C16 interconnects          ; 6 / 3,315 ( < 1 % )    ;
-; C4 interconnects           ; 73 / 60,840 ( < 1 % )  ;
-; Direct links               ; 31 / 94,460 ( < 1 % )  ;
+; Block interconnects        ; 122 / 94,460 ( < 1 % ) ;
+; C16 interconnects          ; 2 / 3,315 ( < 1 % )    ;
+; C4 interconnects           ; 125 / 60,840 ( < 1 % ) ;
+; Direct links               ; 34 / 94,460 ( < 1 % )  ;
 ; Global clocks              ; 1 / 16 ( 6 % )         ;
-; Local interconnects        ; 73 / 33,216 ( < 1 % )  ;
-; R24 interconnects          ; 6 / 3,091 ( < 1 % )    ;
-; R4 interconnects           ; 64 / 81,294 ( < 1 % )  ;
+; Local interconnects        ; 70 / 33,216 ( < 1 % )  ;
+; R24 interconnects          ; 9 / 3,091 ( < 1 % )    ;
+; R4 interconnects           ; 74 / 81,294 ( < 1 % )  ;
 +----------------------------+------------------------+
 
 
 +---------------------------------------------------------------------------+
 ; LAB Logic Elements                                                        ;
 +--------------------------------------------+------------------------------+
-; Number of Logic Elements  (Average = 9.73) ; Number of LABs  (Total = 11) ;
+; Number of Logic Elements  (Average = 9.91) ; Number of LABs  (Total = 11) ;
 +--------------------------------------------+------------------------------+
 ; 1                                          ; 0                            ;
-; 2                                          ; 2                            ;
+; 2                                          ; 1                            ;
 ; 3                                          ; 0                            ;
-; 4                                          ; 0                            ;
-; 5                                          ; 1                            ;
+; 4                                          ; 1                            ;
+; 5                                          ; 0                            ;
 ; 6                                          ; 0                            ;
-; 7                                          ; 1                            ;
+; 7                                          ; 2                            ;
 ; 8                                          ; 1                            ;
-; 9                                          ; 1                            ;
+; 9                                          ; 0                            ;
 ; 10                                         ; 1                            ;
-; 11                                         ; 0                            ;
-; 12                                         ; 0                            ;
+; 11                                         ; 1                            ;
+; 12                                         ; 1                            ;
 ; 13                                         ; 0                            ;
 ; 14                                         ; 0                            ;
 ; 15                                         ; 0                            ;
-; 16                                         ; 4                            ;
+; 16                                         ; 3                            ;
 +--------------------------------------------+------------------------------+
 
 
 +-------------------------------------------------------------------+
 ; LAB-wide Signals                                                  ;
 +------------------------------------+------------------------------+
-; LAB-wide Signals  (Average = 1.27) ; Number of LABs  (Total = 11) ;
+; LAB-wide Signals  (Average = 1.09) ; Number of LABs  (Total = 11) ;
 +------------------------------------+------------------------------+
-; 1 Clock                            ; 10                           ;
-; 1 Clock enable                     ; 2                            ;
+; 1 Clock                            ; 9                            ;
+; 1 Clock enable                     ; 1                            ;
 ; 1 Sync. clear                      ; 1                            ;
 ; 2 Clock enables                    ; 1                            ;
 +------------------------------------+------------------------------+
@@ -1296,64 +1296,66 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------------------------------------------------------------+
 ; LAB Signals Sourced                                                         ;
 +----------------------------------------------+------------------------------+
-; Number of Signals Sourced  (Average = 16.09) ; Number of LABs  (Total = 11) ;
+; Number of Signals Sourced  (Average = 16.36) ; Number of LABs  (Total = 11) ;
 +----------------------------------------------+------------------------------+
 ; 0                                            ; 0                            ;
 ; 1                                            ; 0                            ;
 ; 2                                            ; 0                            ;
 ; 3                                            ; 1                            ;
-; 4                                            ; 1                            ;
+; 4                                            ; 0                            ;
 ; 5                                            ; 0                            ;
 ; 6                                            ; 0                            ;
-; 7                                            ; 0                            ;
-; 8                                            ; 0                            ;
-; 9                                            ; 1                            ;
-; 10                                           ; 1                            ;
-; 11                                           ; 0                            ;
+; 7                                            ; 1                            ;
+; 8                                            ; 1                            ;
+; 9                                            ; 0                            ;
+; 10                                           ; 0                            ;
+; 11                                           ; 1                            ;
 ; 12                                           ; 1                            ;
 ; 13                                           ; 1                            ;
 ; 14                                           ; 0                            ;
 ; 15                                           ; 0                            ;
 ; 16                                           ; 0                            ;
-; 17                                           ; 1                            ;
+; 17                                           ; 0                            ;
 ; 18                                           ; 0                            ;
 ; 19                                           ; 1                            ;
 ; 20                                           ; 0                            ;
 ; 21                                           ; 0                            ;
 ; 22                                           ; 0                            ;
 ; 23                                           ; 0                            ;
-; 24                                           ; 0                            ;
-; 25                                           ; 0                            ;
+; 24                                           ; 1                            ;
+; 25                                           ; 1                            ;
 ; 26                                           ; 0                            ;
 ; 27                                           ; 0                            ;
 ; 28                                           ; 0                            ;
 ; 29                                           ; 2                            ;
-; 30                                           ; 0                            ;
-; 31                                           ; 0                            ;
-; 32                                           ; 1                            ;
 +----------------------------------------------+------------------------------+
 
 
 +--------------------------------------------------------------------------------+
 ; LAB Signals Sourced Out                                                        ;
 +-------------------------------------------------+------------------------------+
-; Number of Signals Sourced Out  (Average = 5.18) ; Number of LABs  (Total = 11) ;
+; Number of Signals Sourced Out  (Average = 6.27) ; Number of LABs  (Total = 11) ;
 +-------------------------------------------------+------------------------------+
 ; 0                                               ; 0                            ;
 ; 1                                               ; 3                            ;
-; 2                                               ; 2                            ;
+; 2                                               ; 1                            ;
 ; 3                                               ; 0                            ;
 ; 4                                               ; 1                            ;
-; 5                                               ; 2                            ;
+; 5                                               ; 1                            ;
 ; 6                                               ; 0                            ;
-; 7                                               ; 0                            ;
+; 7                                               ; 2                            ;
 ; 8                                               ; 0                            ;
-; 9                                               ; 0                            ;
-; 10                                              ; 1                            ;
+; 9                                               ; 1                            ;
+; 10                                              ; 0                            ;
 ; 11                                              ; 0                            ;
-; 12                                              ; 1                            ;
-; 13                                              ; 0                            ;
-; 14                                              ; 1                            ;
+; 12                                              ; 0                            ;
+; 13                                              ; 1                            ;
+; 14                                              ; 0                            ;
+; 15                                              ; 0                            ;
+; 16                                              ; 0                            ;
+; 17                                              ; 0                            ;
+; 18                                              ; 0                            ;
+; 19                                              ; 1                            ;
 +-------------------------------------------------+------------------------------+
 
 
@@ -1367,15 +1369,14 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; 2                                           ; 1                            ;
 ; 3                                           ; 3                            ;
 ; 4                                           ; 0                            ;
-; 5                                           ; 1                            ;
-; 6                                           ; 2                            ;
+; 5                                           ; 0                            ;
+; 6                                           ; 1                            ;
 ; 7                                           ; 0                            ;
-; 8                                           ; 0                            ;
+; 8                                           ; 3                            ;
 ; 9                                           ; 1                            ;
 ; 10                                          ; 0                            ;
 ; 11                                          ; 1                            ;
 ; 12                                          ; 1                            ;
-; 13                                          ; 1                            ;
 +---------------------------------------------+------------------------------+
 
 
@@ -1421,7 +1422,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II Fitter
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Sat Oct 15 11:05:16 2016
+    Info: Processing started: Sat Oct 15 11:47:55 2016
 Info: Command: quartus_fit --read_settings_files=off --write_settings_files=off Modem -c Modem
 Info: Selected device EP2C35F672C6 for design "Modem"
 Info: Low junction temperature is 0 degrees C
@@ -1515,18 +1516,17 @@ Info: Fitter placement preparation operations ending: elapsed time is 00:00:00
 Info: Fitter placement operations beginning
 Info: Fitter placement was successful
 Info: Fitter placement operations ending: elapsed time is 00:00:00
-Info: Estimated most critical path is register to register delay of 1.961 ns
-    Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LAB_X46_Y35; Fanout = 3; REG Node = 'Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|timer:clock_divider|pulse'
-    Info: 2: + IC(0.932 ns) + CELL(0.393 ns) = 1.325 ns; Loc. = LAB_X44_Y35; Fanout = 2; COMB Node = 'Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|counter:Icounter|Svalue[0]~5'
-    Info: 3: + IC(0.000 ns) + CELL(0.071 ns) = 1.396 ns; Loc. = LAB_X44_Y35; Fanout = 2; COMB Node = 'Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|counter:Icounter|Svalue[1]~7'
-    Info: 4: + IC(0.000 ns) + CELL(0.071 ns) = 1.467 ns; Loc. = LAB_X44_Y35; Fanout = 1; COMB Node = 'Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|counter:Icounter|Svalue[2]~9'
-    Info: 5: + IC(0.000 ns) + CELL(0.410 ns) = 1.877 ns; Loc. = LAB_X44_Y35; Fanout = 1; COMB Node = 'Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|counter:Icounter|Svalue[3]~10'
-    Info: 6: + IC(0.000 ns) + CELL(0.084 ns) = 1.961 ns; Loc. = LAB_X44_Y35; Fanout = 2; REG Node = 'Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|counter:Icounter|Svalue[3]'
-    Info: Total cell delay = 1.029 ns ( 52.47 % )
-    Info: Total interconnect delay = 0.932 ns ( 47.53 % )
+Info: Estimated most critical path is register to register delay of 2.028 ns
+    Info: 1: + IC(0.000 ns) + CELL(0.000 ns) = 0.000 ns; Loc. = LAB_X45_Y23; Fanout = 2; REG Node = 'Modem_FD:IModem_FD|Register8:OutputBuffer|IQ[6]'
+    Info: 2: + IC(0.664 ns) + CELL(0.150 ns) = 0.814 ns; Loc. = LAB_X46_Y23; Fanout = 1; COMB Node = 'Modem_FD:IModem_FD|AnaliseBuffer:DadoRec|Equal0~3'
+    Info: 3: + IC(0.415 ns) + CELL(0.150 ns) = 1.379 ns; Loc. = LAB_X46_Y23; Fanout = 1; COMB Node = 'Modem_FD:IModem_FD|AnaliseBuffer:DadoRec|Equal0~4'
+    Info: 4: + IC(0.415 ns) + CELL(0.150 ns) = 1.944 ns; Loc. = LAB_X46_Y23; Fanout = 1; COMB Node = 'Modem_FD:IModem_FD|AnaliseBuffer:DadoRec|iguais~0'
+    Info: 5: + IC(0.000 ns) + CELL(0.084 ns) = 2.028 ns; Loc. = LAB_X46_Y23; Fanout = 2; REG Node = 'Modem_FD:IModem_FD|AnaliseBuffer:DadoRec|iguais'
+    Info: Total cell delay = 0.534 ns ( 26.33 % )
+    Info: Total interconnect delay = 1.494 ns ( 73.67 % )
 Info: Fitter routing operations beginning
 Info: Average interconnect usage is 0% of the available device resources
-    Info: Peak interconnect usage is 0% of the available device resources in the region that extends from location X22_Y24 to location X32_Y36
+    Info: Peak interconnect usage is 0% of the available device resources in the region that extends from location X44_Y24 to location X54_Y36
 Info: Fitter routing operations ending: elapsed time is 00:00:00
 Info: The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info: Optimizations that may affect the design's routability were skipped
@@ -1570,8 +1570,8 @@ Info: Delay annotation completed successfully
 Warning: The Reserve All Unused Pins setting has not been specified, and will default to 'As output driving ground'.
 Info: Quartus II Fitter was successful. 0 errors, 4 warnings
     Info: Peak virtual memory: 298 megabytes
-    Info: Processing ended: Sat Oct 15 11:05:21 2016
-    Info: Elapsed time: 00:00:05
+    Info: Processing ended: Sat Oct 15 11:47:59 2016
+    Info: Elapsed time: 00:00:04
     Info: Total CPU time (on all processors): 00:00:04
 
 

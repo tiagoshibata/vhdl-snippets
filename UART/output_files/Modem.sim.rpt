@@ -1,5 +1,5 @@
 Simulator report for Modem
-Sat Oct 15 11:15:31 2016
+Sat Oct 15 11:49:28 2016
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -45,9 +45,9 @@ applicable agreement for further details.
 +-----------------------------+--------------+
 ; Simulation Start Time       ; 0 ps         ;
 ; Simulation End Time         ; 1.0 us       ;
-; Simulation Netlist Size     ; 2346 nodes   ;
-; Simulation Coverage         ;       7.33 % ;
-; Total Number of Transitions ; 2948         ;
+; Simulation Netlist Size     ; 2350 nodes   ;
+; Simulation Coverage         ;       7.40 % ;
+; Total Number of Transitions ; 2952         ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone II   ;
 +-----------------------------+--------------+
@@ -94,13 +94,13 @@ Please use Quartus II to view the waveform report data.
 +-----------------------------------------------------+--------------+
 ; Type                                                ; Value        ;
 +-----------------------------------------------------+--------------+
-; Total coverage as a percentage                      ;       7.33 % ;
-; Total nodes checked                                 ; 2346         ;
-; Total output ports checked                          ; 2346         ;
-; Total output ports with complete 1/0-value coverage ; 172          ;
+; Total coverage as a percentage                      ;       7.40 % ;
+; Total nodes checked                                 ; 2350         ;
+; Total output ports checked                          ; 2350         ;
+; Total output ports with complete 1/0-value coverage ; 174          ;
 ; Total output ports with no 1/0-value coverage       ; 1488         ;
-; Total output ports with no 1-value coverage         ; 1851         ;
-; Total output ports with no 0-value coverage         ; 1811         ;
+; Total output ports with no 1-value coverage         ; 1852         ;
+; Total output ports with no 0-value coverage         ; 1812         ;
 +-----------------------------------------------------+--------------+
 
 
@@ -144,6 +144,8 @@ The following table displays output ports that toggle between 1 and 0 during sim
 ; |Modem|Modem_FD:IModem_FD|hex7seg:Display0|hex_output[2]                                           ; |Modem|Modem_FD:IModem_FD|hex7seg:Display0|hex_output[2]                                           ; out              ;
 ; |Modem|Modem_FD:IModem_FD|hex7seg:Display0|hex_output[1]                                           ; |Modem|Modem_FD:IModem_FD|hex7seg:Display0|hex_output[1]                                           ; out              ;
 ; |Modem|Modem_FD:IModem_FD|AnaliseBuffer:DadoRec|iguais                                             ; |Modem|Modem_FD:IModem_FD|AnaliseBuffer:DadoRec|iguais                                             ; regout           ;
+; |Modem|Modem_FD:IModem_FD|AnaliseBuffer:DadoRec|iguais~0                                           ; |Modem|Modem_FD:IModem_FD|AnaliseBuffer:DadoRec|iguais~0                                           ; out              ;
+; |Modem|Modem_FD:IModem_FD|AnaliseBuffer:DadoRec|iguais~1                                           ; |Modem|Modem_FD:IModem_FD|AnaliseBuffer:DadoRec|iguais~1                                           ; out              ;
 ; |Modem|Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|timer:clock_divider|pulse    ; |Modem|Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|timer:clock_divider|pulse    ; regout           ;
 ; |Modem|Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|timer:clock_divider|count~0  ; |Modem|Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|timer:clock_divider|count~0  ; out              ;
 ; |Modem|Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|timer:clock_divider|count~3  ; |Modem|Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|timer:clock_divider|count~3  ; out              ;
@@ -316,6 +318,7 @@ The following table displays output ports that do not toggle to 1 during simulat
 ; |Modem|hex2[0]                                                                                     ; |Modem|hex2[0]                                                                                     ; pin_out          ;
 ; |Modem|Modem_FD:IModem_FD|hex7seg:Display1|hex_output[0]                                           ; |Modem|Modem_FD:IModem_FD|hex7seg:Display1|hex_output[0]                                           ; out              ;
 ; |Modem|Modem_FD:IModem_FD|hex7seg:Display0|hex_output[0]                                           ; |Modem|Modem_FD:IModem_FD|hex7seg:Display0|hex_output[0]                                           ; out              ;
+; |Modem|Modem_FD:IModem_FD|AnaliseBuffer:DadoRec|process_0~0                                        ; |Modem|Modem_FD:IModem_FD|AnaliseBuffer:DadoRec|process_0~0                                        ; out0             ;
 ; |Modem|Modem_FD:IModem_FD|Register8:Saida|IQ[2]                                                    ; |Modem|Modem_FD:IModem_FD|Register8:Saida|IQ[2]                                                    ; regout           ;
 ; |Modem|Modem_FD:IModem_FD|Register8:Saida|IQ[3]                                                    ; |Modem|Modem_FD:IModem_FD|Register8:Saida|IQ[3]                                                    ; regout           ;
 ; |Modem|Modem_FD:IModem_FD|Register8:Saida|IQ[4]                                                    ; |Modem|Modem_FD:IModem_FD|Register8:Saida|IQ[4]                                                    ; regout           ;
@@ -2175,6 +2178,7 @@ The following table displays output ports that do not toggle to 0 during simulat
 ; |Modem|TD                                                                                          ; |Modem|TD                                                                                          ; pin_out          ;
 ; |Modem|nCTS                                                                                        ; |Modem|nCTS                                                                                        ; out              ;
 ; |Modem|nCD                                                                                         ; |Modem|nCD                                                                                         ; out              ;
+; |Modem|Modem_FD:IModem_FD|AnaliseBuffer:DadoRec|ana_todos                                          ; |Modem|Modem_FD:IModem_FD|AnaliseBuffer:DadoRec|ana_todos                                          ; regout           ;
 ; |Modem|Modem_FD:IModem_FD|Register8:Saida|IQ[0]                                                    ; |Modem|Modem_FD:IModem_FD|Register8:Saida|IQ[0]                                                    ; regout           ;
 ; |Modem|Modem_FD:IModem_FD|Register8:Saida|IQ[1]                                                    ; |Modem|Modem_FD:IModem_FD|Register8:Saida|IQ[1]                                                    ; regout           ;
 ; |Modem|Modem_FD:IModem_FD|Register8:Saida|IQ[2]                                                    ; |Modem|Modem_FD:IModem_FD|Register8:Saida|IQ[2]                                                    ; regout           ;
@@ -3978,7 +3982,7 @@ The following table displays output ports that do not toggle to 0 during simulat
 Info: *******************************************************************
 Info: Running Quartus II Simulator
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Sat Oct 15 11:15:31 2016
+    Info: Processing started: Sat Oct 15 11:49:28 2016
 Info: Command: quartus_sim --read_settings_files=on --write_settings_files=off Modem -c Modem
 Info: Using vector source file "C:/Users/GTA/Documents/Modem/Recepcao_novo.vwf"
 Info: Overwriting simulation input file with simulation results
@@ -3996,12 +4000,12 @@ Warning: Can't find signal in vector source file for input pin "|Modem|nCTS"
 Info: Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info: Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
 Info: Simulation partitioned into 1 sub-simulations
-Info: Simulation coverage is       7.33 %
-Info: Number of transitions in simulation is 2948
+Info: Simulation coverage is       7.40 %
+Info: Number of transitions in simulation is 2952
 Info: Vector file Recepcao_novo.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
 Info: Quartus II Simulator was successful. 0 errors, 10 warnings
     Info: Peak virtual memory: 164 megabytes
-    Info: Processing ended: Sat Oct 15 11:15:31 2016
+    Info: Processing ended: Sat Oct 15 11:49:28 2016
     Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:00
 

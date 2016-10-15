@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Modem
-Sat Oct 15 11:05:16 2016
+Sat Oct 15 11:47:54 2016
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
 
 
@@ -49,15 +49,15 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                      ;
 +------------------------------------+----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat Oct 15 11:05:16 2016        ;
+; Analysis & Synthesis Status        ; Successful - Sat Oct 15 11:47:54 2016        ;
 ; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Web Edition ;
 ; Revision Name                      ; Modem                                        ;
 ; Top-level Entity Name              ; Modem                                        ;
 ; Family                             ; Cyclone II                                   ;
-; Total logic elements               ; 116                                          ;
-;     Total combinational functions  ; 99                                           ;
-;     Dedicated logic registers      ; 71                                           ;
-; Total registers                    ; 71                                           ;
+; Total logic elements               ; 118                                          ;
+;     Total combinational functions  ; 100                                          ;
+;     Dedicated logic registers      ; 72                                           ;
+; Total registers                    ; 72                                           ;
 ; Total pins                         ; 47                                           ;
 ; Total virtual pins                 ; 0                                            ;
 ; Total memory bits                  ; 0                                            ;
@@ -186,26 +186,26 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Estimated Total logic elements              ; 116   ;
+; Estimated Total logic elements              ; 118   ;
 ;                                             ;       ;
-; Total combinational functions               ; 99    ;
+; Total combinational functions               ; 100   ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 36    ;
+;     -- 4 input functions                    ; 37    ;
 ;     -- 3 input functions                    ; 13    ;
 ;     -- <=2 input functions                  ; 50    ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 93    ;
+;     -- normal mode                          ; 94    ;
 ;     -- arithmetic mode                      ; 6     ;
 ;                                             ;       ;
-; Total registers                             ; 71    ;
-;     -- Dedicated logic registers            ; 71    ;
+; Total registers                             ; 72    ;
+;     -- Dedicated logic registers            ; 72    ;
 ;     -- I/O registers                        ; 0     ;
 ;                                             ;       ;
 ; I/O pins                                    ; 47    ;
 ; Maximum fan-out node                        ; clk   ;
-; Maximum fan-out                             ; 71    ;
-; Total fan-out                               ; 494   ;
+; Maximum fan-out                             ; 72    ;
+; Total fan-out                               ; 499   ;
 ; Average fan-out                             ; 2.28  ;
 +---------------------------------------------+-------+
 
@@ -215,10 +215,10 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +--------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node           ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                       ; Library Name ;
 +--------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------+--------------+
-; |Modem                               ; 99 (0)            ; 71 (0)       ; 0           ; 0            ; 0       ; 0         ; 47   ; 0            ; |Modem                                                                                    ; work         ;
-;    |Modem_FD:IModem_FD|              ; 91 (0)            ; 65 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Modem|Modem_FD:IModem_FD                                                                 ; work         ;
-;       |AnaliseBuffer:DadoRec|        ; 5 (5)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Modem|Modem_FD:IModem_FD|AnaliseBuffer:DadoRec                                           ; work         ;
-;       |Receptor:IReceptor|           ; 28 (0)            ; 25 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Modem|Modem_FD:IModem_FD|Receptor:IReceptor                                              ;              ;
+; |Modem                               ; 100 (0)           ; 72 (0)       ; 0           ; 0            ; 0       ; 0         ; 47   ; 0            ; |Modem                                                                                    ; work         ;
+;    |Modem_FD:IModem_FD|              ; 92 (0)            ; 66 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Modem|Modem_FD:IModem_FD                                                                 ; work         ;
+;       |AnaliseBuffer:DadoRec|        ; 6 (6)             ; 2 (2)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Modem|Modem_FD:IModem_FD|AnaliseBuffer:DadoRec                                           ; work         ;
+;       |Receptor:IReceptor|           ; 28 (0)            ; 25 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Modem|Modem_FD:IModem_FD|Receptor:IReceptor                                              ; work         ;
 ;          |Receptor_FD:IFD|           ; 22 (0)            ; 22 (0)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Modem|Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_FD:IFD                              ; work         ;
 ;             |counter:rx_bit_counter| ; 4 (4)             ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Modem|Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_FD:IFD|counter:rx_bit_counter       ; work         ;
 ;             |shifter:serial_shifter| ; 10 (10)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Modem|Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_FD:IFD|shifter:serial_shifter       ; work         ;
@@ -232,7 +232,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;             |shifter:Ishifter|       ; 10 (10)           ; 9 (9)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Modem|Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|shifter:Ishifter    ; work         ;
 ;             |timer:clock_divider|    ; 7 (7)             ; 5 (5)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Modem|Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|timer:clock_divider ; work         ;
 ;       |hex7seg:Display0|             ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Modem|Modem_FD:IModem_FD|hex7seg:Display0                                                ; work         ;
-;       |hex7seg:Display1|             ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Modem|Modem_FD:IModem_FD|hex7seg:Display1                                                ; work         ;
+;       |hex7seg:Display1|             ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Modem|Modem_FD:IModem_FD|hex7seg:Display1                                                ;              ;
 ;    |Modem_UC:IModem_UC|              ; 8 (8)             ; 6 (6)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Modem|Modem_UC:IModem_UC                                                                 ;              ;
 +--------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -265,7 +265,7 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 71    ;
+; Total registers                              ; 72    ;
 ; Number of registers using Synchronous Clear  ; 8     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
@@ -309,10 +309,10 @@ Encoding Type:  One-Hot
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                                         ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------+
-; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Modem|Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|timer:clock_divider|count[2] ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Modem|Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_FD:IFD|timer:clock_divider|count[0]          ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |Modem|Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|shifter:Ishifter|IQ[1]       ;
-; 3:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; Yes        ; |Modem|Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_FD:IFD|shifter:serial_shifter|IQ[9]          ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |Modem|Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|timer:clock_divider|count[3] ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |Modem|Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_FD:IFD|timer:clock_divider|count[3]          ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |Modem|Modem_FD:IModem_FD|Transmissor:ITransmissor|Transmissor_FD:IFD|shifter:Ishifter|IQ[4]       ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; Yes        ; |Modem|Modem_FD:IModem_FD|Receptor:IReceptor|Receptor_FD:IFD|shifter:serial_shifter|IQ[7]          ;
 ; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; No         ; |Modem|Modem_UC:IModem_UC|Selector3                                                                ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------------------------------------------------------------------+
 
@@ -378,7 +378,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus II Analysis & Synthesis
     Info: Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Web Edition
-    Info: Processing started: Sat Oct 15 11:05:14 2016
+    Info: Processing started: Sat Oct 15 11:47:53 2016
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Modem -c Modem
 Info: Found 2 design units, including 1 entities, in source file hex7seg.vhd
     Info: Found design unit 1: hex7seg-hex7seg
@@ -439,14 +439,14 @@ Info: Elaborating entity "AnaliseBuffer" for hierarchy "Modem_FD:IModem_FD|Anali
 Info: Elaborating entity "hex7seg" for hierarchy "Modem_FD:IModem_FD|hex7seg:Display0"
 Warning: Output pins are stuck at VCC or GND
     Warning (13410): Pin "nDTR" is stuck at GND
-Info: Implemented 163 device resources after synthesis - the final resource count might be different
+Info: Implemented 165 device resources after synthesis - the final resource count might be different
     Info: Implemented 14 input pins
     Info: Implemented 33 output pins
-    Info: Implemented 116 logic cells
+    Info: Implemented 118 logic cells
 Info: Quartus II Analysis & Synthesis was successful. 0 errors, 3 warnings
     Info: Peak virtual memory: 258 megabytes
-    Info: Processing ended: Sat Oct 15 11:05:16 2016
-    Info: Elapsed time: 00:00:02
+    Info: Processing ended: Sat Oct 15 11:47:54 2016
+    Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:02
 
 

@@ -6,7 +6,7 @@ entity Modem_FD is port (
     -- external interface
     clk, recebe_dado, liga, enviar: in STD_LOGIC;
     dado: in  STD_LOGIC_VECTOR(7 downto 0);
-    recebido, enviado: out STD_LOGIC;
+    recebido, enviado, tem_dado_rec: out STD_LOGIC;
     dado_recebido: out STD_LOGIC_VECTOR(7 downto 0);
 
     -- modem interface
@@ -44,7 +44,7 @@ architecture Modem_FD_arch of Modem_FD is
     ); end component;
     
     component AnaliseBuffer port (
-		clk, analisa: in STD_LOGIC;
+		clk, primeiro, analisa: in STD_LOGIC;
 		dado1, dado2: in STD_LOGIC_VECTOR(7 downto 0);
 		iguais: out STD_LOGIC
 	); end component;
