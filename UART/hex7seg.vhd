@@ -15,7 +15,7 @@ begin
 	process (enable, x)
 	begin
 		if enable = '0' then
-	        hex_output <= "1111111"; -- apaga segmentos
+	        hex_output <= "1111111";
 	    else
 			case x is
 				when "0000" => hex_output <= "0000001"; -- 0

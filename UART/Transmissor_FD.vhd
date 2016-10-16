@@ -3,37 +3,33 @@ use IEEE.std_logic_1164.all;
 use IEEE.std_logic_unsigned.all;
 
 entity Transmissor_FD is port (
-    tk, clk, send: in STD_LOGIC;
+    clk, send, tick: in STD_LOGIC;
     data: in STD_LOGIC_VECTOR(7 downto 0);
-    serial, ready: out STD_LOGIC
+    serial: out STD_LOGIC;
+    bit_count: out STD_LOGIC_VECTOR(3 downto 0)
 ); end;
 
 architecture Transmissor_FD_arch of Transmissor_FD is
-    signal bit_count: STD_LOGIC_VECTOR(3 downto 0);
+    signal Sparity: STD_LOGIC;
 
 	component shifter port (
         clk, enable, serial_in, load: in STD_LOGIC;
         serial_out: out STD_LOGIC;
-        data_in: in STD_LOGIC_VECTOR(9 downto 0);
-        data_out: out STD_LOGIC_VECTOR(9 downto 0)
+        data_in: in STD_LOGIC_VECTOR(10 downto 0);
+        data_out: out STD_LOGIC_VECTOR(10 downto 0)
 	); end component;
 
-    component counter port(
+    component counter port (
         clk, reset, count: in std_logic;
         value: out std_logic_vector(3 downto 0)
     ); end component;
-begin
-    process (clk)
-    begin
-        if rising_edge(clk) then
-            if bit_count = "1011" then
-                ready <= '1';
-            else
-                ready <= '0';
-            end if;
-        end if;
-    end process;
 
-    Ishifter: shifter port map (clk, tk, '1', send, serial, "1" & data & "0", open);
-    Icounter: counter port map (clk, send, tk, bit_count);
+    component parity port (
+        data: in STD_LOGIC_VECTOR(7 downto 0);
+        parity: out STD_LOGIC
+    ); end component;
+begin
+    Iparity: parity port map (data, Sparity);
+    Ishifter: shifter port map (clk, tick, '1', send, serial, "1" & Sparity & data & "0", open);
+    Icounter: counter port map (clk, send, tick, bit_count);
 end Transmissor_FD_arch;

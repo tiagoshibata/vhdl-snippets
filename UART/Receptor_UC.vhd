@@ -2,32 +2,27 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 
 entity Receptor_UC is port (
-	cont: in STD_LOGIC_VECTOR(3 downto 0);
-	serial, clk, reset: in STD_LOGIC;
-	ready_to_receive, start_receiving, ended_receiving: out STD_LOGIC := '0'
+    clk, reset, serial, parity_ok: in STD_LOGIC;
+    rx_bit_count: in STD_LOGIC_VECTOR(3 downto 0);
+    busy_rx, has_rx_data: out STD_LOGIC := '0'
 ); end;
 
 architecture Receptor_UC_arch of Receptor_UC is
-	signal Sreg: STD_LOGIC := '1';
+	signal Sbusy_rx: STD_LOGIC := '0';
 begin
-	ready_to_receive <= Sreg;
+	busy_rx <= Sbusy_rx;
 
-	process (clk) -- Logica de proximo estado
+	process (clk)
 	begin
 		if rising_edge(clk) then
 			if reset = '1' then
-				start_receiving <= '0';
-				ended_receiving <= '0';
-				Sreg <= '1';
-			elsif Sreg = '1' and serial = '0' then
-				start_receiving <= '1';
-				ended_receiving <= '0';
-				Sreg <= '0';
-			elsif Sreg = '0' then
-				start_receiving <= '0';
-				if cont = "1001" then
-					Sreg <= '1';
-					ended_receiving <= '1';
+				Sbusy_rx <= '0';
+			elsif Sbusy_rx = '0' and serial = '0' then
+				Sbusy_rx <= '1';
+			elsif Sbusy_rx = '1' then
+				if rx_bit_count = "1011" then
+					Sbusy_rx <= '0';
+                    has_rx_data <= parity_ok;
 				end if;
 			end if;
 		end if;
