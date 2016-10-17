@@ -11,11 +11,18 @@ entity Receptor_FD is port (
 
 architecture Receptor_FD_arch of Receptor_FD is
     signal Sdata: STD_LOGIC_VECTOR(10 downto 0);
-    signal Sparity: STD_LOGIC;
+    signal Ssampling_timer_value: STD_LOGIC_VECTOR(15 downto 0);
+    signal Sparity, Ssample: STD_LOGIC;
 
     component counter port(
         clk, reset, count: in std_logic;
         value: out std_logic_vector(3 downto 0)
+    ); end component;
+
+    component timer port (
+        clk, enable, load: in STD_LOGIC;
+    	data_in: in STD_LOGIC_VECTOR(15 downto 0);
+        pulse: out STD_LOGIC
     ); end component;
 
     component shifter port (
@@ -32,7 +39,10 @@ architecture Receptor_FD_arch of Receptor_FD is
 begin
     data <= Sdata(8 downto 1);  -- TODO check if correct
     parity_ok <= Sparity xor Sdata(9);
+    Ssampling_timer_value <= "0000000000010000" when busy_rx = '1' else "0000000000001000";
+
     Iparity: parity port map (Sdata(8 downto 1), Sparity);
-    bit_counter: counter port map (clk, not busy_rx, tick, rx_bit_count);
-    Ishifter: shifter port map (clk, tick, serial, '0', open, (others => '0'), Sdata);
+    bit_counter: counter port map (clk, not busy_rx, Ssample, rx_bit_count);
+    sampling_timer: timer port map (clk, tick, not busy_rx, Ssampling_timer_value, Ssample);
+    Ishifter: shifter port map (clk, Ssample, serial, '0', open, (others => '0'), Sdata);
 end Receptor_FD_arch;
