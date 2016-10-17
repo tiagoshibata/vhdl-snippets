@@ -3,7 +3,7 @@ use IEEE.std_logic_1164.all;
 
 entity Transmissor_UC is port (
     clk, send: in STD_LOGIC;
-    bit_count: in STD_LOGIC_VECTOR(3 downto 0);
+    bit_count: in STD_LOGIC_VECTOR(4 downto 0);
     busy_tx: out STD_LOGIC
 ); end;
 
@@ -22,7 +22,7 @@ begin
                 end if;
 
                 when '1' =>
-                if bit_count = "1011" then
+                if bit_count = "01011" then
                     Sbusy_tx <= '0';
                 end if;
             end case;

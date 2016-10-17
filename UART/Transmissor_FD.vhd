@@ -6,7 +6,7 @@ entity Transmissor_FD is port (
     clk, send, tick: in STD_LOGIC;
     data: in STD_LOGIC_VECTOR(7 downto 0);
     serial: out STD_LOGIC;
-    bit_count: out STD_LOGIC_VECTOR(3 downto 0)
+    bit_count: out STD_LOGIC_VECTOR(4 downto 0)
 ); end;
 
 architecture Transmissor_FD_arch of Transmissor_FD is
@@ -21,7 +21,7 @@ architecture Transmissor_FD_arch of Transmissor_FD is
 
     component counter port (
         clk, reset, count: in std_logic;
-        value: out std_logic_vector(3 downto 0)
+        value: out std_logic_vector(4 downto 0)
     ); end component;
 
     component parity port (

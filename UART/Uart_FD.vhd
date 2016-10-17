@@ -7,7 +7,8 @@ entity Uart_FD is port (
     serial_tx, busy_tx, new_rx_data: out STD_LOGIC;
     data_tx: in STD_LOGIC_VECTOR(7 downto 0);
     data_rx: out STD_LOGIC_VECTOR(7 downto 0);
-    dbg_rx_bit_count: out STD_LOGIC_VECTOR(3 downto 0)
+    dbg_rx_bit_count: out STD_LOGIC_VECTOR(4 downto 0);
+    dbg_data_rx: out STD_LOGIC_VECTOR(7 downto 0)
 ); end;
 
 architecture Uart_FD_arch of Uart_FD is
@@ -18,7 +19,7 @@ architecture Uart_FD_arch of Uart_FD is
         clk, serial, reset, tick: in STD_LOGIC;
         busy_rx, has_rx_data: out STD_LOGIC;
         data: out STD_LOGIC_VECTOR(7 downto 0);
-        dbg_rx_bit_count: out STD_LOGIC_VECTOR(3 downto 0)
+        dbg_rx_bit_count: out STD_LOGIC_VECTOR(4 downto 0)
     ); end component;
 
     component Transmissor port (
@@ -45,6 +46,7 @@ architecture Uart_FD_arch of Uart_FD is
     ); end component;
 begin
     new_rx_data <= Shas_rx_data;
+    dbg_data_rx <= Sdata_rx;
     IRxBuffer: register8 port map (clk, Shas_rx_data, Sdata_rx, data_rx);
     IReceptor: Receptor port map (clk, serial_rx, reset, Stick_rx, open, Shas_rx_data, Sdata_rx, dbg_rx_bit_count);
     ITransmissor: Transmissor port map (clk, do_send, Stick_tx, data_tx, serial_tx, busy_tx);

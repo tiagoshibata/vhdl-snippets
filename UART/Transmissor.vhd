@@ -9,18 +9,18 @@ entity Transmissor is port (
 ); end;
 
 architecture Transmissor_arch of Transmissor is
-    signal Sbit_count: STD_LOGIC_VECTOR(3 downto 0);
+    signal Sbit_count: STD_LOGIC_VECTOR(4 downto 0);
 
     component Transmissor_FD port (
         clk, send, tick: in STD_LOGIC;
         data: in STD_LOGIC_VECTOR(7 downto 0);
         serial: out STD_LOGIC;
-        bit_count: out STD_LOGIC_VECTOR(3 downto 0)
+        bit_count: out STD_LOGIC_VECTOR(4 downto 0)
     ); end component;
 
     component Transmissor_UC port (
         clk, send: in STD_LOGIC;
-        bit_count: in STD_LOGIC_VECTOR(3 downto 0);
+        bit_count: in STD_LOGIC_VECTOR(4 downto 0);
         busy_tx: out STD_LOGIC
     ); end component;
 begin

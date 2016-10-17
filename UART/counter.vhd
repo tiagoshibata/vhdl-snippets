@@ -5,17 +5,17 @@ use ieee.std_logic_unsigned.all;
 
 entity counter is port(
     clk, reset, count: in std_logic;
-    value: out std_logic_vector(3 downto 0)
+    value: out std_logic_vector(4 downto 0)
 ); end counter;
 
 architecture counter_impl of counter is
-    signal Svalue: std_logic_vector(3 downto 0);
+    signal Svalue: std_logic_vector(4 downto 0);
 begin
     process(clk)
     begin
         if rising_edge(clk) then
             if reset = '1' then
-                Svalue <= "0000";
+                Svalue <= "00000";
             elsif count = '1' then
                 Svalue <= Svalue + 1;
             end if;
