@@ -1,0 +1,32 @@
+Quartus Prime Archive log --	/home/quartus/vhdl-snippets/UART/Uart.qarlog
+
+Archive:	/home/quartus/vhdl-snippets/UART/Uart.qar
+Date:		Mon Oct 17 09:37:29 2016
+Quartus Prime		16.0.0 Build 211 04/27/2016 SJ Lite Edition
+
+	=========== Files Selected: ===========
+/home/quartus/vhdl-snippets/UART/Recepcao.vwf
+/home/quartus/vhdl-snippets/UART/Receptor.vhd
+/home/quartus/vhdl-snippets/UART/Receptor_FD.vhd
+/home/quartus/vhdl-snippets/UART/Receptor_UC.vhd
+/home/quartus/vhdl-snippets/UART/Transmissao.vwf
+/home/quartus/vhdl-snippets/UART/Transmissor.vhd
+/home/quartus/vhdl-snippets/UART/Transmissor_FD.vhd
+/home/quartus/vhdl-snippets/UART/Transmissor_UC.vhd
+/home/quartus/vhdl-snippets/UART/Uart.qpf
+/home/quartus/vhdl-snippets/UART/Uart.qsf
+/home/quartus/vhdl-snippets/UART/Uart.vhd
+/home/quartus/vhdl-snippets/UART/Uart_FD.vhd
+/home/quartus/vhdl-snippets/UART/Uart_UC.vhd
+/home/quartus/vhdl-snippets/UART/counter.vhd
+/home/quartus/vhdl-snippets/UART/hex7seg.vhd
+/home/quartus/vhdl-snippets/UART/parity.vhd
+/home/quartus/vhdl-snippets/UART/register8.vhd
+/home/quartus/vhdl-snippets/UART/shifter.vhd
+/home/quartus/vhdl-snippets/UART/ticker.vhd
+/home/quartus/vhdl-snippets/UART/timer.vhd
+/opt/altera/16.0/quartus/linux64/assignment_defaults.qdf
+	======= Total: 21 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
