@@ -5,7 +5,8 @@ use IEEE.std_logic_unsigned.all;
 entity Transmissor is port (
     clk, send, tick: in STD_LOGIC;
     data: in STD_LOGIC_VECTOR(7 downto 0);
-    serial, busy_tx: out STD_LOGIC
+    serial, busy_tx: out STD_LOGIC;
+    tx_bit_count: out STD_LOGIC_VECTOR(4 downto 0)
 ); end;
 
 architecture Transmissor_arch of Transmissor is
@@ -24,6 +25,8 @@ architecture Transmissor_arch of Transmissor is
         busy_tx: out STD_LOGIC
     ); end component;
 begin
+    tx_bit_count <= Sbit_count;
+
     IUC: Transmissor_UC port map (clk, send, Sbit_count, busy_tx);
     IFD: Transmissor_FD port map (clk, send, tick, data, serial, Sbit_count);
 end Transmissor_arch;

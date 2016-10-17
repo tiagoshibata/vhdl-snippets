@@ -20,9 +20,9 @@ begin
             elsif Sbusy_rx = '0' and serial = '0' then
                 Sbusy_rx <= '1';
             elsif Sbusy_rx = '1' then
-                if rx_bit_count = "11000" then
+                if rx_bit_count = "01010" then
                     Sbusy_rx <= '0';
-                    has_rx_data <= parity_ok;
+                    has_rx_data <= '1';  -- parity_ok;
                 end if;
             end if;
         end if;

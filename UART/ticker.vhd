@@ -16,6 +16,6 @@ architecture ticker_arch of ticker is
 begin
     -- 50MHz / 1200 bps ~ 41667 cycles = 1010001011000011 binary
     -- 50MHz / 1200 bps / 16 cycles/bit ~ 2604 = 101000101100 binary
-    rx_divider: timer port map (clk, '1', '0', "0000000000000001", tick_rx);-- "0000101000101100", tick_rx);
-    tx_divider: timer port map (clk, '1', '0', "0000000000010000", tick_tx);-- "1010001011000011", tick_tx);
+    rx_divider: timer port map (clk, '1', '0', "0000000000000010", tick_rx);-- "0000101000101100", tick_rx);
+    tx_divider: timer port map (clk, '1', '0', "0000000000100000", tick_tx);-- "1010001011000011", tick_tx);
 end ticker_arch;
