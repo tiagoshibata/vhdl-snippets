@@ -34,15 +34,31 @@ architecture CommunicationModule_FD_arch of CommunicationModule_FD is
         tx_bit_count: out STD_LOGIC_VECTOR(4 downto 0)
     ); end component;
 
+    component Modem port (
+        -- external interface
+        clk, reset, enviar, tick_rx, tick_tx: in STD_LOGIC;
+        dado: in  STD_LOGIC_VECTOR(7 downto 0);
+        recebido: out STD_LOGIC;
+        dado_recebido: out STD_LOGIC_VECTOR(7 downto 0);
+
+        -- modem interface
+        nDTR, nRTS, TD: out STD_LOGIC;
+        nCTS, nCD, RD: in STD_LOGIC;
+
+        -- debug
+        dbg_rx_bit_count: out STD_LOGIC_VECTOR(3 downto 0)
+    ); end component;
+
     component hex7seg port (
-  		x: in std_logic_vector(3 downto 0);
-  		enable: in std_logic;
-  		hex_output: out std_logic_vector(6 downto 0)
+    		x: in std_logic_vector(3 downto 0);
+    		enable: in std_logic;
+    		hex_output: out std_logic_vector(6 downto 0)
   	); end component;
 begin
+    nDTR <= reset;
 
     ITermUart: Uart port map (clk, reset, rx_term, receive_term, send_term, tx_term, open, open, data, Sterm_received, open, open, open, open, open, open);
-    IModemUart: Uart port map (clk, reset, RD, '1', send_modem, TD, open, open, data, Smodem_received, open, open, open, open, open, open);
+    IModem: Modem port map (clk, reset, send_modem, data, open, Smodem_received, nDTR, nRTS, TD, nCTS, nCD, RD, open);
     IHexTerm1: hex7seg port map (Sterm_received(3 downto 0), '1', terminal_data_hex_1);
     IHexTerm2: hex7seg port map (Sterm_received(7 downto 4), '1', terminal_data_hex_2);
     IHexModem1: hex7seg port map (Smodem_received(3 downto 0), '1', modem_data_hex_1);
