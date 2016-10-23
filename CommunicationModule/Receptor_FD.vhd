@@ -14,7 +14,7 @@ architecture Receptor_FD_arch of Receptor_FD is
     signal Sdata: STD_LOGIC_VECTOR(10 downto 0);
     signal Sparity, Ssample: STD_LOGIC;
 
-    component counter port(
+    component counter port (
         clk, reset, count: in std_logic;
         value: out std_logic_vector(4 downto 0)
     ); end component;
@@ -37,7 +37,7 @@ architecture Receptor_FD_arch of Receptor_FD is
         parity: out STD_LOGIC
     ); end component;
 begin
-    data <= '0' & Sdata(8 downto 2);  -- TODO check if correct
+    data <= '0' & Sdata(8 downto 2);
     sample <= Ssample;
     parity_ok <= Sparity xor Sdata(10);
 

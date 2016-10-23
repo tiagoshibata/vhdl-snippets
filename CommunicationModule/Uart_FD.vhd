@@ -15,7 +15,7 @@ entity Uart_FD is port (
 ); end;
 
 architecture Uart_FD_arch of Uart_FD is
-    signal Stick_rx, Stick_tx, Shas_rx_data: STD_LOGIC;
+    signal Stick_rx, Stick_tx, Shas_rx_data, Sbusy_rx: STD_LOGIC;
     signal Sdata_rx: STD_LOGIC_VECTOR(7 downto 0);
 
     component Receptor port (

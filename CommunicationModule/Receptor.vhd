@@ -18,7 +18,7 @@ architecture Receptor_arch of Receptor is
         clk, reset, serial, parity_ok: in STD_LOGIC;
         rx_bit_count: in STD_LOGIC_VECTOR(4 downto 0);
         busy_rx, has_rx_data: out STD_LOGIC
-	); end component;
+    ); end component;
 
     component Receptor_FD port (
         clk, serial, busy_rx, tick: in STD_LOGIC;
