@@ -36,7 +36,7 @@ architecture CommunicationModule_FD_arch of CommunicationModule_FD is
 
     component Modem port (
         -- external interface
-        clk, reset, enviar, tick_rx, tick_tx: in STD_LOGIC;
+        clk, reset, enviar: in STD_LOGIC;
         dado: in  STD_LOGIC_VECTOR(7 downto 0);
         recebido: out STD_LOGIC;
         dado_recebido: out STD_LOGIC_VECTOR(7 downto 0);
@@ -46,7 +46,7 @@ architecture CommunicationModule_FD_arch of CommunicationModule_FD is
         nCTS, nCD, RD: in STD_LOGIC;
 
         -- debug
-        dbg_rx_bit_count: out STD_LOGIC_VECTOR(3 downto 0)
+        dbg_rx_bit_count: out STD_LOGIC_VECTOR(4 downto 0)
     ); end component;
 
     component hex7seg port (

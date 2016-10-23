@@ -4,7 +4,7 @@ use IEEE.std_logic_unsigned.all;
 
 entity Modem is port (
     -- external interface
-    clk, reset, enviar, tick_rx, tick_tx: in STD_LOGIC;
+    clk, reset, enviar: in STD_LOGIC;
     dado: in  STD_LOGIC_VECTOR(7 downto 0);
     recebido: out STD_LOGIC;
     dado_recebido: out STD_LOGIC_VECTOR(7 downto 0);
@@ -14,7 +14,7 @@ entity Modem is port (
     nCTS, nCD, RD: in STD_LOGIC;
 
     -- debug
-    dbg_rx_bit_count: out STD_LOGIC_VECTOR(3 downto 0)
+    dbg_rx_bit_count: out STD_LOGIC_VECTOR(4 downto 0)
 ); end;
 
 architecture Modem_arch of Modem is
@@ -27,7 +27,7 @@ architecture Modem_arch of Modem is
 
     component Modem_FD port (
         -- external interface
-        clk, reset, enviar, tick_rx, tick_tx: in STD_LOGIC;
+        clk, reset, enviar: in STD_LOGIC;
         dado: in  STD_LOGIC_VECTOR(7 downto 0);
         recebido, enviado: out STD_LOGIC;
         dado_recebido: out STD_LOGIC_VECTOR(7 downto 0);
@@ -37,10 +37,10 @@ architecture Modem_arch of Modem is
         nCD, RD: in STD_LOGIC;
 
         -- debug
-        dbg_rx_bit_count: out STD_LOGIC_VECTOR(3 downto 0)
+        dbg_rx_bit_count: out STD_LOGIC_VECTOR(4 downto 0)
     ); end component;
 begin
     IModem_UC: Modem_UC port map (clk, enviar, enviado, nCTS, nRTS, do_send_next);
-    IModem_FD: Modem_FD port map (clk, liga, do_send_next, tick_rx, tick_tx, dado, recebido, enviado,
+    IModem_FD: Modem_FD port map (clk, reset, do_send_next, dado, recebido, enviado,
 		  dado_recebido, nDTR, TD, nCD, RD, dbg_rx_bit_count);
 end Modem_arch;

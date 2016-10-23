@@ -4,7 +4,7 @@ use IEEE.std_logic_unsigned.all;
 
 entity Modem_FD is port (
     -- external interface
-    clk, reset, enviar, tick_rx, tick_tx: in STD_LOGIC;
+    clk, reset, enviar: in STD_LOGIC;
     dado: in  STD_LOGIC_VECTOR(7 downto 0);
     recebido, enviado: out STD_LOGIC;
     dado_recebido: out STD_LOGIC_VECTOR(7 downto 0);
@@ -18,9 +18,10 @@ entity Modem_FD is port (
 ); end;
 
 architecture Modem_FD_arch of Modem_FD is
-    signal Sdado_recebido, Sdado_receptor: STD_LOGIC_VECTOR(7 downto 0);
+    signal Sdado_receptor: STD_LOGIC_VECTOR(7 downto 0);
     signal Srecebido: STD_LOGIC;
     signal Sended_receiving: STD_LOGIC;
+    signal Sundergoing_tx: STD_LOGIC;
 
     component Uart port (
         clk, reset, rx, recebe_dado, transmite_dado: in STD_LOGIC;
@@ -41,9 +42,9 @@ architecture Modem_FD_arch of Modem_FD is
     ); end component;
 begin
     nDTR <= reset;
-    dado_recebido <= Sdado_recebido;
     recebido <= Srecebido;
+    enviado <= not Sundergoing_tx;
 
-    IModemUart: Uart port map (clk, '0', RD, nCD, enviar, TD, open, not enviado, dado, dado_recebido, dbg_rx_bit_count, open, tick_tx, tick_rx, open, open);
-    OutputBuffer: Register8 port map (clk, Sended_receiving, Sdado_receptor , Sdado_recebido);
+    IModemUart: Uart port map (clk, '0', RD, nCD, enviar, TD, open, Sundergoing_tx, dado, Sdado_receptor, dbg_rx_bit_count, open, open, open, open, open);
+    OutputBuffer: Register8 port map (clk, Sended_receiving, Sdado_receptor, dado_recebido);
 end Modem_FD_arch;
