@@ -3,7 +3,7 @@ use IEEE.std_logic_1164.all;
 use IEEE.std_logic_unsigned.all;
 
 entity Uart_FD is port (
-    clk, reset, serial_rx, do_send: in STD_LOGIC;
+    clk, reset, serial_rx, do_send, receive: in STD_LOGIC;
     serial_tx, busy_tx, new_rx_data: out STD_LOGIC;
     data_tx: in STD_LOGIC_VECTOR(7 downto 0);
     data_rx: out STD_LOGIC_VECTOR(7 downto 0);
@@ -55,7 +55,7 @@ begin
     tick_rx <= Stick_rx;
     tick_tx <= Stick_tx;
 
-    IRxBuffer: register8 port map (clk, Shas_rx_data, Sdata_rx, data_rx);
+    IRxBuffer: register8 port map (clk, receive, Sdata_rx, data_rx);
     IReceptor: Receptor port map (clk, serial_rx, reset, Stick_rx, open, Shas_rx_data, Sdata_rx, dbg_rx_bit_count, sample);
     ITransmissor: Transmissor port map (clk, do_send, Stick_tx, data_tx, serial_tx, busy_tx, tx_bit_count);
     Iticker: ticker port map (clk, Stick_rx, Stick_tx);

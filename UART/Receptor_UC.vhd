@@ -16,14 +16,18 @@ begin
     begin
         if rising_edge(clk) then
             if reset = '1' then
+                has_rx_data <= '0';
                 Sbusy_rx <= '0';
             elsif Sbusy_rx = '0' and serial = '0' then
+                has_rx_data <= '0';
                 Sbusy_rx <= '1';
             elsif Sbusy_rx = '1' then
                 if rx_bit_count = "01010" then
                     Sbusy_rx <= '0';
                     has_rx_data <= '1';  -- parity_ok;
                 end if;
+            else
+				has_rx_data <= '0';
             end if;
         end if;
     end process;

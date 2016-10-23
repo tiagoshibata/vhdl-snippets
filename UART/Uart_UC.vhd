@@ -7,6 +7,7 @@ entity Uart_UC is port (
 ); end;
 
 architecture Uart_UC_arch of Uart_UC is
+	signal has_data: STD_LOGIC := '0';
 begin
     process (clk)
     begin
@@ -17,11 +18,14 @@ begin
                 pulse_send_next <= '0';
             end if;
 
-            if new_rx_data = '1' then
+            if new_rx_data = '1' and has_data = '0' then
                 has_rx_data <= '1';
-            elsif recebe_dado = '1' then
+            end if;
+            if recebe_dado = '1' then
                 has_rx_data <= '0';
             end if;
+            
+            has_data <= new_rx_data;
         end if;
     end process;
 end Uart_UC_arch;

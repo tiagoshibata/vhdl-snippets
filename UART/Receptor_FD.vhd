@@ -38,10 +38,10 @@ architecture Receptor_FD_arch of Receptor_FD is
         parity: out STD_LOGIC
     ); end component;
 begin
-    data <= Sdata(8 downto 1);  -- TODO check if correct
+    data <= '0' & Sdata(8 downto 2);  -- TODO check if correct
     sample <= Ssample;
-    parity_ok <= Sparity xor Sdata(9);
-    Ssampling_timer_value <= "0000000000010000" when busy_rx = '1' else "0000000000001000";
+    parity_ok <= Sparity xor Sdata(10);
+    Ssampling_timer_value <= "0000000000001111" when busy_rx = '1' else "0000000000001000";
 
     Iparity: parity port map (Sdata(8 downto 1), Sparity);
     bit_counter: counter port map (clk, not busy_rx, Ssample, rx_bit_count);
