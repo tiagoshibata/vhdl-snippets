@@ -21,6 +21,7 @@ entity CommunicationModule_FD is port (
 
 architecture CommunicationModule_FD_arch of CommunicationModule_FD is
     signal Sterm_received, Smodem_received: STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
+    signal ticktx, tickrx, nrts: STD_LOGIC;
 
     component Uart port (
         clk, reset, rx, recebe_dado, transmite_dado: in STD_LOGIC;
@@ -54,13 +55,24 @@ architecture CommunicationModule_FD_arch of CommunicationModule_FD is
     		enable: in std_logic;
     		hex_output: out std_logic_vector(6 downto 0)
   	); end component;
+  	
+  	component counter port (
+		clk, reset, count: in std_logic;
+		value: out std_logic_vector(4 downto 0)
+	); end component;
+	
 begin
     nDTR <= reset;
+    nrts <= nRTS;
 
-    ITermUart: Uart port map (clk, reset, rx_term, receive_term, send_term, tx_term, open, open, data, Sterm_received, open, open, open, open, open, open);
+    ITermUart: Uart port map (clk, reset, rx_term, receive_term, send_term, tx_term, open, rxbusy, data, Sterm_received, open, open, tickrx, ticktx, open, open);
     IModem: Modem port map (clk, reset, send_modem, data, open, Smodem_received, nDTR, nRTS, TD, nCTS, nCD, RD, open);
     IHexTerm1: hex7seg port map (Sterm_received(3 downto 0), '1', terminal_data_hex_1);
     IHexTerm2: hex7seg port map (Sterm_received(7 downto 4), '1', terminal_data_hex_2);
     IHexModem1: hex7seg port map (Smodem_received(3 downto 0), '1', modem_data_hex_1);
     IHexModem2: hex7seg port map (Smodem_received(7 downto 4), '1', modem_data_hex_2);
+    counttxmodem: counter port map (clk, open, ticktx and not nrts, modem_tx_bit_count_hex(6 downto 3));
+    countrxmodem: counter port map (clk, open, tickrx and not nCD, modem_rx_bit_count_hex(6 downto 3));
+    counttxterm: counter port map (clk, open, ticktx and nrts, term_tx_bit_count_hex(6 downto 3));
+    counttxterm: counter port map (clk, open, ticktx and nCD, term_rx_bit_count_hex(6 downto 3));
 end CommunicationModule_FD_arch;
