@@ -14,7 +14,8 @@ entity Modem_FD is port (
     nCD, RD: in STD_LOGIC;
 
     -- debug
-    dbg_rx_bit_count: out STD_LOGIC_VECTOR(4 downto 0)
+    dbg_rx_bit_count: out STD_LOGIC_VECTOR(4 downto 0);
+    busy_rx: out STD_LOGIC
 ); end;
 
 architecture Modem_FD_arch of Modem_FD is
@@ -32,7 +33,8 @@ architecture Modem_FD_arch of Modem_FD is
         dbg_data_rx: out STD_LOGIC_VECTOR(7 downto 0);
         tick_rx, tick_tx: out std_logic;
         sample: out std_logic;
-        tx_bit_count: out STD_LOGIC_VECTOR(4 downto 0)
+        tx_bit_count: out STD_LOGIC_VECTOR(4 downto 0);
+		busy_rx: out std_logic
     ); end component;
 
     component Register8 port (
@@ -45,6 +47,6 @@ begin
     recebido <= Srecebido;
     enviado <= not Sundergoing_tx;
 
-    IModemUart: Uart port map (clk, '0', RD, nCD, enviar, TD, open, Sundergoing_tx, dado, Sdado_receptor, dbg_rx_bit_count, open, open, open, open, open);
-    OutputBuffer: Register8 port map (clk, Sended_receiving, Sdado_receptor, dado_recebido);
+    IModemUart: Uart port map (clk, '0', RD, nCD, enviar, TD, open, Sundergoing_tx, dado, dado_recebido, dbg_rx_bit_count, open, open, open, open, open, busy_rx);
+    -- OutputBuffer: Register8 port map (clk, Sended_receiving, Sdado_receptor, dado_recebido);
 end Modem_FD_arch;

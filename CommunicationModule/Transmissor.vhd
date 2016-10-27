@@ -6,7 +6,8 @@ entity Transmissor is port (
     clk, send, tick: in STD_LOGIC;
     data: in STD_LOGIC_VECTOR(7 downto 0);
     serial, busy_tx: out STD_LOGIC;
-    tx_bit_count: out STD_LOGIC_VECTOR(4 downto 0)
+    tx_bit_count: out STD_LOGIC_VECTOR(4 downto 0);
+    start_tx: out std_LOGIC
 ); end;
 
 architecture Transmissor_arch of Transmissor is
@@ -22,11 +23,11 @@ architecture Transmissor_arch of Transmissor is
     component Transmissor_UC port (
         clk, send: in STD_LOGIC;
         bit_count: in STD_LOGIC_VECTOR(4 downto 0);
-        busy_tx: out STD_LOGIC
+        busy_tx, start_tx: out STD_LOGIC
     ); end component;
 begin
     tx_bit_count <= Sbit_count;
 
-    IUC: Transmissor_UC port map (clk, send, Sbit_count, busy_tx);
+    IUC: Transmissor_UC port map (clk, send, Sbit_count, busy_tx, start_tx);
     IFD: Transmissor_FD port map (clk, send, tick, data, serial, Sbit_count);
 end Transmissor_arch;

@@ -11,12 +11,14 @@ entity Uart_FD is port (
     dbg_data_rx: out STD_LOGIC_VECTOR(7 downto 0);
     tick_rx, tick_tx: out std_logic;
     sample: out std_logic;
-    tx_bit_count: out STD_LOGIC_VECTOR(4 downto 0)
+    tx_bit_count: out STD_LOGIC_VECTOR(4 downto 0);
+    busy_rx: out std_logic
 ); end;
 
 architecture Uart_FD_arch of Uart_FD is
-    signal Stick_rx, Stick_tx, Shas_rx_data, Sbusy_rx: STD_LOGIC;
+    signal Stick_rx, Stick_tx, Shas_rx_data, Sbusy_rx, Sload_ticker, Sbusy_tx, Sstart_tx: STD_LOGIC;
     signal Sdata_rx: STD_LOGIC_VECTOR(7 downto 0);
+    signal Sdbg_rx_bit_count: STD_LOGIC_VECTOR(4 downto 0);
 
     component Receptor port (
         clk, serial, reset, tick: in STD_LOGIC;
@@ -30,7 +32,8 @@ architecture Uart_FD_arch of Uart_FD is
         clk, send, tick: in STD_LOGIC;
         data: in STD_LOGIC_VECTOR(7 downto 0);
         serial, busy_tx: out STD_LOGIC;
-        tx_bit_count: out STD_LOGIC_VECTOR(4 downto 0)
+        tx_bit_count: out STD_LOGIC_VECTOR(4 downto 0);
+        start_tx: out std_LOGIC
     ); end component;
 
     component hex7seg port (
@@ -40,7 +43,7 @@ architecture Uart_FD_arch of Uart_FD is
     ); end component;
 
     component ticker port (
-        clk, load_rx: in std_logic;
+        clk, load_rx, load_tx: in std_logic;
         tick_rx, tick_tx: out std_logic
 	); end component;
 
@@ -54,9 +57,20 @@ begin
     dbg_data_rx <= Sdata_rx;
     tick_rx <= Stick_rx;
     tick_tx <= Stick_tx;
-
-    IRxBuffer: register8 port map (clk, receive, Sdata_rx, data_rx);
-    IReceptor: Receptor port map (clk, serial_rx, reset, Stick_rx, Sbusy_rx, Shas_rx_data, Sdata_rx, dbg_rx_bit_count, sample);
-    ITransmissor: Transmissor port map (clk, do_send, Stick_tx, data_tx, serial_tx, busy_tx, tx_bit_count);
-    Iticker: ticker port map (clk, not Sbusy_rx, Stick_rx, Stick_tx);
+    busy_rx <= Sbusy_rx;
+    busy_tx <= Sbusy_tx;
+    dbg_rx_bit_count <= Sdbg_rx_bit_count;
+    process (clk)
+	begin
+		if Sdbg_rx_bit_count = "00000" then
+			Sload_ticker <= '1';
+		else
+			Sload_ticker <= '0';
+		end if;
+	end process;
+    --IRxBuffer: register8 port map (clk, receive, Sdata_rx, data_rx);
+    data_rx <= Sdata_rx;
+    IReceptor: Receptor port map (clk, serial_rx, reset, Stick_rx, Sbusy_rx, Shas_rx_data, Sdata_rx, Sdbg_rx_bit_count, sample);
+    ITransmissor: Transmissor port map (clk, do_send, Stick_tx, data_tx, serial_tx, Sbusy_tx, tx_bit_count, Sstart_tx);
+    Iticker: ticker port map (clk, not Sbusy_rx, Sstart_tx, Stick_rx, Stick_tx);
 end Uart_FD_arch;

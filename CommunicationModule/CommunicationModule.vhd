@@ -16,7 +16,9 @@ entity CommunicationModule is port (
     term_tx_byte_count_hex: out STD_LOGIC_VECTOR(6 downto 0);
     term_rx_byte_count_hex: out STD_LOGIC_VECTOR(6 downto 0);
     modem_tx_byte_count_hex: out STD_LOGIC_VECTOR(6 downto 0);
-    modem_rx_byte_count_hex: out STD_LOGIC_VECTOR(6 downto 0)
+    modem_rx_byte_count_hex: out STD_LOGIC_VECTOR(6 downto 0);
+    uart_busy_rx: out STD_LOGIC;
+    busy_rx: out std_logic
 ); end;
 
 architecture CommunicationModule_arch of CommunicationModule is
@@ -35,11 +37,13 @@ architecture CommunicationModule_arch of CommunicationModule is
         term_tx_byte_count_hex: out STD_LOGIC_VECTOR(6 downto 0);
         term_rx_byte_count_hex: out STD_LOGIC_VECTOR(6 downto 0);
         modem_tx_byte_count_hex: out STD_LOGIC_VECTOR(6 downto 0);
-        modem_rx_byte_count_hex: out STD_LOGIC_VECTOR(6 downto 0)
+        modem_rx_byte_count_hex: out STD_LOGIC_VECTOR(6 downto 0);
+		uart_busy_rx: out STD_LOGIC;
+		busy_rx: out std_logic
     ); end component;
 begin
     IFD: CommunicationModule_FD port map (clk, reset, send_term, send_modem, receive_term,
       rx_term, tx_term, nCTS, nCD, RD,nDTR, nRTS, TD, data, terminal_data_hex_1, terminal_data_hex_2,
       modem_data_hex_1, modem_data_hex_2, term_tx_byte_count_hex, term_rx_byte_count_hex,
-      modem_tx_byte_count_hex, modem_rx_byte_count_hex);
+      modem_tx_byte_count_hex, modem_rx_byte_count_hex, uart_busy_rx, busy_rx);
 end CommunicationModule_arch;

@@ -10,7 +10,8 @@ entity Uart is port (
     dbg_data_rx: out STD_LOGIC_VECTOR(7 downto 0);
     tick_rx, tick_tx: out std_logic;
     sample: out std_logic;
-    tx_bit_count: out STD_LOGIC_VECTOR(4 downto 0)
+    tx_bit_count: out STD_LOGIC_VECTOR(4 downto 0);
+    busy_rx: out std_logic
 ); end;
 
 architecture Uart_arch of Uart is
@@ -30,12 +31,13 @@ architecture Uart_arch of Uart is
         dbg_data_rx: out STD_LOGIC_VECTOR(7 downto 0);
         tick_rx, tick_tx: out std_logic;
         sample: out std_logic;
-        tx_bit_count: out STD_LOGIC_VECTOR(4 downto 0)
+        tx_bit_count: out STD_LOGIC_VECTOR(4 downto 0);
+		busy_rx: out std_logic
     ); end component;
 begin
     transm_andamento <= Sbusy_tx;
 
     IUC: Uart_UC port map (clk, transmite_dado, Snew_rx_data, recebe_dado, Sbusy_tx, Spulse_send_next, tem_dado_rec);
     IFD: Uart_FD port map (clk, reset, rx, Spulse_send_next, recebe_dado, tx, Sbusy_tx,
-        Snew_rx_data, dado_trans, dado_rec, dbg_rx_bit_count, dbg_data_rx, tick_rx, tick_tx, sample, tx_bit_count);
+        Snew_rx_data, dado_trans, dado_rec, dbg_rx_bit_count, dbg_data_rx, tick_rx, tick_tx, sample, tx_bit_count, busy_rx);
 end Uart_arch;

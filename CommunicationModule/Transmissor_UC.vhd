@@ -4,7 +4,7 @@ use IEEE.std_logic_1164.all;
 entity Transmissor_UC is port (
     clk, send: in STD_LOGIC;
     bit_count: in STD_LOGIC_VECTOR(4 downto 0);
-    busy_tx: out STD_LOGIC
+    busy_tx, start_tx: out STD_LOGIC
 ); end;
 
 architecture Transmissor_UC_arch of Transmissor_UC is
@@ -19,9 +19,11 @@ begin
                 when '0' =>
                 if send = '1' then
                     Sbusy_tx <= '1';
+                    start_tx <= '1';
                 end if;
 
                 when '1' =>
+                start_tx <= '0';
                 if bit_count = "01011" then
                     Sbusy_tx <= '0';
                 end if;
