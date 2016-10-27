@@ -20,8 +20,7 @@ entity CommunicationModule_FD is port (
     modem_rx_byte_count_hex: out STD_LOGIC_VECTOR(6 downto 0);
     uart_busy_rx: out STD_LOGIC;
     busy_rx: out STD_LOGIC;
-    data_received_modem: out STD_LOGIC_VECTOR(7 downto 0);
-    dbg_rx_bit_count: out STD_LOGIC_VECTOR(4 downto 0)
+    data_received_modem: out STD_LOGIC_VECTOR(7 downto 0)
 ); end;
 
 architecture CommunicationModule_FD_arch of CommunicationModule_FD is

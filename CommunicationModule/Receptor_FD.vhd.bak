@@ -31,7 +31,7 @@ architecture Receptor_FD_arch of Receptor_FD is
         parity: out STD_LOGIC
     ); end component;
 begin
-    data <= '0' & Sdata(7 downto 1);
+    data <= '0' & Sdata(8 downto 2);
     Ssample <= tick;
     sample <= Ssample;
     parity_ok <= Sparity xor Sdata(10);

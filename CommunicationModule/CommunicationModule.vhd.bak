@@ -48,5 +48,5 @@ begin
     IFD: CommunicationModule_FD port map (clk, reset, send_term, send_modem, receive_term,
       rx_term, tx_term, nCTS, nCD, RD,nDTR, nRTS, TD, data, terminal_data_hex_1, terminal_data_hex_2,
       modem_data_hex_1, modem_data_hex_2, term_tx_byte_count_hex, term_rx_byte_count_hex,
-      modem_tx_byte_count_hex, modem_rx_byte_count_hex, uart_busy_rx, busy_rx, open, dbg_rx_bit_count);
+      modem_tx_byte_count_hex, modem_rx_byte_count_hex, uart_busy_rx, busy_rx, dbg_rx_bit_count);
 end CommunicationModule_arch;

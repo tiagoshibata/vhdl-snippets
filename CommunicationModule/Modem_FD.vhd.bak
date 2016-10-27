@@ -47,7 +47,6 @@ begin
     recebido <= Srecebido;
     enviado <= not Sundergoing_tx;
 
-    IModemUart: Uart port map (clk, '0', RD, nCD, enviar, TD, open, Sundergoing_tx,
-    dado, dado_recebido, dbg_rx_bit_count, open, open, open, open, open, busy_rx);
+    IModemUart: Uart port map (clk, '0', RD, nCD, enviar, TD, open, Sundergoing_tx, dado, dado_recebido, dbg_rx_bit_count, open, open, open, open, open, busy_rx);
     -- OutputBuffer: Register8 port map (clk, Sended_receiving, Sdado_receptor, dado_recebido);
 end Modem_FD_arch;
