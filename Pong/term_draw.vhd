@@ -16,7 +16,7 @@ entity term_draw is port (
 architecture term_draw_impl of term_draw is
     type term_state is (idle, sending);
     signal Sstate: term_state := idle;
-    signal Sold_busy: STD_LOGIC := '0';
+    signal Sold_busy, Sshift_cycle: STD_LOGIC := '0';
     signal Sdata: STD_LOGIC_VECTOR(287 downto 0) := (others => '0');  -- 32 bytes
 
     -- ASCII characters:
@@ -37,12 +37,13 @@ begin
                 -- Clear screen: ESCSEQ & "2J"
                 -- Move to position: ESCSEQ & "LINE;COLUMN" & "H"
                 Sdata <= ESCSEQ & "00110010" & "01001010" &  -- clear screen (2J)
-                    ESCSEQ & enemy_x & SEP & "00110001" & "01001000" &  -- move to enemy (enemy_x;0H)
+                    ESCSEQ & "00110001" & SEP & enemy_x & "01001000" &  -- move to enemy (enemy_x;0H)
                     BAR & BAR & BAR & BAR &
                     ESCSEQ & ball_x & SEP & ball_y & "01001000" &  -- move to ball (ball_x;ball_yH)
                     BALL &
-                    ESCSEQ & player_x & SEP & "00110010" & "00110101" & "01001000" &  -- move to player (player_x;25H)
+                    ESCSEQ & "00110010" & "00110101" & SEP & player_x & "01001000" &  -- move to player (player_x;25H)
                     BAR & BAR & BAR & BAR;
+			    Sold_busy <= '0';
                 if redraw = '1' then
                     serial_send <= '1';
                     Sstate <= sending;
@@ -56,8 +57,11 @@ begin
                         serial_send <= '0';
                         Sstate <= idle;
                     else
+						if Sshift_cycle = '1'then
+							Sdata <= Sdata(279 downto 0) & "00000000";
+						end if;
+						Sshift_cycle <= not Sshift_cycle;
                         serial_send <= '1';
-                        Sdata <= Sdata(279 downto 0) & "00000000";
                     end if;
                 else
                     serial_send <= '0';

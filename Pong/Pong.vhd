@@ -48,8 +48,8 @@ begin
 
     IUart: Uart port map (clk, '0', '1', '0', Ssend, tx, open, Sbusy, Sdata, open, open, open, open, open, open, dbg_tx_bit_count, open);
     Iterm_draw: term_draw port map (clk, redraw, Sbusy, Splayer_x, Senemy_x, Sball_x, Sball_y, Sdata, Ssend);
-    Iplayer_x: bin_to_ascii port map ("0000001", Splayer_x);
-    Ienemy_x: bin_to_ascii port map ("0000001", Senemy_x);
+    Iplayer_x: bin_to_ascii port map ("0001101", Splayer_x);
+    Ienemy_x: bin_to_ascii port map ("0000011", Senemy_x);
     Iball_x: bin_to_ascii port map ("0000100", Sball_x);
     Iball_y: bin_to_ascii port map ("0000101", Sball_y);
 end Pong_arch;

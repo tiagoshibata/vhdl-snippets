@@ -22,11 +22,11 @@ begin
     process (clk)
     begin
         if load_rx = '1' then
-            Srx_timer_value <= "000000000000000010";
+            Srx_timer_value <= "000000101000101100";
         else
-            Srx_timer_value <= "000000000000000100";
+            Srx_timer_value <= "000001010001011000";
         end if;
     end process;
     rx_divider: timer port map (clk, '1', load_rx, Srx_timer_value, tick_rx);
-    tx_divider: timer port map (clk, '1', load_tx, "000000000000000100", tick_tx);
+    tx_divider: timer port map (clk, '1', load_tx, "000001010001011000", tick_tx);
 end ticker_arch;
