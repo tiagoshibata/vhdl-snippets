@@ -17,7 +17,7 @@ architecture term_draw_impl of term_draw is
     type term_state is (idle, sending);
     signal Sstate: term_state := idle;
     signal Sold_busy, Sshift_cycle: STD_LOGIC := '0';
-    signal Sdata: STD_LOGIC_VECTOR(287 downto 0) := (others => '0');  -- 32 bytes
+    signal Sdata: STD_LOGIC_VECTOR(287 downto 0) := (others => '0');  -- 36 bytes
 
     -- ASCII characters:
     constant ESC: STD_LOGIC_VECTOR(7 downto 0) := "00011011";  -- ESC = 1B = 00011011
