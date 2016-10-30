@@ -25,9 +25,9 @@ entity CommunicationModule_FD is port (
 ); end;
 
 architecture CommunicationModule_FD_arch of CommunicationModule_FD is
-    signal Sterm_tick_rx, Sold_send_term, Sold_nCD, SnRTS, Sold_nRTS, Sdo_send_modem, Sold_send_modem: STD_LOGIC;
+    signal Sterm_tick_rx, Sold_send_term, Sold_nCD, SnRTS, Sold_nRTS, Sdo_send_modem, Sold_send_modem: STD_LOGIC := '0';
     signal Sterm_dbg_rx_bit_count: STD_LOGIC_VECTOR(4 downto 0);
-    signal Sterm_received, Smodem_received: STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
+    signal Sterm_received, Smodem_received, Sterm_hex: STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
     signal Sterm_tx_byte_count_hex, Sterm_rx_byte_count_hex, Smodem_tx_byte_count_hex, Smodem_rx_byte_count_hex: STD_LOGIC_VECTOR(3 downto 0) := (others => '0');
 
     component Uart port (
@@ -64,34 +64,47 @@ architecture CommunicationModule_FD_arch of CommunicationModule_FD is
     		enable: in std_logic;
     		hex_output: out std_logic_vector(6 downto 0)
   	); end component;
+  	
+  	component register8 port (
+		clk, load: in STD_LOGIC;
+		data_in: in STD_LOGIC_VECTOR(7 downto 0);
+		data_out: out STD_LOGIC_VECTOR(7 downto 0)
+	); end component;
+	
 begin
     nDTR <= reset;
     nRTS <= SnRTS;
     data_received_modem <= Smodem_received;
 
-    ITermUart: Uart port map (clk, reset, rx_term, receive_term, send_term, tx_term, open, uart_busy_rx, data, Sterm_received, open, open, Sterm_tick_rx, open, open, Sterm_dbg_rx_bit_count, open);
-    IModem: Modem port map (clk, reset, Sdo_send_modem, data, open, Smodem_received, nDTR, SnRTS, TD, nCTS, nCD, RD, dbg_rx_bit_count, busy_rx);
-    IHexTerm1: hex7seg port map (Sterm_received(3 downto 0), '1', terminal_data_hex_1);
-    IHexTerm2: hex7seg port map (Sterm_received(7 downto 4), '1', terminal_data_hex_2);
+	IBuffer: register8 port map (clk, receive_term, Smodem_received, Sterm_hex);
+    ITermUart: Uart port map (clk, reset, rx_term, '1', send_term, tx_term, open, uart_busy_rx, data, Sterm_received, open, open, Sterm_tick_rx, open, open, Sterm_dbg_rx_bit_count, open);
+    IModem: Modem port map (clk, reset, Sdo_send_modem, Sterm_hex, open, Smodem_received, nDTR, SnRTS, TD, nCTS, nCD, RD, dbg_rx_bit_count, busy_rx);
+    IHexTerm1: hex7seg port map (Sterm_hex(3 downto 0), '1', terminal_data_hex_1);
+    IHexTerm2: hex7seg port map (Sterm_hex(7 downto 4), '1', terminal_data_hex_2);
     IHexModem1: hex7seg port map (Smodem_received(3 downto 0), '1', modem_data_hex_1);
     IHexModem2: hex7seg port map (Smodem_received(7 downto 4), '1', modem_data_hex_2);
 
-    process(clk)
+    process(clk) -- Stats counters
     begin
         if rising_edge(clk) then
-            if Sterm_tick_rx = '1' and Sterm_dbg_rx_bit_count = "00010" then
+			
+			-- Terminal received bytes
+            if Sterm_tick_rx = '1' and Sterm_dbg_rx_bit_count = "01010" then
                 Sterm_rx_byte_count_hex <= Sterm_rx_byte_count_hex + 1;
             end if;
-
+			
+			-- Terminal sent bytes
             if Sold_send_term = '0' and send_term = '1' then
                 Sterm_tx_byte_count_hex <= Sterm_tx_byte_count_hex + 1;
             end if;
-
-            if Sold_nCD = '0' and nCD = '1' then
+			
+			-- Modem received bytes
+            if Sold_nCD = '1' and nCD = '0' then
                 Smodem_rx_byte_count_hex <= Smodem_rx_byte_count_hex + 1;
             end if;
-
-            if Sold_nRTS = '0' and SnRTS = '1' then
+			
+			-- Modem sent bytes
+            if Sold_nRTS = '1' and SnRTS = '0' then
                 Smodem_tx_byte_count_hex <= Smodem_tx_byte_count_hex + 1;
             end if;
             
