@@ -39,11 +39,11 @@ begin
                 Sdata <= ESCSEQ & "00110010" & "01001010" &  -- clear screen (2J)
                     ESCSEQ & "00110001" & SEP & enemy_x & "01001000" &  -- move to enemy (enemy_x;0H)
                     BAR & BAR & BAR & BAR &
-                    ESCSEQ & ball_x & SEP & ball_y & "01001000" &  -- move to ball (ball_x;ball_yH)
+                    ESCSEQ & ball_y & SEP & ball_x & "01001000" &  -- move to ball (ball_x;ball_yH)
                     BALL &
                     ESCSEQ & "00110010" & "00110101" & SEP & player_x & "01001000" &  -- move to player (player_x;25H)
                     BAR & BAR & BAR & BAR;
-			    Sold_busy <= '0';
+                Sold_busy <= '0';
                 if redraw = '1' then
                     serial_send <= '1';
                     Sstate <= sending;
@@ -57,10 +57,10 @@ begin
                         serial_send <= '0';
                         Sstate <= idle;
                     else
-						if Sshift_cycle = '1'then
-							Sdata <= Sdata(279 downto 0) & "00000000";
-						end if;
-						Sshift_cycle <= not Sshift_cycle;
+            if Sshift_cycle = '1'then
+              Sdata <= Sdata(279 downto 0) & "00000000";
+            end if;
+            Sshift_cycle <= not Sshift_cycle;
                         serial_send <= '1';
                     end if;
                 else

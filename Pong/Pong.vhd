@@ -10,9 +10,10 @@ entity Pong is port (
 ); end;
 
 architecture Pong_arch of Pong is
-    signal Splayer_x, Senemy_x, Sball_x, Sball_y: STD_LOGIC_VECTOR(15 downto 0);
+    signal Splayer_x, Senemy_x, Sball_x_ascii, Sball_y_ascii: STD_LOGIC_VECTOR(15 downto 0);
+    signal Sball_x, Sball_y: STD_LOGIC_VECTOR(6 downto 0);
     signal Sdata: STD_LOGIC_VECTOR(7 downto 0);
-    signal Ssend, Sbusy: STD_LOGIC := '0';
+    signal Ssend, Sbusy, Stimer_slow, Stimer_fast: STD_LOGIC := '0';
 
     component Uart port (
         clk, reset, rx, recebe_dado, transmite_dado: in STD_LOGIC;
@@ -41,15 +42,31 @@ architecture Pong_arch of Pong is
         bin: in STD_LOGIC_VECTOR(6 downto 0);
         dec: out STD_LOGIC_VECTOR(15 downto 0)
     ); end component;
+
+    component timer port (
+        clk, enable, load: in STD_LOGIC;
+        data_in: in STD_LOGIC_VECTOR(17 downto 0);
+        pulse: out STD_LOGIC
+    ); end component;
+
+    component ball port (
+        clk, reset, tick: in std_logic;
+        ball_down: out std_logic;
+        x: out std_logic_vector(6 downto 0);
+        y: out std_logic_vector(6 downto 0)
+    ); end component;
 begin
     send <= Ssend;
     busy <= Sbusy;
     dbg_term_data <= Sdata;
 
     IUart: Uart port map (clk, '0', '1', '0', Ssend, tx, open, Sbusy, Sdata, open, open, open, open, open, open, dbg_tx_bit_count, open);
-    Iterm_draw: term_draw port map (clk, redraw, Sbusy, Splayer_x, Senemy_x, Sball_x, Sball_y, Sdata, Ssend);
+    Itimer_quick: timer port map (clk, redraw, '0', "110000000000000000", Stimer_fast);
+    Itimer_slow: timer port map (clk, Stimer_fast, '0', "000000000000100000", Stimer_slow);
+    Iterm_draw: term_draw port map (clk, Stimer_slow, Sbusy, Splayer_x, Senemy_x, Sball_x_ascii, Sball_y_ascii, Sdata, Ssend);
+    Iball: ball port map (clk, '0', Stimer_slow, open, Sball_x, Sball_y);
     Iplayer_x: bin_to_ascii port map ("0001101", Splayer_x);
     Ienemy_x: bin_to_ascii port map ("0000011", Senemy_x);
-    Iball_x: bin_to_ascii port map ("0000100", Sball_x);
-    Iball_y: bin_to_ascii port map ("0000101", Sball_y);
+    Iball_y: bin_to_ascii port map (Sball_y, Sball_y_ascii);
+    Iball_x: bin_to_ascii port map (Sball_x, Sball_x_ascii);
 end Pong_arch;
