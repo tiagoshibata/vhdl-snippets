@@ -11,9 +11,11 @@ entity Pong is port (
 
 architecture Pong_arch of Pong is
     signal Splayer_x, Senemy_x, Sball_x_ascii, Sball_y_ascii: STD_LOGIC_VECTOR(15 downto 0);
-    signal Sball_x, Sball_y: STD_LOGIC_VECTOR(6 downto 0);
-    signal Sdata: STD_LOGIC_VECTOR(7 downto 0);
+    signal Sball_x, Sball_y, Sp1, Sp2: STD_LOGIC_VECTOR(6 downto 0);
+    signal Sdata, Scomm: STD_LOGIC_VECTOR(7 downto 0);
     signal Ssend, Sbusy, Stimer_slow, Stimer_fast: STD_LOGIC := '0';
+    signal Sgoal, actSc1, actSc2: STD_LOGIC := '0';
+    signal Sscore1, Sscore2: STD_LOGIC_VECTOR(2 downto 0) := "000";
 
     component Uart port (
         clk, reset, rx, recebe_dado, transmite_dado: in STD_LOGIC;
@@ -42,7 +44,7 @@ architecture Pong_arch of Pong is
         bin: in STD_LOGIC_VECTOR(6 downto 0);
         dec: out STD_LOGIC_VECTOR(15 downto 0)
     ); end component;
-
+    
     component timer port (
         clk, enable, load: in STD_LOGIC;
         data_in: in STD_LOGIC_VECTOR(17 downto 0);
@@ -55,18 +57,50 @@ architecture Pong_arch of Pong is
         x: out std_logic_vector(6 downto 0);
         y: out std_logic_vector(6 downto 0)
     ); end component;
+    
+    component pad port (
+		clk, reset, tick: in STD_LOGIC;
+		command: in STD_LOGIC_VECTOR(7 downto 0);
+		x: out STD_LOGIC_VECTOR(6 downto 0)
+	); end component;
+	
+	component scorer port(
+		clk, tick: in STD_LOGIC;
+		ballx, px: in STD_LOGIC_VECTOR(6 downto 0);
+		goal: out STD_LOGIC
+	); end component;
+	
 begin
+	process(clk)
+	begin
+		if rising_edge(clk) then
+			if Sball_y = "0000001" then
+				actSc2 <= '1';
+			else
+				actSc2 <= '0';
+			end if;
+			if Sball_y = "0011000" then
+				actSc1 <= '1';
+			else
+				actSc1 <= '0';
+			end if;
+		end if;
+	end process;
     send <= Ssend;
     busy <= Sbusy;
     dbg_term_data <= Sdata;
 
-    IUart: Uart port map (clk, '0', '1', '0', Ssend, tx, open, Sbusy, Sdata, open, open, open, open, open, open, dbg_tx_bit_count, open);
+    IUart: Uart port map (clk, '0', '1', '0', Ssend, tx, open, Sbusy, Sdata, Scomm, open, open, open, open, open, dbg_tx_bit_count, open);
+    P1: pad port map (clk, Sgoal, Stimer_slow, Scomm, Sp1);
+    P2: pad port map (clk, Sgoal, Stimer_slow, Scomm, Sp2);
+    ScP1: scorer port map (clk, actSc1, Sball_x, Sp2, Sgoal);
+    ScP2: scorer port map (clk, actSc2, Sball_x, Sp1, Sgoal);
     Itimer_quick: timer port map (clk, redraw, '0', "110000000000000000", Stimer_fast);
     Itimer_slow: timer port map (clk, Stimer_fast, '0', "000000000000100000", Stimer_slow);
     Iterm_draw: term_draw port map (clk, Stimer_slow, Sbusy, Splayer_x, Senemy_x, Sball_x_ascii, Sball_y_ascii, Sdata, Ssend);
     Iball: ball port map (clk, '0', Stimer_slow, open, Sball_x, Sball_y);
-    Iplayer_x: bin_to_ascii port map ("0001101", Splayer_x);
-    Ienemy_x: bin_to_ascii port map ("0000011", Senemy_x);
+    Iplayer_x: bin_to_ascii port map (Sp1, Splayer_x);
+    Ienemy_x: bin_to_ascii port map (Sp2, Senemy_x);
     Iball_y: bin_to_ascii port map (Sball_y, Sball_y_ascii);
     Iball_x: bin_to_ascii port map (Sball_x, Sball_x_ascii);
 end Pong_arch;
