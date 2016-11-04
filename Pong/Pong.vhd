@@ -79,21 +79,15 @@ begin
 			else
 				actSc2 <= '0';
 			end if;
-			if Sball_y = "0011000" then
-				actSc1 <= '1';
-			else
-				actSc1 <= '0';
-			end if;
 		end if;
 	end process;
     send <= Ssend;
     busy <= Sbusy;
     dbg_term_data <= Sdata;
 
-    IUart: Uart port map (clk, '0', '1', '0', Ssend, tx, open, Sbusy, Sdata, Scomm, open, open, open, open, open, dbg_tx_bit_count, open);
-    P1: pad port map (clk, Sgoal, Stimer_slow, Scomm, Sp1);
-    P2: pad port map (clk, Sgoal, Stimer_slow, Scomm, Sp2);
-    ScP1: scorer port map (clk, actSc1, Sball_x, Sp2, Sgoal);
+    IUart: Uart port map (clk, '0', '1', '1', Ssend, tx, open, Sbusy, Sdata, Scomm, open, open, open, open, open, dbg_tx_bit_count, open);
+    P1: pad port map (clk, Sgoal, '1', Scomm, Sp1);
+    P2: pad port map (clk, Sgoal, '1', Scomm, Sp2);
     ScP2: scorer port map (clk, actSc2, Sball_x, Sp1, Sgoal);
     Itimer_quick: timer port map (clk, redraw, '0', "110000000000000000", Stimer_fast);
     Itimer_slow: timer port map (clk, Stimer_fast, '0', "000000000000100000", Stimer_slow);
