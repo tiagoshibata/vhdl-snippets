@@ -20,12 +20,12 @@ begin
             if reset = '1' then
                 Sx <= "0100110";
             elsif tick = '1' then
-                if command = "01000000" then -- Right arrow
+                if command = "01100100" then -- Right arrow (d)
                     if Sx /= "1010000" then -- Right border
                         Sx <= Sx + '1';
                     end if;
                 else
-					if command = "00111101" then -- Left arrow
+					if command = "01100001" then -- Left arrow (a)
 						if Sx /= "0000001" then -- Left border
 							Sx <= Sx - '1';
 						end if;

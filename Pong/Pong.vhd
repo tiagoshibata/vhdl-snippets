@@ -14,7 +14,7 @@ architecture Pong_arch of Pong is
     signal Sball_x, Sball_y, Sp1, Sp2: STD_LOGIC_VECTOR(6 downto 0);
     signal Sdata, Scomm: STD_LOGIC_VECTOR(7 downto 0);
     signal Ssend, Sbusy, Stimer_slow, Stimer_fast: STD_LOGIC := '0';
-    signal Sgoal, actSc1, actSc2: STD_LOGIC := '0';
+    signal Sgoal, actSc1, actSc2, Smove: STD_LOGIC := '0';
     signal Sscore1, Sscore2: STD_LOGIC_VECTOR(2 downto 0) := "000";
 
     component Uart port (
@@ -85,9 +85,9 @@ begin
     busy <= Sbusy;
     dbg_term_data <= Sdata;
 
-    IUart: Uart port map (clk, '0', '1', '1', Ssend, tx, open, Sbusy, Sdata, Scomm, open, open, open, open, open, dbg_tx_bit_count, open);
-    P1: pad port map (clk, Sgoal, '1', Scomm, Sp1);
-    P2: pad port map (clk, Sgoal, '1', Scomm, Sp2);
+    IUart: Uart port map (clk, '0', '1', '1', Ssend, tx, Smove, Sbusy, Sdata, Scomm, open, open, open, open, open, dbg_tx_bit_count, open);
+    P1: pad port map (clk, Sgoal, Smove, Scomm, Sp1);
+    P2: pad port map (clk, Sgoal, Smove, Scomm, Sp2);
     ScP2: scorer port map (clk, actSc2, Sball_x, Sp1, Sgoal);
     Itimer_quick: timer port map (clk, redraw, '0', "110000000000000000", Stimer_fast);
     Itimer_slow: timer port map (clk, Stimer_fast, '0', "000000000000100000", Stimer_slow);
