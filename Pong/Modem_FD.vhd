@@ -45,7 +45,7 @@ architecture Modem_FD_arch of Modem_FD is
 
     component ticker port (
         clk, load_rx, load_tx: in STD_LOGIC;
-        modulo: in STD_LOGIC_VECTOR(17 downto 0);
+        modulo: in STD_LOGIC_VECTOR(18 downto 0);
         tick_rx, tick_tx: out STD_LOGIC
     ); end component;
 begin
@@ -55,5 +55,5 @@ begin
     IReceptor: Receptor port map (clk, RD, nCD, Stick_rx, Sbusy_rx, recebido, Sdado_receptor, open, open);
     ITransmissor: Transmissor port map (clk, enviar, Stick_tx, dado, TD, busy_tx, open, open);
     OutputBuffer: Register8 port map (clk, Sended_receiving, Sdado_receptor, Sdado_recebido);
-    Iticker: ticker port map (clk, not Sbusy_rx, enviar, "101000101100001010", Stick_rx, Stick_tx);
+    Iticker: ticker port map (clk, not Sbusy_rx, enviar, "1101110111110010001", Stick_rx, Stick_tx);
 end Modem_FD_arch;

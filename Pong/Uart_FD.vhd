@@ -16,6 +16,8 @@ entity Uart_FD is port (
 ); end;
 
 architecture Uart_FD_arch of Uart_FD is
+    constant ZERO: STD_LOGIC_VECTOR(18 downto 0) := (others => '0');
+
     signal Stick_rx, Stick_tx, Shas_rx_data, Sbusy_rx, Sbusy_tx, Sstart_tx: STD_LOGIC;
     signal Sdata_rx: STD_LOGIC_VECTOR(7 downto 0);
     signal Sdbg_rx_bit_count: STD_LOGIC_VECTOR(4 downto 0);
@@ -44,7 +46,7 @@ architecture Uart_FD_arch of Uart_FD is
 
     component ticker port (
         clk, load_rx, load_tx: in STD_LOGIC;
-        modulo: in STD_LOGIC_VECTOR(17 downto 0);
+        modulo: in STD_LOGIC_VECTOR(18 downto 0);
         tick_rx, tick_tx: out STD_LOGIC
     ); end component;
 
@@ -64,5 +66,5 @@ begin
     data_rx <= Sdata_rx;
     IReceptor: Receptor port map (clk, serial_rx, reset, Stick_rx, Sbusy_rx, Shas_rx_data, Sdata_rx, Sdbg_rx_bit_count, sample);
     ITransmissor: Transmissor port map (clk, do_send, Stick_tx, data_tx, serial_tx, Sbusy_tx, tx_bit_count, Sstart_tx);
-    Iticker: ticker port map (clk, not Sbusy_rx, Sstart_tx, "000001010001011000", Stick_rx, Stick_tx);
+    Iticker: ticker port map (clk, not Sbusy_rx, Sstart_tx, ZERO + "1010001011000", Stick_rx, Stick_tx);
 end Uart_FD_arch;

@@ -56,7 +56,7 @@ architecture Pong_arch of Pong is
 
     component timer port (
         clk, enable, load: in STD_LOGIC;
-        data_in: in STD_LOGIC_VECTOR(17 downto 0);
+        data_in: in STD_LOGIC_VECTOR(18 downto 0);
         pulse: out STD_LOGIC
     ); end component;
 
@@ -122,8 +122,8 @@ begin
     P1: pad port map (clk, Sgoal, Smove, Scomm, Sp1);
     P2: pad port map (clk, Sgoal, Smove, Scomm, Sp2);
     ScP2: scorer port map (clk, Sball_x, Sball_y, Sp1, Sgoal);
-    Itimer_quick: timer port map (clk, redraw, '0', "110000000000000000", Stimer_fast);
-    Itimer_slow: timer port map (clk, Stimer_fast, '0', "000000000000100000", Stimer_slow);
+    Itimer_quick: timer port map (clk, redraw, '0', "0110000000000000000", Stimer_fast);
+    Itimer_slow: timer port map (clk, Stimer_fast, '0', "0000000000000100000", Stimer_slow);
     Iterm_draw: term_draw port map (clk, Stimer_slow, Sbusy, Splayer_x, Senemy_x, Sball_x_ascii, Sball_y_ascii, Sdata, Ssend);
     Iball: ball port map (clk, '0', Stimer_slow, open, Sball_x, Sball_y);
     buffsaida: register8 port map (clk, Stimer_slow, Scomm, Sbuff);
