@@ -3,7 +3,7 @@ use IEEE.std_logic_1164.all;
 use IEEE.std_logic_unsigned.all;
 
 entity Pong is port (
-    clk, redraw: in STD_LOGIC;
+    clk, redraw, rx: in STD_LOGIC;
     tx, send, busy: out STD_LOGIC;
     dbg_term_data: out STD_LOGIC_VECTOR(7 downto 0);
     dbg_tx_bit_count: out STD_LOGIC_VECTOR(4 downto 0);
@@ -11,17 +11,19 @@ entity Pong is port (
     nDTR, nRTS, TD: out STD_LOGIC;
     nCTS, nCD, RD: in STD_LOGIC;
 
-    modem_busy_tx: out STD_LOGIC
+    modem_busy_tx: out STD_LOGIC;
+    score1: out STD_LOGIC_VECTOR(6 downto 0)
 ); end;
 
 architecture Pong_arch of Pong is
     signal Splayer_x, Senemy_x, Sball_x_ascii, Sball_y_ascii: STD_LOGIC_VECTOR(15 downto 0);
     signal Sball_x, Sball_y, Sp1, Sp2: STD_LOGIC_VECTOR(6 downto 0);
-    signal Sdata, Scomm: STD_LOGIC_VECTOR(7 downto 0);
+    signal ballxbuffer, pxbuffer: STD_LOGIC_VECTOR(7 downto 0);
+    signal Sdata, Scomm, Sbuff: STD_LOGIC_VECTOR(7 downto 0);
     signal Ssend, Sbusy, Stimer_slow, Stimer_fast: STD_LOGIC := '0';
-    signal Sgoal, Smove: STD_LOGIC := '0';
+    signal Sgoal, actSc1, actSc2, Smove: STD_LOGIC := '0';
     signal Ssend_modem: STD_LOGIC := '1';
-    signal Sscore1, Sscore2: STD_LOGIC_VECTOR(2 downto 0) := "000";
+    signal Sscore1, Sscore2: STD_LOGIC_VECTOR(3 downto 0) := "0000";
     signal Swait: STD_LOGIC := '0';
 
     component Uart port (
@@ -77,6 +79,18 @@ architecture Pong_arch of Pong is
         goal: out STD_LOGIC
     ); end component;
 
+    component register8 port (
+        clk, load: in STD_LOGIC;
+        data_in: in STD_LOGIC_VECTOR(7 downto 0);
+        data_out: out STD_LOGIC_VECTOR(7 downto 0)
+    ); end component;
+
+    component hex7seg port (
+        x : in std_logic_vector(3 downto 0);
+        enable : in std_logic;
+        hex_output : out std_logic_vector(6 downto 0)
+    ); end component;
+
     component Modem port (
         clk, liga, enviar: in STD_LOGIC;
         dado: in STD_LOGIC_VECTOR(7 downto 0);
@@ -104,7 +118,7 @@ begin
     busy <= Sbusy;
     dbg_term_data <= Sdata;
 
-    IUart: Uart port map (clk, '0', '1', Ssend, tx, Smove, Sbusy, Sdata, Scomm, open, open, open, open, open, dbg_tx_bit_count, open);
+    IUart: Uart port map (clk, '0', rx, Ssend, tx, Smove, Sbusy, Sdata, Scomm, open, open, open, open, open, dbg_tx_bit_count, open);
     P1: pad port map (clk, Sgoal, Smove, Scomm, Sp1);
     P2: pad port map (clk, Sgoal, Smove, Scomm, Sp2);
     ScP2: scorer port map (clk, Sball_x, Sball_y, Sp1, Sgoal);
@@ -112,6 +126,10 @@ begin
     Itimer_slow: timer port map (clk, Stimer_fast, '0', "000000000000100000", Stimer_slow);
     Iterm_draw: term_draw port map (clk, Stimer_slow, Sbusy, Splayer_x, Senemy_x, Sball_x_ascii, Sball_y_ascii, Sdata, Ssend);
     Iball: ball port map (clk, '0', Stimer_slow, open, Sball_x, Sball_y);
+    buffsaida: register8 port map (clk, Stimer_slow, Scomm, Sbuff);
+    bufdbg1: register8 port map (clk, '1', "0" & Sball_x, ballxbuffer);
+    bufdbg2: register8 port map (clk, '1', "0" & Sp2, pxbuffer);
+    ScoreHex: hex7seg port map (Sscore1, '1', score1);
     Iplayer_x: bin_to_ascii port map (Sp1, Splayer_x);
     Ienemy_x: bin_to_ascii port map (Sp2, Senemy_x);
     Iball_y: bin_to_ascii port map (Sball_y, Sball_y_ascii);

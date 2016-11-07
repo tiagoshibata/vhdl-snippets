@@ -24,7 +24,7 @@ architecture term_draw_impl of term_draw is
     constant ESCSEQ: STD_LOGIC_VECTOR(15 downto 0) := ESC & "01011011";  -- Escape sequence = ESC & "["
     constant SEP: STD_LOGIC_VECTOR(7 downto 0) := "00111011";  -- ; (separator)
     constant BAR: STD_LOGIC_VECTOR(7 downto 0) := "00111101";  -- -
-    constant BALL: STD_LOGIC_VECTOR(7 downto 0) := "01000000";  -- @
+    constant BALL: STD_LOGIC_VECTOR(7 downto 0) := "01101111";  -- o
 begin
     data <= Sdata(287 downto 280);
 

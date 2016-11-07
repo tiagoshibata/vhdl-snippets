@@ -61,7 +61,6 @@ begin
     busy_rx <= Sbusy_rx;
     busy_tx <= Sbusy_tx;
     dbg_rx_bit_count <= Sdbg_rx_bit_count;
-
     data_rx <= Sdata_rx;
     IReceptor: Receptor port map (clk, serial_rx, reset, Stick_rx, Sbusy_rx, Shas_rx_data, Sdata_rx, Sdbg_rx_bit_count, sample);
     ITransmissor: Transmissor port map (clk, do_send, Stick_tx, data_tx, serial_tx, Sbusy_tx, tx_bit_count, Sstart_tx);
