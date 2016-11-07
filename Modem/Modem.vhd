@@ -25,7 +25,7 @@ architecture Modem_arch of Modem is
     component Modem_UC port (
         clk, send, ready, nCTS: in STD_LOGIC;
         nRTS, do_send_next: out STD_LOGIC
-	); end component;
+	  ); end component;
 
     component Modem_FD port (
         -- external interface

@@ -43,8 +43,9 @@ architecture Uart_FD_arch of Uart_FD is
     ); end component;
 
     component ticker port (
-        clk, load_rx, load_tx: in std_logic;
-        tick_rx, tick_tx: out std_logic
+        clk, load_rx, load_tx: in STD_LOGIC;
+        modulo: in STD_LOGIC_VECTOR(17 downto 0);
+        tick_rx, tick_tx: out STD_LOGIC
     ); end component;
 
     component register8 port (
@@ -64,5 +65,5 @@ begin
     data_rx <= Sdata_rx;
     IReceptor: Receptor port map (clk, serial_rx, reset, Stick_rx, Sbusy_rx, Shas_rx_data, Sdata_rx, Sdbg_rx_bit_count, sample);
     ITransmissor: Transmissor port map (clk, do_send, Stick_tx, data_tx, serial_tx, Sbusy_tx, tx_bit_count, Sstart_tx);
-    Iticker: ticker port map (clk, not Sbusy_rx, Sstart_tx, Stick_rx, Stick_tx);
+    Iticker: ticker port map (clk, not Sbusy_rx, Sstart_tx, "000001010001011000", Stick_rx, Stick_tx);
 end Uart_FD_arch;
