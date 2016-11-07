@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 
 entity Uart_UC is port (
-    clk, send, new_rx_data, recebe_dado, busy_tx: in STD_LOGIC;
+    clk, send, new_rx_data, busy_tx: in STD_LOGIC;
     pulse_send_next, has_rx_data: out STD_LOGIC := '0'
 ); end;
 
@@ -27,8 +27,7 @@ begin
 
             if new_rx_data = '1' and has_data = '0' then
                 has_rx_data <= '1';
-            end if;
-            if recebe_dado = '1' then
+            else
                 has_rx_data <= '0';
             end if;
 

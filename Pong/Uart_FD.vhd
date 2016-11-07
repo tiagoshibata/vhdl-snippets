@@ -3,7 +3,7 @@ use IEEE.std_logic_1164.all;
 use IEEE.std_logic_unsigned.all;
 
 entity Uart_FD is port (
-    clk, reset, serial_rx, do_send, receive: in STD_LOGIC;
+    clk, reset, serial_rx, do_send: in STD_LOGIC;
     serial_tx, busy_tx, new_rx_data: out STD_LOGIC;
     data_tx: in STD_LOGIC_VECTOR(7 downto 0);
     data_rx: out STD_LOGIC_VECTOR(7 downto 0);

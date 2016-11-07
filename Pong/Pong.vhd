@@ -18,7 +18,7 @@ architecture Pong_arch of Pong is
     signal Sscore1, Sscore2: STD_LOGIC_VECTOR(2 downto 0) := "000";
 
     component Uart port (
-        clk, reset, rx, recebe_dado, transmite_dado: in STD_LOGIC;
+        clk, reset, rx, transmite_dado: in STD_LOGIC;
         tx, tem_dado_rec, transm_andamento: out STD_LOGIC;
         dado_trans: in STD_LOGIC_VECTOR(7 downto 0);
         dado_rec: out STD_LOGIC_VECTOR(7 downto 0);
@@ -75,7 +75,7 @@ begin
     busy <= Sbusy;
     dbg_term_data <= Sdata;
 
-    IUart: Uart port map (clk, '0', '1', '1', Ssend, tx, Smove, Sbusy, Sdata, Scomm, open, open, open, open, open, dbg_tx_bit_count, open);
+    IUart: Uart port map (clk, '0', '1', Ssend, tx, Smove, Sbusy, Sdata, Scomm, open, open, open, open, open, dbg_tx_bit_count, open);
     P1: pad port map (clk, Sgoal, Smove, Scomm, Sp1);
     P2: pad port map (clk, Sgoal, Smove, Scomm, Sp2);
     ScP2: scorer port map (clk, Sball_x, Sball_y, Sp1, Sgoal);
