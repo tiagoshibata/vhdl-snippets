@@ -45,7 +45,7 @@ architecture Uart_FD_arch of Uart_FD is
     component ticker port (
         clk, load_rx, load_tx: in std_logic;
         tick_rx, tick_tx: out std_logic
-  ); end component;
+    ); end component;
 
     component register8 port (
         clk, load: in STD_LOGIC;
