@@ -15,11 +15,11 @@ begin
     begin
         if rising_edge(clk) then
             if tick = '1' then
-				if (ballx < px or ballx > px + "0000100") then
-					goal <= '1';
-				else
-					goal <= '0';
-				end if;
+                if (ballx < px - "0000010" or ballx > px + "0000110") then
+                    goal <= '1';
+                else
+                    goal <= '0';
+                end if;
             end if;
         end if;
     end process;

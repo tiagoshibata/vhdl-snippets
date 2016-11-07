@@ -45,7 +45,7 @@ architecture Uart_FD_arch of Uart_FD is
     component ticker port (
         clk, load_rx, load_tx: in std_logic;
         tick_rx, tick_tx: out std_logic
-	); end component;
+    ); end component;
 
     component register8 port (
         clk, load: in STD_LOGIC;
@@ -61,13 +61,13 @@ begin
     busy_tx <= Sbusy_tx;
     dbg_rx_bit_count <= Sdbg_rx_bit_count;
     process (clk)
-	begin
-		if Sdbg_rx_bit_count = "00000" then
-			Sload_ticker <= '1';
-		else
-			Sload_ticker <= '0';
-		end if;
-	end process;
+    begin
+        if Sdbg_rx_bit_count = "00000" then
+            Sload_ticker <= '1';
+        else
+            Sload_ticker <= '0';
+        end if;
+    end process;
     --IRxBuffer: register8 port map (clk, receive, Sdata_rx, data_rx);
     data_rx <= Sdata_rx;
     IReceptor: Receptor port map (clk, serial_rx, reset, Stick_rx, Sbusy_rx, Shas_rx_data, Sdata_rx, Sdbg_rx_bit_count, sample);
