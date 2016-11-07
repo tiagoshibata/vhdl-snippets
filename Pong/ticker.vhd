@@ -21,10 +21,12 @@ begin
     -- 50MHz / 9600 bps = 5208 cycles = 1010001011000 binary
     process (clk)
     begin
-        if load_rx = '1' then
-            Srx_timer_value <= "000000101000101100";
-        else
-            Srx_timer_value <= "000001010001011000";
+        if rising_edge(clk) then
+            if load_rx = '1' then
+                Srx_modulo <= "0" & modulo(17 downto 1);
+            else
+                Srx_modulo <= modulo;
+            end if;
         end if;
     end process;
     rx_divider: timer port map (clk, '1', load_rx, Srx_timer_value, tick_rx);
