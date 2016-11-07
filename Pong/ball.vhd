@@ -13,8 +13,9 @@ entity ball is port (
 architecture ball_impl of ball is
     signal Sx: STD_LOGIC_VECTOR(6 downto 0) := "0101000";
     signal Sy: STD_LOGIC_VECTOR(6 downto 0) := "0001100";
-    signal Sball_down, Sball_right: STD_LOGIC;
+    signal Sball_down, Sball_right: STD_LOGIC := '0';
 begin
+    ball_down <= Sball_down;
     x <= Sx;
     y <= Sy;
     process(clk)

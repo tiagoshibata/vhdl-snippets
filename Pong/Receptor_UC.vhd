@@ -29,10 +29,10 @@ begin
                     Sbusy_rx <= '1';
                 end if;
             else
-				Sbusy_rx <= '0';
-				has_rx_data <= '0';
+        Sbusy_rx <= '0';
+        has_rx_data <= '0';
             end if;
         end if;
-		busy_rx <= Sbusy_rx;
+    busy_rx <= Sbusy_rx;
     end process;
 end Receptor_UC_arch;

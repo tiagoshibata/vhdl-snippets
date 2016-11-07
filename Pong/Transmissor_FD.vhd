@@ -12,12 +12,12 @@ entity Transmissor_FD is port (
 architecture Transmissor_FD_arch of Transmissor_FD is
     signal Sparity: STD_LOGIC;
 
-	component shifter port (
+  component shifter port (
         clk, enable, serial_in, load: in STD_LOGIC;
         serial_out: out STD_LOGIC;
         data_in: in STD_LOGIC_VECTOR(10 downto 0);
         data_out: out STD_LOGIC_VECTOR(10 downto 0)
-	); end component;
+  ); end component;
 
     component counter port (
         clk, reset, count: in std_logic;

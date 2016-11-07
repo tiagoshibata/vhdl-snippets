@@ -14,7 +14,7 @@ architecture Pong_arch of Pong is
     signal Sball_x, Sball_y, Sp1, Sp2: STD_LOGIC_VECTOR(6 downto 0);
     signal Sdata, Scomm: STD_LOGIC_VECTOR(7 downto 0);
     signal Ssend, Sbusy, Stimer_slow, Stimer_fast: STD_LOGIC := '0';
-    signal Sgoal, actSc1, actSc2, Smove: STD_LOGIC := '0';
+    signal Sgoal, Smove: STD_LOGIC := '0';
     signal Sscore1, Sscore2: STD_LOGIC_VECTOR(2 downto 0) := "000";
 
     component Uart port (
@@ -44,7 +44,7 @@ architecture Pong_arch of Pong is
         bin: in STD_LOGIC_VECTOR(6 downto 0);
         dec: out STD_LOGIC_VECTOR(15 downto 0)
     ); end component;
-    
+
     component timer port (
         clk, enable, load: in STD_LOGIC;
         data_in: in STD_LOGIC_VECTOR(17 downto 0);
@@ -57,30 +57,20 @@ architecture Pong_arch of Pong is
         x: out std_logic_vector(6 downto 0);
         y: out std_logic_vector(6 downto 0)
     ); end component;
-    
+
     component pad port (
-		clk, reset, tick: in STD_LOGIC;
-		command: in STD_LOGIC_VECTOR(7 downto 0);
-		x: out STD_LOGIC_VECTOR(6 downto 0)
-	); end component;
-	
-	component scorer port(
-		clk, tick: in STD_LOGIC;
-		ballx, px: in STD_LOGIC_VECTOR(6 downto 0);
-		goal: out STD_LOGIC
-	); end component;
-	
+    clk, reset, tick: in STD_LOGIC;
+    command: in STD_LOGIC_VECTOR(7 downto 0);
+    x: out STD_LOGIC_VECTOR(6 downto 0)
+  ); end component;
+
+  component scorer port(
+      clk: in STD_LOGIC;
+      ball_x, ball_y, player_x: in STD_LOGIC_VECTOR(6 downto 0);
+      goal: out STD_LOGIC
+  ); end component;
+
 begin
-	process(clk)
-	begin
-		if rising_edge(clk) then
-			if Sball_y = "0000001" then
-				actSc2 <= '1';
-			else
-				actSc2 <= '0';
-			end if;
-		end if;
-	end process;
     send <= Ssend;
     busy <= Sbusy;
     dbg_term_data <= Sdata;
@@ -88,7 +78,7 @@ begin
     IUart: Uart port map (clk, '0', '1', '1', Ssend, tx, Smove, Sbusy, Sdata, Scomm, open, open, open, open, open, dbg_tx_bit_count, open);
     P1: pad port map (clk, Sgoal, Smove, Scomm, Sp1);
     P2: pad port map (clk, Sgoal, Smove, Scomm, Sp2);
-    ScP2: scorer port map (clk, actSc2, Sball_x, Sp1, Sgoal);
+    ScP2: scorer port map (clk, Sball_x, Sball_y, Sp1, Sgoal);
     Itimer_quick: timer port map (clk, redraw, '0', "110000000000000000", Stimer_fast);
     Itimer_slow: timer port map (clk, Stimer_fast, '0', "000000000000100000", Stimer_slow);
     Iterm_draw: term_draw port map (clk, Stimer_slow, Sbusy, Splayer_x, Senemy_x, Sball_x_ascii, Sball_y_ascii, Sdata, Ssend);

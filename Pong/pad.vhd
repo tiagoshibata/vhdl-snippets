@@ -25,11 +25,11 @@ begin
                         Sx <= Sx + '1';
                     end if;
                 else
-					if command = "01100001" then -- Left arrow (a)
-						if Sx /= "0000001" then -- Left border
-							Sx <= Sx - '1';
-						end if;
-					end if;
+          if command = "01100001" then -- Left arrow (a)
+            if Sx /= "0000001" then -- Left border
+              Sx <= Sx - '1';
+            end if;
+          end if;
                 end if;
             end if;
         end if;

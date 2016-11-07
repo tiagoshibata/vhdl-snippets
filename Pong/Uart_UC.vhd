@@ -7,7 +7,7 @@ entity Uart_UC is port (
 ); end;
 
 architecture Uart_UC_arch of Uart_UC is
-	signal has_data, last_send, send_border: STD_LOGIC := '0';
+  signal has_data, last_send, send_border: STD_LOGIC := '0';
 begin
     process (clk)
     begin

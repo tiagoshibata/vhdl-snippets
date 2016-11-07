@@ -32,7 +32,7 @@ architecture Uart_arch of Uart is
         tick_rx, tick_tx: out std_logic;
         sample: out std_logic;
         tx_bit_count: out STD_LOGIC_VECTOR(4 downto 0);
-		busy_rx: out std_logic
+    busy_rx: out std_logic
     ); end component;
 begin
     transm_andamento <= Sbusy_tx;
