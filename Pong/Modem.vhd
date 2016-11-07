@@ -23,7 +23,7 @@ architecture Modem_arch of Modem is
 
     component Modem_UC port (
         clk, send, busy_tx, nCTS: in STD_LOGIC;
-        nRTS, do_send_next, copy_busy_tx: out STD_LOGIC
+        nRTS, do_send_next: out STD_LOGIC
     ); end component;
 
     component Modem_FD port (
@@ -41,8 +41,8 @@ architecture Modem_arch of Modem is
         dbg_rx_bit_count: out STD_LOGIC_VECTOR(4 downto 0)
     ); end component;
 begin
-    -- busy_tx <= Sbusy_tx;
+    busy_tx <= Sbusy_tx;
 
-    IModem_UC: Modem_UC port map (clk, enviar, Sbusy_tx, nCTS, nRTS, do_send_next, busy_tx);
+    IModem_UC: Modem_UC port map (clk, enviar, Sbusy_tx, nCTS, nRTS, do_send_next);
     IModem_FD: Modem_FD port map (clk, liga, do_send_next, dado, recebido, Sbusy_tx, dado_recebido, nDTR, TD, nCD, RD, dbg_rx_bit_count);
 end Modem_arch;

@@ -3,7 +3,7 @@ use IEEE.std_logic_1164.all;
 
 entity Modem_UC is port (
     clk, send, busy_tx, nCTS: in STD_LOGIC;
-    nRTS, do_send_next, copy_busy_tx: out STD_LOGIC
+    nRTS, do_send_next: out STD_LOGIC
 ); end;
 
 architecture Modem_UC_arch of Modem_UC is
@@ -14,7 +14,6 @@ architecture Modem_UC_arch of Modem_UC is
 begin
     nRTS <= SnRTS;
     do_send_next <= Sdo_send_next;
-    copy_busy_tx <= busy_tx;
 
     process (clk)
     begin
