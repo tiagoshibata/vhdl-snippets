@@ -8,6 +8,7 @@ entity Modem is port (
     dado: in STD_LOGIC_VECTOR(7 downto 0);
     recebido: out STD_LOGIC;
     dado_recebido: out STD_LOGIC_VECTOR(7 downto 0);
+    busy_tx: out STD_LOGIC;
 
     -- modem interface
     nDTR, nRTS, TD: out STD_LOGIC;
@@ -18,18 +19,18 @@ entity Modem is port (
 ); end;
 
 architecture Modem_arch of Modem is
-    signal enviado, do_send_next: STD_LOGIC;
+    signal Sbusy_tx, do_send_next: STD_LOGIC;
 
     component Modem_UC port (
-        clk, send, ready, nCTS: in STD_LOGIC;
-        nRTS, do_send_next: out STD_LOGIC
-	  ); end component;
+        clk, send, busy_tx, nCTS: in STD_LOGIC;
+        nRTS, do_send_next, copy_busy_tx: out STD_LOGIC
+    ); end component;
 
     component Modem_FD port (
         -- external interface
         clk, liga, enviar: in STD_LOGIC;
         dado: in  STD_LOGIC_VECTOR(7 downto 0);
-        recebido, enviado: out STD_LOGIC;
+        recebido, busy_tx: out STD_LOGIC;
         dado_recebido: out STD_LOGIC_VECTOR(7 downto 0);
 
         -- modem interface
@@ -38,9 +39,10 @@ architecture Modem_arch of Modem is
 
         -- debug
         dbg_rx_bit_count: out STD_LOGIC_VECTOR(4 downto 0)
-); end component;
+    ); end component;
 begin
-    IModem_UC: Modem_UC port map (clk, enviar, enviado, nCTS, nRTS, do_send_next);
-    IModem_FD: Modem_FD port map (clk, liga, do_send_next, dado, recebido, enviado,
-		    dado_recebido, nDTR, TD, nCD, RD, dbg_rx_bit_count);
+    -- busy_tx <= Sbusy_tx;
+
+    IModem_UC: Modem_UC port map (clk, enviar, Sbusy_tx, nCTS, nRTS, do_send_next, busy_tx);
+    IModem_FD: Modem_FD port map (clk, liga, do_send_next, dado, recebido, Sbusy_tx, dado_recebido, nDTR, TD, nCD, RD, dbg_rx_bit_count);
 end Modem_arch;

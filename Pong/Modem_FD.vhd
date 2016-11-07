@@ -6,7 +6,7 @@ entity Modem_FD is port (
     -- external interface
     clk, liga, enviar: in STD_LOGIC;
     dado: in  STD_LOGIC_VECTOR(7 downto 0);
-    recebido, enviado: out STD_LOGIC;
+    recebido, busy_tx: out STD_LOGIC;
     dado_recebido: out STD_LOGIC_VECTOR(7 downto 0);
 
     -- modem interface
@@ -52,7 +52,7 @@ begin
     dado_recebido <= Sdado_recebido;
 
     IReceptor: Receptor port map (clk, RD, nCD, Stick_rx, Sbusy_rx, recebido, Sdado_receptor, open, open);
-    ITransmissor: Transmissor port map (clk, enviar, Stick_tx, dado, TD, open, open, open);
+    ITransmissor: Transmissor port map (clk, enviar, Stick_tx, dado, TD, busy_tx, open, open);
     OutputBuffer: Register8 port map (clk, Sended_receiving, Sdado_receptor, Sdado_recebido);
     Iticker: ticker port map (clk, not Sbusy_rx, enviar, Stick_rx, Stick_tx);
 end Modem_FD_arch;

@@ -2,18 +2,19 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 
 entity Modem_UC is port (
-    clk, send, ready, nCTS: in STD_LOGIC;
-    nRTS, do_send_next: out STD_LOGIC
+    clk, send, busy_tx, nCTS: in STD_LOGIC;
+    nRTS, do_send_next, copy_busy_tx: out STD_LOGIC
 ); end;
 
 architecture Modem_UC_arch of Modem_UC is
-    type modem_states is (IDLE, WAITING_CTS, SENDING);
+    type modem_states is (IDLE, WAITING_CTS, INITIALIZING, SENDING);
     signal state: modem_states := IDLE;
     signal SnRTS: STD_LOGIC := '1';
     signal Sdo_send_next: STD_LOGIC := '0';
 begin
     nRTS <= SnRTS;
     do_send_next <= Sdo_send_next;
+    copy_busy_tx <= busy_tx;
 
     process (clk)
     begin
@@ -29,12 +30,15 @@ begin
                 SnRTS <= '0';
                 if nCTS = '0' then
                     Sdo_send_next <= '1';
-                    state <= SENDING;
+                    state <= INITIALIZING;
                 end if;
 
-                when SENDING =>
+                when INITIALIZING =>
                 Sdo_send_next <= '0';
-                if ready = '1' then
+                state <= SENDING;
+
+                when SENDING =>
+                if busy_tx = '0' then
                     state <= IDLE;
                 end if;
             end case;
