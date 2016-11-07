@@ -49,12 +49,6 @@ architecture Uart_FD_arch of Uart_FD is
         modulo: in STD_LOGIC_VECTOR(18 downto 0);
         tick_rx, tick_tx: out STD_LOGIC
     ); end component;
-
-    component register8 port (
-        clk, load: in STD_LOGIC;
-        data_in: in STD_LOGIC_VECTOR(7 downto 0);
-        data_out: out STD_LOGIC_VECTOR(7 downto 0)
-    ); end component;
 begin
     new_rx_data <= Shas_rx_data;
     dbg_data_rx <= Sdata_rx;

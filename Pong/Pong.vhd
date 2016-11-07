@@ -3,7 +3,7 @@ use IEEE.std_logic_1164.all;
 use IEEE.std_logic_unsigned.all;
 
 entity Pong is port (
-    clk, redraw, rx: in STD_LOGIC;
+    clk, rx, is_client: in STD_LOGIC;
     tx, send, busy: out STD_LOGIC;
     dbg_term_data: out STD_LOGIC_VECTOR(7 downto 0);
     dbg_tx_bit_count: out STD_LOGIC_VECTOR(4 downto 0);
@@ -16,15 +16,15 @@ entity Pong is port (
 ); end;
 
 architecture Pong_arch of Pong is
-    signal Splayer_x, Senemy_x, Sball_x_ascii, Sball_y_ascii: STD_LOGIC_VECTOR(15 downto 0);
-    signal Sball_x, Sball_y, Sp1, Sp2: STD_LOGIC_VECTOR(6 downto 0);
+    signal Splayer_x_ascii, Senemy_x_ascii, Sball_x_ascii, Sball_y_ascii: STD_LOGIC_VECTOR(15 downto 0);
+    signal Sball_x, Sball_y, Splayer_x, Senemy_x: STD_LOGIC_VECTOR(6 downto 0);
     signal ballxbuffer, pxbuffer: STD_LOGIC_VECTOR(7 downto 0);
-    signal Sdata, Scomm, Sbuff: STD_LOGIC_VECTOR(7 downto 0);
+    signal Sdata, Scomm, Sbuff, Smodem_received_data: STD_LOGIC_VECTOR(7 downto 0);
     signal Ssend, Sbusy, Stimer_slow, Stimer_fast: STD_LOGIC := '0';
     signal Sgoal, actSc1, actSc2, Smove: STD_LOGIC := '0';
     signal Ssend_modem: STD_LOGIC := '1';
-    signal Sscore1, Sscore2: STD_LOGIC_VECTOR(3 downto 0) := "0000";
-    signal Swait: STD_LOGIC := '0';
+    signal Sscore_player, Sscore_enemy: STD_LOGIC_VECTOR(3 downto 0) := "0000";
+    signal Swait, Smodem_received: STD_LOGIC := '0';
 
     component Uart port (
         clk, reset, rx, transmite_dado: in STD_LOGIC;
@@ -112,6 +112,13 @@ begin
             else
                 Ssend_modem <= '0';
             end if;
+            if Smodem_received = '1' then
+                if Smodem_received_data /= "00000000" then
+                    Senemy_x <= Smodem_received_data;
+                else
+                    Sscore_player <= Sscore_player + '1';
+                end if;
+            end if;
         end if;
     end process;
     send <= Ssend;
@@ -122,18 +129,17 @@ begin
     P1: pad port map (clk, Sgoal, Smove, Scomm, Sp1);
     P2: pad port map (clk, Sgoal, Smove, Scomm, Sp2);
     ScP2: scorer port map (clk, Sball_x, Sball_y, Sp1, Sgoal);
-    Itimer_quick: timer port map (clk, redraw, '0', "0110000000000000000", Stimer_fast);
-    Itimer_slow: timer port map (clk, Stimer_fast, '0', "0000000000000100000", Stimer_slow);
-    Iterm_draw: term_draw port map (clk, Stimer_slow, Sbusy, Splayer_x, Senemy_x, Sball_x_ascii, Sball_y_ascii, Sdata, Ssend);
+    Itimer_quick: timer port map (clk, is_client, not is_client, "0110000000000000000", Stimer_fast);
+    Itimer_slow: timer port map (clk, Stimer_fast, not is_client, "0000000000000100000", Stimer_slow);
+    Iterm_draw: term_draw port map (clk, (is_client and Stimer_slow) or (is_client and Smodem_received), Sbusy, Splayer_x_ascii, Senemy_x_ascii, Sball_x_ascii, Sball_y_ascii, Sdata, Ssend);
     Iball: ball port map (clk, '0', Stimer_slow, open, Sball_x, Sball_y);
     buffsaida: register8 port map (clk, Stimer_slow, Scomm, Sbuff);
     bufdbg1: register8 port map (clk, '1', "0" & Sball_x, ballxbuffer);
     bufdbg2: register8 port map (clk, '1', "0" & Sp2, pxbuffer);
-    ScoreHex: hex7seg port map (Sscore1, '1', score1);
-    Iplayer_x: bin_to_ascii port map (Sp1, Splayer_x);
-    Ienemy_x: bin_to_ascii port map (Sp2, Senemy_x);
+    ScoreHex: hex7seg port map (Sscore_player, '1', score1);
+    Iplayer_x: bin_to_ascii port map (Splayer_x, Splayer_x_ascii);
+    Ienemy_x: bin_to_ascii port map (Senemy_x, Senemy_x_ascii);
     Iball_y: bin_to_ascii port map (Sball_y, Sball_y_ascii);
     Iball_x: bin_to_ascii port map (Sball_x, Sball_x_ascii);
-
-    IModem: Modem port map (clk, '1', Ssend_modem, "10011000", open, open, modem_busy_tx, nDTR, nRTS, TD, nCTS, nCD, RD, open);
+    IModem: Modem port map (clk, '1', Ssend_modem, "10011000", Smodem_received, Smodem_received_data, modem_busy_tx, nDTR, nRTS, TD, nCTS, nCD, RD, open);
 end Pong_arch;

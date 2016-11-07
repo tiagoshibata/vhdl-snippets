@@ -25,12 +25,10 @@ begin
                 if rx_bit_count = "01011" then
                     Sbusy_rx <= '0';
                     has_rx_data <= '1';  -- parity_ok;
-                else
-                    Sbusy_rx <= '1';
                 end if;
             else
-        Sbusy_rx <= '0';
-        has_rx_data <= '0';
+                Sbusy_rx <= '0';
+                has_rx_data <= '0';
             end if;
         end if;
     busy_rx <= Sbusy_rx;
