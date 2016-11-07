@@ -10,7 +10,8 @@ entity timer is port (
 ); end;
 
 architecture timer_arch of timer is
-    signal count: STD_LOGIC_VECTOR(18 downto 0);
+    constant ZERO: STD_LOGIC_VECTOR(18 downto 0) := (others => '0');
+    signal count: STD_LOGIC_VECTOR(18 downto 0) := ZERO + "1";
 begin
     process (clk)
     begin
