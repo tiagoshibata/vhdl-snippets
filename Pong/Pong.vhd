@@ -11,20 +11,20 @@ entity Pong is port (
     nDTR, nRTS, TD: out STD_LOGIC;
     nCTS, nCD, RD: in STD_LOGIC;
 
-    modem_busy_tx: out STD_LOGIC;
     score1: out STD_LOGIC_VECTOR(6 downto 0)
 ); end;
 
 architecture Pong_arch of Pong is
     signal Splayer_x_ascii, Senemy_x_ascii, Sball_x_ascii, Sball_y_ascii: STD_LOGIC_VECTOR(15 downto 0);
-    signal Sball_x, Sball_y, Splayer_x, Senemy_x: STD_LOGIC_VECTOR(6 downto 0);
+    signal Sball_x, Sball_y, Splayer_x: STD_LOGIC_VECTOR(6 downto 0);
+    signal Senemy_x: STD_LOGIC_VECTOR(6 downto 0) := "0100110";
     signal ballxbuffer, pxbuffer: STD_LOGIC_VECTOR(7 downto 0);
-    signal Sdata, Scomm, Sbuff, Smodem_received_data: STD_LOGIC_VECTOR(7 downto 0);
-    signal Ssend, Sbusy, Stimer_slow, Stimer_fast: STD_LOGIC := '0';
-    signal Sgoal, actSc1, actSc2, Smove: STD_LOGIC := '0';
+    signal Sdata, Sterminal_data, Smodem_data, Smodem_received_data: STD_LOGIC_VECTOR(7 downto 0);
+    signal Ssend, Sbusy, Stimer_slow, Stimer_fast, Stick: STD_LOGIC := '0';
+    signal Sgoal, actSc1, actSc2, Sgoal_taken, Sgoal_score, Ssend_goal_taken, Sreset_goal_taken: STD_LOGIC := '0';
     signal Ssend_modem: STD_LOGIC := '1';
     signal Sscore_player, Sscore_enemy: STD_LOGIC_VECTOR(3 downto 0) := "0000";
-    signal Swait, Smodem_received: STD_LOGIC := '0';
+    signal Swait, Smodem_received, Smodem_busy_tx: STD_LOGIC := '0';
 
     component Uart port (
         clk, reset, rx, transmite_dado: in STD_LOGIC;
@@ -61,8 +61,7 @@ architecture Pong_arch of Pong is
     ); end component;
 
     component ball port (
-        clk, reset, tick: in std_logic;
-        ball_down: out std_logic;
+        clk, reset, starting_direction, tick: in std_logic;
         x: out std_logic_vector(6 downto 0);
         y: out std_logic_vector(6 downto 0)
     ); end component;
@@ -79,12 +78,6 @@ architecture Pong_arch of Pong is
         goal: out STD_LOGIC
     ); end component;
 
-    component register8 port (
-        clk, load: in STD_LOGIC;
-        data_in: in STD_LOGIC_VECTOR(7 downto 0);
-        data_out: out STD_LOGIC_VECTOR(7 downto 0)
-    ); end component;
-
     component hex7seg port (
         x : in std_logic_vector(3 downto 0);
         enable : in std_logic;
@@ -99,47 +92,56 @@ architecture Pong_arch of Pong is
         busy_tx: out STD_LOGIC;
 
         nDTR, nRTS, TD: out STD_LOGIC;
-        nCTS, nCD, RD: in STD_LOGIC;
-
-        dbg_rx_bit_count: out STD_LOGIC_VECTOR(4 downto 0)
+        nCTS, nCD, RD: in STD_LOGIC
     ); end component;
 begin
     process (clk)
     begin
         if rising_edge(clk) then
-            if Swait = '0' then
-                Swait <= '1';
-            else
-                Ssend_modem <= '0';
+            if Sgoal_taken = '1' then
+                Ssend_goal_taken <= '1';
+            elsif Stick = '1' then
+                Sreset_goal_taken <= '1';
+            elsif Sreset_goal_taken = '1' then
+                Sreset_goal_taken <= '0';
+                Ssend_goal_taken <= '0';
             end if;
+            if Ssend_goal_taken = '1' then
+                Smodem_data <= (others => '0');
+            else
+                Smodem_data <= "01001101" - Splayer_x;
+            end if;
+
             if Smodem_received = '1' then
-                if Smodem_received_data /= "00000000" then
-                    Senemy_x <= Smodem_received_data;
-                else
+                if Smodem_received_data > "00000000" and Smodem_received_data < "1001101" then
+                    Senemy_x <= Smodem_received_data(6 downto 0);
+                elsif Smodem_received_data = "00000000" then
                     Sscore_player <= Sscore_player + '1';
+                    Senemy_x <= "0100110";
+                    Sgoal_score <= '1';
                 end if;
+            else
+                Sgoal_score <= '0';
             end if;
         end if;
     end process;
+    Sgoal <= Sgoal_taken or Sgoal_score;
     send <= Ssend;
     busy <= Sbusy;
     dbg_term_data <= Sdata;
+    Stick <= (is_client and Stimer_slow) or (not is_client and Smodem_received);
 
-    IUart: Uart port map (clk, '0', rx, Ssend, tx, Smove, Sbusy, Sdata, Scomm, open, open, open, open, open, dbg_tx_bit_count, open);
-    P1: pad port map (clk, Sgoal, Smove, Scomm, Sp1);
-    P2: pad port map (clk, Sgoal, Smove, Scomm, Sp2);
-    ScP2: scorer port map (clk, Sball_x, Sball_y, Sp1, Sgoal);
+    IUart: Uart port map (clk, '0', rx, Ssend, tx, open, Sbusy, Sdata, Sterminal_data, open, open, open, open, open, dbg_tx_bit_count, open);
+    Ipad: pad port map (clk, Sgoal, Stick, Sterminal_data, Splayer_x);
+    Iscorer: scorer port map (clk, Sball_x, Sball_y, Splayer_x, Sgoal_taken);
     Itimer_quick: timer port map (clk, is_client, not is_client, "0110000000000000000", Stimer_fast);
-    Itimer_slow: timer port map (clk, Stimer_fast, not is_client, "0000000000000100000", Stimer_slow);
-    Iterm_draw: term_draw port map (clk, (is_client and Stimer_slow) or (is_client and Smodem_received), Sbusy, Splayer_x_ascii, Senemy_x_ascii, Sball_x_ascii, Sball_y_ascii, Sdata, Ssend);
-    Iball: ball port map (clk, '0', Stimer_slow, open, Sball_x, Sball_y);
-    buffsaida: register8 port map (clk, Stimer_slow, Scomm, Sbuff);
-    bufdbg1: register8 port map (clk, '1', "0" & Sball_x, ballxbuffer);
-    bufdbg2: register8 port map (clk, '1', "0" & Sp2, pxbuffer);
+    Itimer_slow: timer port map (clk, Stimer_fast, not is_client, "0000000000000101000", Stimer_slow);
+    Iterm_draw: term_draw port map (clk, Stick, Sbusy, Splayer_x_ascii, Senemy_x_ascii, Sball_x_ascii, Sball_y_ascii, Sdata, Ssend);
+    Iball: ball port map (clk, Sgoal, is_client, Stick, Sball_x, Sball_y);
     ScoreHex: hex7seg port map (Sscore_player, '1', score1);
     Iplayer_x: bin_to_ascii port map (Splayer_x, Splayer_x_ascii);
     Ienemy_x: bin_to_ascii port map (Senemy_x, Senemy_x_ascii);
     Iball_y: bin_to_ascii port map (Sball_y, Sball_y_ascii);
     Iball_x: bin_to_ascii port map (Sball_x, Sball_x_ascii);
-    IModem: Modem port map (clk, '1', Ssend_modem, "10011000", Smodem_received, Smodem_received_data, modem_busy_tx, nDTR, nRTS, TD, nCTS, nCD, RD, open);
+    IModem: Modem port map (clk, '1', Stick, Smodem_data, Smodem_received, Smodem_received_data, Smodem_busy_tx, nDTR, nRTS, TD, nCTS, nCD, RD);
 end Pong_arch;

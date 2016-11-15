@@ -27,16 +27,17 @@ architecture Receptor_FD_arch of Receptor_FD is
     ); end component;
 
     component parity port (
+        clk: in STD_LOGIC;
         data: in STD_LOGIC_VECTOR(7 downto 0);
         parity: out STD_LOGIC
     ); end component;
 begin
-    data <= '0' & Sdata(7 downto 1);
+    data <= Sdata(8 downto 1);
     Ssample <= tick;
     sample <= Ssample;
     parity_ok <= Sparity xor Sdata(10);
 
-    Iparity: parity port map (Sdata(8 downto 1), Sparity);
+    Iparity: parity port map (clk, Sdata(8 downto 1), Sparity);
     bit_counter: counter port map (clk, not busy_rx, tick, rx_bit_count);
     Ishifter: shifter port map (clk, tick and busy_rx, serial, '0', open, (others => '0'), Sdata);
 end Receptor_FD_arch;

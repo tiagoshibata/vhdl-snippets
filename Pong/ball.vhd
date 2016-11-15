@@ -4,18 +4,15 @@ use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 
 entity ball is port (
-    clk, reset, tick: in STD_LOGIC;
-    ball_down: out STD_LOGIC;
-    x: out STD_LOGIC_VECTOR(6 downto 0);
-    y: out STD_LOGIC_VECTOR(6 downto 0)
+    clk, reset, starting_direction, tick: in std_logic;
+    x, y: out STD_LOGIC_VECTOR(6 downto 0)
 ); end ball;
 
 architecture ball_impl of ball is
     signal Sx: STD_LOGIC_VECTOR(6 downto 0) := "0101000";
     signal Sy: STD_LOGIC_VECTOR(6 downto 0) := "0001100";
-    signal Sball_down, Sball_right: STD_LOGIC := '0';
+    signal Sball_down, Sball_right: STD_LOGIC := starting_direction;
 begin
-    ball_down <= Sball_down;
     x <= Sx;
     y <= Sy;
     process(clk)
@@ -24,6 +21,8 @@ begin
             if reset = '1' then
                 Sx <= "0101000";
                 Sy <= "0001100";
+                Sball_down <= starting_direction;
+                Sball_right <= starting_direction;
             elsif tick = '1' then
                 if Sball_right = '1' then
                     if Sx = "1010000" then

@@ -14,7 +14,7 @@ begin
     process(clk)
     begin
         if rising_edge(clk) then
-            if ball_y = "0000001" and (ball_x < player_x or ball_x > player_x + "0000100") then
+            if ball_y = "0011000" and (ball_x < player_x or ball_x > player_x + "0000100") then
                 goal <= '1';
             else
                 goal <= '0';

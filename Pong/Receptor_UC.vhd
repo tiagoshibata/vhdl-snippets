@@ -31,6 +31,5 @@ begin
                 has_rx_data <= '0';
             end if;
         end if;
-    busy_rx <= Sbusy_rx;
     end process;
 end Receptor_UC_arch;

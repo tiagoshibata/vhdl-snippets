@@ -12,12 +12,12 @@ entity Transmissor_FD is port (
 architecture Transmissor_FD_arch of Transmissor_FD is
     signal Sparity: STD_LOGIC;
 
-  component shifter port (
+    component shifter port (
         clk, enable, serial_in, load: in STD_LOGIC;
         serial_out: out STD_LOGIC;
         data_in: in STD_LOGIC_VECTOR(10 downto 0);
         data_out: out STD_LOGIC_VECTOR(10 downto 0)
-  ); end component;
+    ); end component;
 
     component counter port (
         clk, reset, count: in std_logic;
@@ -25,11 +25,12 @@ architecture Transmissor_FD_arch of Transmissor_FD is
     ); end component;
 
     component parity port (
+        clk: in STD_LOGIC;
         data: in STD_LOGIC_VECTOR(7 downto 0);
         parity: out STD_LOGIC
     ); end component;
 begin
-    Iparity: parity port map (data, Sparity);
+    Iparity: parity port map (clk, data, Sparity);
     Ishifter: shifter port map (clk, tick, '1', send, serial, "1" & Sparity & data & "0", open);
     Icounter: counter port map (clk, send, tick, bit_count);
 end Transmissor_FD_arch;
