@@ -27,20 +27,20 @@ begin
                 Sright <= '0';
                 Sleft <= '0';
             else
-                if command = KEY_RIGHT then
-                    Sright <= '1';
-                    Sleft <= '0';
-                elsif command = KEY_LEFT then
-                    Sright <= '0';
-                    Sleft <= '1';
-                end if;
-                if tick = '1' then
-                    if Sright = '1' and Sx /= "1001100" then
-                        Sx <= Sx + "10";
-                    elsif Sleft = '1' and Sx /= "0000010" then
-                        Sx <= Sx - "10";
-                    end if;
-                end if;
+				if command = KEY_RIGHT then
+					Sright <= '1';
+					Sleft <= '0';
+				elsif command = KEY_LEFT then
+					Sright <= '0';
+					Sleft <= '1';
+				end if;
+				if tick = '1' then
+					if Sright = '1' and Sx /= "1001100" then
+						Sx <= Sx + "10";
+					elsif Sleft = '1' and Sx /= "0000010" then
+						Sx <= Sx - "10";
+					end if;
+				end if;
             end if;
         end if;
     end process;

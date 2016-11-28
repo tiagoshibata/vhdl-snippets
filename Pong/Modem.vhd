@@ -25,14 +25,14 @@ architecture Modem_arch of Modem is
 
     component Modem_FD port (
         -- external interface
-        clk, enable, send: in STD_LOGIC;
-        data_in: in  STD_LOGIC_VECTOR(7 downto 0);
-        received, busy_tx: out STD_LOGIC;
-        data_out: out STD_LOGIC_VECTOR(7 downto 0);
+		clk, enable, send: in STD_LOGIC;
+		data_in: in  STD_LOGIC_VECTOR(7 downto 0);
+		received, busy_tx: out STD_LOGIC;
+		data_out: out STD_LOGIC_VECTOR(7 downto 0);
 
-        -- modem interface
-        nDTR, TD: out STD_LOGIC;
-        nCD, RD: in STD_LOGIC
+		-- modem interface
+		nDTR, TD: out STD_LOGIC;
+		nCD, RD: in STD_LOGIC
     ); end component;
 begin
     busy_tx <= Sbusy_tx;

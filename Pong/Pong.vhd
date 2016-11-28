@@ -103,14 +103,14 @@ begin
             elsif Stick = '1' then
                 Sreset_goal_taken <= '1';
             elsif Sreset_goal_taken = '1' then
-                Sreset_goal_taken <= '0';
+			    Sreset_goal_taken <= '0';
                 Ssend_goal_taken <= '0';
             end if;
             if Ssend_goal_taken = '1' then
-                Smodem_data <= (others => '0');
-            else
-                Smodem_data <= "01001101" - Splayer_x;
-            end if;
+				Smodem_data <= (others => '0');
+			else
+				Smodem_data <= "01001101" - Splayer_x;
+			end if;
 
             if Smodem_received = '1' then
                 if Smodem_received_data > "00000000" and Smodem_received_data < "1001101" then
